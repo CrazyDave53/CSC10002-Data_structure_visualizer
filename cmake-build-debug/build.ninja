@@ -63,15 +63,15 @@ build CMakeFiles/CSC10002_Data_structure_visualizer.dir/src/main.cpp.obj: CXX_CO
 
 
 #############################################
-# Link the executable CSC10002_Data_structure_visualizer.exe
+# Link the executable E:\KHTN\ki thuat lap trinh\CSC10002-Data_structure_visualizer\CSC10002_Data_structure_visualizer.exe
 
-build CSC10002_Data_structure_visualizer.exe: CXX_EXECUTABLE_LINKER__CSC10002_Data_structure_visualizer_Debug CMakeFiles/CSC10002_Data_structure_visualizer.dir/src/main.cpp.obj | C$:/SFML/lib/libsfml-graphics-s-d.a C$:/SFML/lib/libsfml-audio-s-d.a C$:/SFML/lib/libsfml-window-s-d.a C$:/SFML/lib/libfreetype.a C$:/SFML/lib/libopenal32.a C$:/SFML/lib/libsfml-system-s-d.a C$:/SFML/lib/libvorbisfile.a C$:/SFML/lib/libvorbisenc.a C$:/SFML/lib/libvorbis.a C$:/SFML/lib/libogg.a C$:/SFML/lib/libFLAC.a
+build E$:/KHTN/ki$ thuat$ lap$ trinh/CSC10002-Data_structure_visualizer/CSC10002_Data_structure_visualizer.exe: CXX_EXECUTABLE_LINKER__CSC10002_Data_structure_visualizer_Debug CMakeFiles/CSC10002_Data_structure_visualizer.dir/src/main.cpp.obj | C$:/SFML/lib/libsfml-graphics-s-d.a C$:/SFML/lib/libsfml-audio-s-d.a C$:/SFML/lib/libsfml-window-s-d.a C$:/SFML/lib/libfreetype.a C$:/SFML/lib/libopenal32.a C$:/SFML/lib/libsfml-system-s-d.a C$:/SFML/lib/libvorbisfile.a C$:/SFML/lib/libvorbisenc.a C$:/SFML/lib/libvorbis.a C$:/SFML/lib/libogg.a C$:/SFML/lib/libFLAC.a
   FLAGS = -g
   LINK_LIBRARIES = C:/SFML/lib/libsfml-graphics-s-d.a  C:/SFML/lib/libsfml-audio-s-d.a  C:/SFML/lib/libsfml-window-s-d.a  -lgdi32  -lOpenGL32  C:/SFML/lib/libfreetype.a  C:/SFML/lib/libopenal32.a  C:/SFML/lib/libsfml-system-s-d.a  -lwinmm  C:/SFML/lib/libvorbisfile.a  C:/SFML/lib/libvorbisenc.a  C:/SFML/lib/libvorbis.a  C:/SFML/lib/libogg.a  C:/SFML/lib/libFLAC.a  -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32
   OBJECT_DIR = CMakeFiles\CSC10002_Data_structure_visualizer.dir
   POST_BUILD = cd .
   PRE_LINK = cd .
-  TARGET_FILE = CSC10002_Data_structure_visualizer.exe
+  TARGET_FILE = "E:\KHTN\ki thuat lap trinh\CSC10002-Data_structure_visualizer\CSC10002_Data_structure_visualizer.exe"
   TARGET_IMPLIB = libCSC10002_Data_structure_visualizer.dll.a
   TARGET_PDB = CSC10002_Data_structure_visualizer.exe.dbg
 
@@ -101,7 +101,9 @@ build rebuild_cache: phony CMakeFiles/rebuild_cache.util
 # =============================================================================
 # Target aliases.
 
-build CSC10002_Data_structure_visualizer: phony CSC10002_Data_structure_visualizer.exe
+build CSC10002_Data_structure_visualizer: phony E$:/KHTN/ki$ thuat$ lap$ trinh/CSC10002-Data_structure_visualizer/CSC10002_Data_structure_visualizer.exe
+
+build CSC10002_Data_structure_visualizer.exe: phony E$:/KHTN/ki$ thuat$ lap$ trinh/CSC10002-Data_structure_visualizer/CSC10002_Data_structure_visualizer.exe
 
 # =============================================================================
 # Folder targets.
@@ -111,7 +113,7 @@ build CSC10002_Data_structure_visualizer: phony CSC10002_Data_structure_visualiz
 #############################################
 # Folder: E:/KHTN/ki thuat lap trinh/CSC10002-Data_structure_visualizer/cmake-build-debug
 
-build all: phony CSC10002_Data_structure_visualizer.exe
+build all: phony E$:/KHTN/ki$ thuat$ lap$ trinh/CSC10002-Data_structure_visualizer/CSC10002_Data_structure_visualizer.exe
 
 # =============================================================================
 # Built-in targets

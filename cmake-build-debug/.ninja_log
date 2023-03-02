@@ -1,13 +1,4 @@
 # ninja log v5
-3	661	6994567676836900	CMakeFiles/CSC10002_Data_structure_visualizer.dir/src/main.cpp.obj	27525ee944fa4f5c
-1	209	6994568620783889	build.ninja	eac583d7bc19a45b
-662	1244	6994567682606237	CSC10002_Data_structure_visualizer.exe	1876cb7a20b6726c
-1	354	6994568620783889	build.ninja	eac583d7bc19a45b
-9	770	6994568630553214	CMakeFiles/CSC10002_Data_structure_visualizer.dir/src/main.cpp.obj	27525ee944fa4f5c
-771	1471	6994568637475983	CSC10002_Data_structure_visualizer.exe	1876cb7a20b6726c
-6	664	6994570523802996	CMakeFiles/CSC10002_Data_structure_visualizer.dir/src/main.cpp.obj	27525ee944fa4f5c
-664	1383	6994570530890468	CSC10002_Data_structure_visualizer.exe	1876cb7a20b6726c
-3	770	6994572209103318	CMakeFiles/CSC10002_Data_structure_visualizer.dir/src/main.cpp.obj	27525ee944fa4f5c
-770	1479	6994572216121789	CSC10002_Data_structure_visualizer.exe	1876cb7a20b6726c
-7	673	6994572507954485	CMakeFiles/CSC10002_Data_structure_visualizer.dir/src/main.cpp.obj	27525ee944fa4f5c
-673	1349	6994572514627737	CSC10002_Data_structure_visualizer.exe	1876cb7a20b6726c
+4	773	6994578651465608	CMakeFiles/CSC10002_Data_structure_visualizer.dir/src/main.cpp.obj	27525ee944fa4f5c
+1	354	6994582174622651	build.ninja	eac583d7bc19a45b
+774	1461	6994578658300018	CSC10002_Data_structure_visualizer.exe	1876cb7a20b6726c

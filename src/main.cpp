@@ -1,6 +1,5 @@
 #include <SFML/Graphics.hpp>
 #include <iostream>
-
 using namespace std;
 using namespace sf;
 
@@ -8,7 +7,11 @@ int main()
 {
     RenderWindow window(VideoMode(400, 300), "Menu");
     Font font;
-    font.loadFromFile("ARLRDBD.TTF"); // Replace with the path to your font file
+    if (!font.loadFromFile("./fonts/ARLRDBD.TTF"))
+    {
+        cout<<"owo"<<endl;
+    }
+
     Text title("Menu", font, 50);
     title.setPosition(100, 50);
     Text option1("Option 1", font, 30);
