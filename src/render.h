@@ -7,18 +7,20 @@
 
 #include <string>
 #include <SFML/Graphics.hpp>
+#include "menu.h"
 
 class Application{
-    private:
-        int windowType = 0;
-        sf::RenderWindow window;
-        sf::Font font;
+private:
+    int windowType = 0;
+    sf::RenderWindow window;
+    sf::Font font;
+    MainMenu menu = MainMenu();
 
 
-    public:
-        void changeWindowtype(int type);
-        void renderWindow();
-        void initWindow();
+public:
+    void changeWindowtype(int type);
+    void renderWindow();
+    void initWindow();
 };
 
 #endif //CSC10002_DATA_STRUCTURE_VISUALIZER_RENDER_H
