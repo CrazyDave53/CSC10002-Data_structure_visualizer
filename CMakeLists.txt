@@ -5,7 +5,7 @@ set(CMAKE_CXX_STANDARD 14)
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${PROJECT_SOURCE_DIR})
 
 add_executable(CSC10002_Data_structure_visualizer
-        src/main.cpp)
+        src/main.cpp src/render.cpp src/render.h src/menu.h src/menu.cpp)
 
 set(SFML_STATIC_LIBRARIES TRUE)
 
