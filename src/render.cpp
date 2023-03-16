@@ -1,17 +1,19 @@
 #include "render.h"
 
-void Application::changeWindowtype(int type) {
-    windowType = type;
-}
-
-void Application::initWindow() {
+Application::Application() :
+    mainMenu()
+{
     window.create(sf::VideoMode(1920,1080), "DSA Visualizer");
     window.clear(sf::Color::Black);
     window.setPosition(sf::Vector2i(0,0));
 }
 
+void Application::changeWindowtype(int type) {
+    windowType = type;
+}
+
 void Application::renderWindow() {
-    windowType = mainMenu;
+    windowType = mainMenuType;
     while (window.isOpen()) {
         sf::Event event;
         while (window.pollEvent(event)) {
@@ -20,10 +22,12 @@ void Application::renderWindow() {
         }
         window.clear();
         switch (windowType) {
-            case mainMenu:
-                menu.draw(window, sf::RenderStates::Default);
+            case mainMenuType:
+                mainMenu.render(window);
                 break;
         }
+
+
         window.display();
     }
 }

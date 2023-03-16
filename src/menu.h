@@ -4,14 +4,15 @@
 #include <SFML/Graphics.hpp>
 #include "Button.h"
 
-class MainMenu {
-private:
-    sf::Font ButtonFont = sf::Font();
-    Button PlayButton = Button();
-    Button SettingButton = Button();
+class menu {
+
 public:
-    MainMenu();
-    void draw(sf::RenderTarget &target, sf::RenderStates states);
+    menu();
+    void render(sf::RenderWindow& window);
+private:
+    Button playButton;
+    Button settingButton;
+    Button quitButton;
 };
 
 #endif //CSC10002_DATA_STRUCTURE_VISUALIZER_MENU_H

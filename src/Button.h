@@ -2,20 +2,39 @@
 #define CSC10002_DATA_STRUCTURE_VISUALIZER_BUTTON_H
 
 #include <SFML/Graphics.hpp>
-#include <string>
+
+#include <SFML/Graphics.hpp>
 
 class Button {
 public:
     Button();
-    Button(sf::Vector2f centre, sf::Vector2f size, std::string text, sf::Font font, sf::Color backgroundColor, sf::Color textColor, int textSize, float cornerRadius);
-    void draw(sf::RenderTarget& target, sf::RenderStates states);
-//bool isClicked(const sf::RenderWindow& window);
+
+    Button(std::string name, sf::Vector2f center, bool Toggled);
+
+    void draw(sf::RenderWindow& window);
+
+    bool contains(sf::Vector2i point);
+
+    bool isClicked(sf::RenderWindow& window);
+
+    void setHovered(sf::RenderWindow& window);
+
+    void setToggled(bool toggled);
+
+    bool isToggled();
+
+    sf::FloatRect getGlobalBounds();
+
 private:
-    sf::RectangleShape ButtonShape;
-    sf::Text ButtonText;
-    sf::Vector2f pos;
-    sf::Vector2f centre;
-    float ButtonCornerRadius;
+    sf::Texture normalTexture_;
+    sf::Texture hoverTexture_;
+    sf::Sprite normalSprite_;
+    sf::Sprite hoverSprite_;
+    sf::Vector2f position_;
+    bool isHovered_;
+    bool isToggled_;
+    bool Toggled_;
+    std::string name_;
 };
 
-#endif //CSC10002_DATA_STRUCTURE_VISUALIZER_BUTTON_H
+#endif

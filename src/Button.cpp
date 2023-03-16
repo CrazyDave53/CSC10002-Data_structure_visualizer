@@ -1,36 +1,82 @@
 #include "Button.h"
+#include <iostream>
 
-Button::Button() {
-    sf::Font f;
-    f.loadFromFile("./fonts/ARLRDBD.TTF");
-    ButtonCornerRadius = 1;
-//    Button(sf::Vector2f(960, 540), sf::Vector2f(400, 60), "Play me m", f, sf::Color::White, sf::Color::Black, 26, 1.0);
+Button::Button() :
+    normalTexture_(),
+    hoverTexture_(),
+    normalSprite_(),
+    hoverSprite_(),
+    position_(),
+    isHovered_(false),
+    isToggled_(false),
+    Toggled_(false)
+{
+
 }
 
-Button::Button(sf::Vector2f _centre, sf::Vector2f size, std::string text, sf::Font font, sf::Color backgroundColor,
-               sf::Color textColor, int textSize, float cornerRadius) {
-    pos = centre - size * 0.5f;
+Button::Button(std::string name, sf::Vector2f center, bool Toggled = false) :
+    normalTexture_(),
+    hoverTexture_(),
+    normalSprite_(),
+    hoverSprite_(),
+    position_(),
+    isHovered_(false),
+    isToggled_(false),
+    Toggled_(Toggled)
+{
+    std::string normalTextureFile = "./assets/button/" + name + "_normal.png";
+    std::string hoverTextureFile = "./assets/button/" + name + "_hover.png";
 
-    ButtonShape.setPosition(pos);
-    ButtonShape.setSize(size);
-    ButtonShape.setFillColor(backgroundColor);
+    normalTexture_.loadFromFile(normalTextureFile);
+    hoverTexture_.loadFromFile(hoverTextureFile);
 
-    ButtonShape.setOutlineThickness(cornerRadius);
-    ButtonShape.setOutlineColor(backgroundColor);
-//    ButtonShape.setCon(8);
-    ButtonCornerRadius = cornerRadius;
+    normalSprite_.setTexture(normalTexture_);
+    hoverSprite_.setTexture(hoverTexture_);
 
-    ButtonText.setString(text);
-    ButtonText.setFont(font);
-    ButtonText.setCharacterSize(textSize);
-    ButtonText.setFillColor(textColor);
+    position_ = center - normalSprite_.getScale() * 0.5f;
 
+    normalSprite_.setOrigin(normalSprite_.getGlobalBounds().width / 2.f, normalSprite_.getGlobalBounds().height / 2.f);
+    hoverSprite_.setOrigin(hoverSprite_.getGlobalBounds().width / 2.f, hoverSprite_.getGlobalBounds().height / 2.f);
 
-    sf::FloatRect textBounds = ButtonText.getLocalBounds();
-    ButtonText.setPosition(pos + size / 2.f - sf::Vector2f(textBounds.width / 2.f, textBounds.height / 2.f));
+    normalSprite_.setPosition(position_);
+    hoverSprite_.setPosition(position_);
 }
 
-void Button::draw(sf::RenderTarget &target, sf::RenderStates states) {
-    target.draw(ButtonShape, states);
-    target.draw(ButtonText, states);
+void Button::draw(sf::RenderWindow& window) {
+    if (isToggled_) {
+        window.draw(hoverSprite_);
+        return;
+    }
+
+    window.draw(isHovered_ ? hoverSprite_ : normalSprite_);
+}
+
+bool Button::contains(sf::Vector2i point) {
+    return normalSprite_.getGlobalBounds().contains(static_cast<sf::Vector2f>(point));
+}
+
+bool Button::isClicked(sf::RenderWindow& window) {
+    bool clicked = contains(sf::Mouse::getPosition(window)) && sf::Mouse::isButtonPressed(sf::Mouse::Button::Left);
+
+    if(clicked)
+        setToggled(!isToggled_);
+    return clicked;
+}
+
+void Button::setHovered(sf::RenderWindow& window) {
+    bool hovered = contains(sf::Mouse::getPosition(window));
+    isHovered_ = hovered;
+}
+
+void Button::setToggled(bool toggled) {
+    if(Toggled_)
+        isToggled_ = toggled;
+}
+
+bool Button::isToggled() {
+    return isToggled_;
+}
+
+sf::FloatRect Button::getGlobalBounds() {
+    return normalSprite_.getGlobalBounds();
 }
