@@ -2,14 +2,13 @@
 #include <iostream>
 
 menu::menu() :
-    playButton("button", sf::Vector2f(400,400), true),
+    mainButton("mainLogo", sf::Vector2f(540,540), true),
+    playButton("menuPlay", sf::Vector2f(400,400), true),
     settingButton("button", sf::Vector2f(800,800), true),
     quitButton("button", sf::Vector2f(1000,800), true)
-{
+    {}
 
-}
-
-void menu::render(sf::RenderWindow &window) {
+void menu::render(sf::RenderWindow &window, int &windowType) {
     while (window.isOpen()) {
         sf::Event event;
         while (window.pollEvent(event)) {
@@ -30,6 +29,7 @@ void menu::render(sf::RenderWindow &window) {
 
         window.clear();
 
+        mainButton.draw(window);
         playButton.draw(window);
         settingButton.draw(window);
         quitButton.draw(window);

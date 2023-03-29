@@ -63,9 +63,12 @@ bool Button::isClicked(sf::RenderWindow& window) {
     return clicked;
 }
 
-void Button::setHovered(sf::RenderWindow& window) {
+bool Button::setHovered(sf::RenderWindow& window) {
     bool hovered = contains(sf::Mouse::getPosition(window));
+    bool diff = (isHovered_ ^ hovered);
     isHovered_ = hovered;
+
+    return diff;
 }
 
 void Button::setToggled(bool toggled) {

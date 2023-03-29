@@ -8,8 +8,9 @@ class menu {
 
 public:
     menu();
-    void render(sf::RenderWindow& window);
+    void render(sf::RenderWindow& window, int &windowType);
 private:
+    Button mainButton;
     Button playButton;
     Button settingButton;
     Button quitButton;

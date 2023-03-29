@@ -17,7 +17,7 @@ public:
 
     bool isClicked(sf::RenderWindow& window);
 
-    void setHovered(sf::RenderWindow& window);
+    bool setHovered(sf::RenderWindow& window);
 
     void setToggled(bool toggled);
 

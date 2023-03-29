@@ -23,7 +23,7 @@ void Application::renderWindow() {
         window.clear();
         switch (windowType) {
             case mainMenuType:
-                mainMenu.render(window);
+                mainMenu.render(window, windowType);
                 break;
         }
 
