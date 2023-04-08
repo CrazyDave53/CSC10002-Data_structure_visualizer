@@ -27,7 +27,7 @@
 					[
 						0
 					],
-					"name" : "CSC10002_Data_structure_visualizer",
+					"name" : "CSC10002-Data_structure_visualizer",
 					"targetIndexes" : 
 					[
 						0
@@ -38,9 +38,9 @@
 			[
 				{
 					"directoryIndex" : 0,
-					"id" : "CSC10002_Data_structure_visualizer::@6890427a1f51a3e7e1df",
-					"jsonFile" : "target-CSC10002_Data_structure_visualizer-Debug-8d48cbeea03b19f30feb.json",
-					"name" : "CSC10002_Data_structure_visualizer",
+					"id" : "CSC10002-Data_structure_visualizer::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-CSC10002-Data_structure_visualizer-Debug-a428db7ef7f8499f68b6.json",
+					"name" : "CSC10002-Data_structure_visualizer",
 					"projectIndex" : 0
 				}
 			]

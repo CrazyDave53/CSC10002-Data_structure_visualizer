@@ -11,7 +11,7 @@
 # =============================================================================
 
 # =============================================================================
-# Project: CSC10002_Data_structure_visualizer
+# Project: CSC10002-Data_structure_visualizer
 # Configurations: Release
 # =============================================================================
 
@@ -41,247 +41,247 @@ include CMakeFiles/rules.ninja
 
 cmake_ninja_workdir = E$:/KHTN/ki$ thuat$ lap$ trinh/CSC10002-Data_structure_visualizer/cmake-build-release/
 # =============================================================================
-# Object build statements for EXECUTABLE target CSC10002_Data_structure_visualizer
+# Object build statements for EXECUTABLE target CSC10002-Data_structure_visualizer
 
 
 #############################################
-# Order-only phony target for CSC10002_Data_structure_visualizer
+# Order-only phony target for CSC10002-Data_structure_visualizer
 
-build cmake_object_order_depends_target_CSC10002_Data_structure_visualizer: phony || CMakeFiles/CSC10002_Data_structure_visualizer.dir
+build cmake_object_order_depends_target_CSC10002-Data_structure_visualizer: phony || CMakeFiles/CSC10002-Data_structure_visualizer.dir
 
-build CMakeFiles/CSC10002_Data_structure_visualizer.dir/src/main.cpp.obj: CXX_COMPILER__CSC10002_Data_structure_visualizer_Release E$:/KHTN/ki$ thuat$ lap$ trinh/CSC10002-Data_structure_visualizer/src/main.cpp || cmake_object_order_depends_target_CSC10002_Data_structure_visualizer
+build CMakeFiles/CSC10002-Data_structure_visualizer.dir/src/main.cpp.obj: CXX_COMPILER__CSC10002-Data_structure_visualizer_Release E$:/KHTN/ki$ thuat$ lap$ trinh/CSC10002-Data_structure_visualizer/src/main.cpp || cmake_object_order_depends_target_CSC10002-Data_structure_visualizer
   DEFINES = -DSFML_STATIC -DTGUI_STATIC
-  DEP_FILE = CMakeFiles\CSC10002_Data_structure_visualizer.dir\src\main.cpp.obj.d
+  DEP_FILE = CMakeFiles\CSC10002-Data_structure_visualizer.dir\src\main.cpp.obj.d
   FLAGS = -O3 -DNDEBUG -fdiagnostics-color=always -std=gnu++14
   INCLUDES = -isystem C:/SFML/include -isystem C:/TGUI-1.0/include
-  OBJECT_DIR = CMakeFiles\CSC10002_Data_structure_visualizer.dir
-  OBJECT_FILE_DIR = CMakeFiles\CSC10002_Data_structure_visualizer.dir\src
+  OBJECT_DIR = CMakeFiles\CSC10002-Data_structure_visualizer.dir
+  OBJECT_FILE_DIR = CMakeFiles\CSC10002-Data_structure_visualizer.dir\src
 
-build CMakeFiles/CSC10002_Data_structure_visualizer.dir/src/render.cpp.obj: CXX_COMPILER__CSC10002_Data_structure_visualizer_Release E$:/KHTN/ki$ thuat$ lap$ trinh/CSC10002-Data_structure_visualizer/src/render.cpp || cmake_object_order_depends_target_CSC10002_Data_structure_visualizer
+build CMakeFiles/CSC10002-Data_structure_visualizer.dir/src/render.cpp.obj: CXX_COMPILER__CSC10002-Data_structure_visualizer_Release E$:/KHTN/ki$ thuat$ lap$ trinh/CSC10002-Data_structure_visualizer/src/render.cpp || cmake_object_order_depends_target_CSC10002-Data_structure_visualizer
   DEFINES = -DSFML_STATIC -DTGUI_STATIC
-  DEP_FILE = CMakeFiles\CSC10002_Data_structure_visualizer.dir\src\render.cpp.obj.d
+  DEP_FILE = CMakeFiles\CSC10002-Data_structure_visualizer.dir\src\render.cpp.obj.d
   FLAGS = -O3 -DNDEBUG -fdiagnostics-color=always -std=gnu++14
   INCLUDES = -isystem C:/SFML/include -isystem C:/TGUI-1.0/include
-  OBJECT_DIR = CMakeFiles\CSC10002_Data_structure_visualizer.dir
-  OBJECT_FILE_DIR = CMakeFiles\CSC10002_Data_structure_visualizer.dir\src
+  OBJECT_DIR = CMakeFiles\CSC10002-Data_structure_visualizer.dir
+  OBJECT_FILE_DIR = CMakeFiles\CSC10002-Data_structure_visualizer.dir\src
 
-build CMakeFiles/CSC10002_Data_structure_visualizer.dir/src/menu.cpp.obj: CXX_COMPILER__CSC10002_Data_structure_visualizer_Release E$:/KHTN/ki$ thuat$ lap$ trinh/CSC10002-Data_structure_visualizer/src/menu.cpp || cmake_object_order_depends_target_CSC10002_Data_structure_visualizer
+build CMakeFiles/CSC10002-Data_structure_visualizer.dir/src/menu.cpp.obj: CXX_COMPILER__CSC10002-Data_structure_visualizer_Release E$:/KHTN/ki$ thuat$ lap$ trinh/CSC10002-Data_structure_visualizer/src/menu.cpp || cmake_object_order_depends_target_CSC10002-Data_structure_visualizer
   DEFINES = -DSFML_STATIC -DTGUI_STATIC
-  DEP_FILE = CMakeFiles\CSC10002_Data_structure_visualizer.dir\src\menu.cpp.obj.d
+  DEP_FILE = CMakeFiles\CSC10002-Data_structure_visualizer.dir\src\menu.cpp.obj.d
   FLAGS = -O3 -DNDEBUG -fdiagnostics-color=always -std=gnu++14
   INCLUDES = -isystem C:/SFML/include -isystem C:/TGUI-1.0/include
-  OBJECT_DIR = CMakeFiles\CSC10002_Data_structure_visualizer.dir
-  OBJECT_FILE_DIR = CMakeFiles\CSC10002_Data_structure_visualizer.dir\src
+  OBJECT_DIR = CMakeFiles\CSC10002-Data_structure_visualizer.dir
+  OBJECT_FILE_DIR = CMakeFiles\CSC10002-Data_structure_visualizer.dir\src
 
-build CMakeFiles/CSC10002_Data_structure_visualizer.dir/src/Button.cpp.obj: CXX_COMPILER__CSC10002_Data_structure_visualizer_Release E$:/KHTN/ki$ thuat$ lap$ trinh/CSC10002-Data_structure_visualizer/src/Button.cpp || cmake_object_order_depends_target_CSC10002_Data_structure_visualizer
+build CMakeFiles/CSC10002-Data_structure_visualizer.dir/src/Button.cpp.obj: CXX_COMPILER__CSC10002-Data_structure_visualizer_Release E$:/KHTN/ki$ thuat$ lap$ trinh/CSC10002-Data_structure_visualizer/src/Button.cpp || cmake_object_order_depends_target_CSC10002-Data_structure_visualizer
   DEFINES = -DSFML_STATIC -DTGUI_STATIC
-  DEP_FILE = CMakeFiles\CSC10002_Data_structure_visualizer.dir\src\Button.cpp.obj.d
+  DEP_FILE = CMakeFiles\CSC10002-Data_structure_visualizer.dir\src\Button.cpp.obj.d
   FLAGS = -O3 -DNDEBUG -fdiagnostics-color=always -std=gnu++14
   INCLUDES = -isystem C:/SFML/include -isystem C:/TGUI-1.0/include
-  OBJECT_DIR = CMakeFiles\CSC10002_Data_structure_visualizer.dir
-  OBJECT_FILE_DIR = CMakeFiles\CSC10002_Data_structure_visualizer.dir\src
+  OBJECT_DIR = CMakeFiles\CSC10002-Data_structure_visualizer.dir
+  OBJECT_FILE_DIR = CMakeFiles\CSC10002-Data_structure_visualizer.dir\src
 
-build CMakeFiles/CSC10002_Data_structure_visualizer.dir/src/selectingMenu.cpp.obj: CXX_COMPILER__CSC10002_Data_structure_visualizer_Release E$:/KHTN/ki$ thuat$ lap$ trinh/CSC10002-Data_structure_visualizer/src/selectingMenu.cpp || cmake_object_order_depends_target_CSC10002_Data_structure_visualizer
+build CMakeFiles/CSC10002-Data_structure_visualizer.dir/src/selectingMenu.cpp.obj: CXX_COMPILER__CSC10002-Data_structure_visualizer_Release E$:/KHTN/ki$ thuat$ lap$ trinh/CSC10002-Data_structure_visualizer/src/selectingMenu.cpp || cmake_object_order_depends_target_CSC10002-Data_structure_visualizer
   DEFINES = -DSFML_STATIC -DTGUI_STATIC
-  DEP_FILE = CMakeFiles\CSC10002_Data_structure_visualizer.dir\src\selectingMenu.cpp.obj.d
+  DEP_FILE = CMakeFiles\CSC10002-Data_structure_visualizer.dir\src\selectingMenu.cpp.obj.d
   FLAGS = -O3 -DNDEBUG -fdiagnostics-color=always -std=gnu++14
   INCLUDES = -isystem C:/SFML/include -isystem C:/TGUI-1.0/include
-  OBJECT_DIR = CMakeFiles\CSC10002_Data_structure_visualizer.dir
-  OBJECT_FILE_DIR = CMakeFiles\CSC10002_Data_structure_visualizer.dir\src
+  OBJECT_DIR = CMakeFiles\CSC10002-Data_structure_visualizer.dir
+  OBJECT_FILE_DIR = CMakeFiles\CSC10002-Data_structure_visualizer.dir\src
 
-build CMakeFiles/CSC10002_Data_structure_visualizer.dir/Gui/Button.cpp.obj: CXX_COMPILER__CSC10002_Data_structure_visualizer_Release E$:/KHTN/ki$ thuat$ lap$ trinh/CSC10002-Data_structure_visualizer/Gui/Button.cpp || cmake_object_order_depends_target_CSC10002_Data_structure_visualizer
+build CMakeFiles/CSC10002-Data_structure_visualizer.dir/Gui/Button.cpp.obj: CXX_COMPILER__CSC10002-Data_structure_visualizer_Release E$:/KHTN/ki$ thuat$ lap$ trinh/CSC10002-Data_structure_visualizer/Gui/Button.cpp || cmake_object_order_depends_target_CSC10002-Data_structure_visualizer
   DEFINES = -DSFML_STATIC -DTGUI_STATIC
-  DEP_FILE = CMakeFiles\CSC10002_Data_structure_visualizer.dir\Gui\Button.cpp.obj.d
+  DEP_FILE = CMakeFiles\CSC10002-Data_structure_visualizer.dir\Gui\Button.cpp.obj.d
   FLAGS = -O3 -DNDEBUG -fdiagnostics-color=always -std=gnu++14
   INCLUDES = -isystem C:/SFML/include -isystem C:/TGUI-1.0/include
-  OBJECT_DIR = CMakeFiles\CSC10002_Data_structure_visualizer.dir
-  OBJECT_FILE_DIR = CMakeFiles\CSC10002_Data_structure_visualizer.dir\Gui
+  OBJECT_DIR = CMakeFiles\CSC10002-Data_structure_visualizer.dir
+  OBJECT_FILE_DIR = CMakeFiles\CSC10002-Data_structure_visualizer.dir\Gui
 
-build CMakeFiles/CSC10002_Data_structure_visualizer.dir/Gui/SpriteButton.cpp.obj: CXX_COMPILER__CSC10002_Data_structure_visualizer_Release E$:/KHTN/ki$ thuat$ lap$ trinh/CSC10002-Data_structure_visualizer/Gui/SpriteButton.cpp || cmake_object_order_depends_target_CSC10002_Data_structure_visualizer
+build CMakeFiles/CSC10002-Data_structure_visualizer.dir/Gui/SpriteButton.cpp.obj: CXX_COMPILER__CSC10002-Data_structure_visualizer_Release E$:/KHTN/ki$ thuat$ lap$ trinh/CSC10002-Data_structure_visualizer/Gui/SpriteButton.cpp || cmake_object_order_depends_target_CSC10002-Data_structure_visualizer
   DEFINES = -DSFML_STATIC -DTGUI_STATIC
-  DEP_FILE = CMakeFiles\CSC10002_Data_structure_visualizer.dir\Gui\SpriteButton.cpp.obj.d
+  DEP_FILE = CMakeFiles\CSC10002-Data_structure_visualizer.dir\Gui\SpriteButton.cpp.obj.d
   FLAGS = -O3 -DNDEBUG -fdiagnostics-color=always -std=gnu++14
   INCLUDES = -isystem C:/SFML/include -isystem C:/TGUI-1.0/include
-  OBJECT_DIR = CMakeFiles\CSC10002_Data_structure_visualizer.dir
-  OBJECT_FILE_DIR = CMakeFiles\CSC10002_Data_structure_visualizer.dir\Gui
+  OBJECT_DIR = CMakeFiles\CSC10002-Data_structure_visualizer.dir
+  OBJECT_FILE_DIR = CMakeFiles\CSC10002-Data_structure_visualizer.dir\Gui
 
-build CMakeFiles/CSC10002_Data_structure_visualizer.dir/Gui/CheckBox.cpp.obj: CXX_COMPILER__CSC10002_Data_structure_visualizer_Release E$:/KHTN/ki$ thuat$ lap$ trinh/CSC10002-Data_structure_visualizer/Gui/CheckBox.cpp || cmake_object_order_depends_target_CSC10002_Data_structure_visualizer
+build CMakeFiles/CSC10002-Data_structure_visualizer.dir/Gui/CheckBox.cpp.obj: CXX_COMPILER__CSC10002-Data_structure_visualizer_Release E$:/KHTN/ki$ thuat$ lap$ trinh/CSC10002-Data_structure_visualizer/Gui/CheckBox.cpp || cmake_object_order_depends_target_CSC10002-Data_structure_visualizer
   DEFINES = -DSFML_STATIC -DTGUI_STATIC
-  DEP_FILE = CMakeFiles\CSC10002_Data_structure_visualizer.dir\Gui\CheckBox.cpp.obj.d
+  DEP_FILE = CMakeFiles\CSC10002-Data_structure_visualizer.dir\Gui\CheckBox.cpp.obj.d
   FLAGS = -O3 -DNDEBUG -fdiagnostics-color=always -std=gnu++14
   INCLUDES = -isystem C:/SFML/include -isystem C:/TGUI-1.0/include
-  OBJECT_DIR = CMakeFiles\CSC10002_Data_structure_visualizer.dir
-  OBJECT_FILE_DIR = CMakeFiles\CSC10002_Data_structure_visualizer.dir\Gui
+  OBJECT_DIR = CMakeFiles\CSC10002-Data_structure_visualizer.dir
+  OBJECT_FILE_DIR = CMakeFiles\CSC10002-Data_structure_visualizer.dir\Gui
 
-build CMakeFiles/CSC10002_Data_structure_visualizer.dir/Gui/Slider.cpp.obj: CXX_COMPILER__CSC10002_Data_structure_visualizer_Release E$:/KHTN/ki$ thuat$ lap$ trinh/CSC10002-Data_structure_visualizer/Gui/Slider.cpp || cmake_object_order_depends_target_CSC10002_Data_structure_visualizer
+build CMakeFiles/CSC10002-Data_structure_visualizer.dir/Gui/Slider.cpp.obj: CXX_COMPILER__CSC10002-Data_structure_visualizer_Release E$:/KHTN/ki$ thuat$ lap$ trinh/CSC10002-Data_structure_visualizer/Gui/Slider.cpp || cmake_object_order_depends_target_CSC10002-Data_structure_visualizer
   DEFINES = -DSFML_STATIC -DTGUI_STATIC
-  DEP_FILE = CMakeFiles\CSC10002_Data_structure_visualizer.dir\Gui\Slider.cpp.obj.d
+  DEP_FILE = CMakeFiles\CSC10002-Data_structure_visualizer.dir\Gui\Slider.cpp.obj.d
   FLAGS = -O3 -DNDEBUG -fdiagnostics-color=always -std=gnu++14
   INCLUDES = -isystem C:/SFML/include -isystem C:/TGUI-1.0/include
-  OBJECT_DIR = CMakeFiles\CSC10002_Data_structure_visualizer.dir
-  OBJECT_FILE_DIR = CMakeFiles\CSC10002_Data_structure_visualizer.dir\Gui
+  OBJECT_DIR = CMakeFiles\CSC10002-Data_structure_visualizer.dir
+  OBJECT_FILE_DIR = CMakeFiles\CSC10002-Data_structure_visualizer.dir\Gui
 
-build CMakeFiles/CSC10002_Data_structure_visualizer.dir/Gui/Label.cpp.obj: CXX_COMPILER__CSC10002_Data_structure_visualizer_Release E$:/KHTN/ki$ thuat$ lap$ trinh/CSC10002-Data_structure_visualizer/Gui/Label.cpp || cmake_object_order_depends_target_CSC10002_Data_structure_visualizer
+build CMakeFiles/CSC10002-Data_structure_visualizer.dir/Gui/Label.cpp.obj: CXX_COMPILER__CSC10002-Data_structure_visualizer_Release E$:/KHTN/ki$ thuat$ lap$ trinh/CSC10002-Data_structure_visualizer/Gui/Label.cpp || cmake_object_order_depends_target_CSC10002-Data_structure_visualizer
   DEFINES = -DSFML_STATIC -DTGUI_STATIC
-  DEP_FILE = CMakeFiles\CSC10002_Data_structure_visualizer.dir\Gui\Label.cpp.obj.d
+  DEP_FILE = CMakeFiles\CSC10002-Data_structure_visualizer.dir\Gui\Label.cpp.obj.d
   FLAGS = -O3 -DNDEBUG -fdiagnostics-color=always -std=gnu++14
   INCLUDES = -isystem C:/SFML/include -isystem C:/TGUI-1.0/include
-  OBJECT_DIR = CMakeFiles\CSC10002_Data_structure_visualizer.dir
-  OBJECT_FILE_DIR = CMakeFiles\CSC10002_Data_structure_visualizer.dir\Gui
+  OBJECT_DIR = CMakeFiles\CSC10002-Data_structure_visualizer.dir
+  OBJECT_FILE_DIR = CMakeFiles\CSC10002-Data_structure_visualizer.dir\Gui
 
-build CMakeFiles/CSC10002_Data_structure_visualizer.dir/Gui/Layouts/Layout.cpp.obj: CXX_COMPILER__CSC10002_Data_structure_visualizer_Release E$:/KHTN/ki$ thuat$ lap$ trinh/CSC10002-Data_structure_visualizer/Gui/Layouts/Layout.cpp || cmake_object_order_depends_target_CSC10002_Data_structure_visualizer
+build CMakeFiles/CSC10002-Data_structure_visualizer.dir/Gui/Layouts/Layout.cpp.obj: CXX_COMPILER__CSC10002-Data_structure_visualizer_Release E$:/KHTN/ki$ thuat$ lap$ trinh/CSC10002-Data_structure_visualizer/Gui/Layouts/Layout.cpp || cmake_object_order_depends_target_CSC10002-Data_structure_visualizer
   DEFINES = -DSFML_STATIC -DTGUI_STATIC
-  DEP_FILE = CMakeFiles\CSC10002_Data_structure_visualizer.dir\Gui\Layouts\Layout.cpp.obj.d
+  DEP_FILE = CMakeFiles\CSC10002-Data_structure_visualizer.dir\Gui\Layouts\Layout.cpp.obj.d
   FLAGS = -O3 -DNDEBUG -fdiagnostics-color=always -std=gnu++14
   INCLUDES = -isystem C:/SFML/include -isystem C:/TGUI-1.0/include
-  OBJECT_DIR = CMakeFiles\CSC10002_Data_structure_visualizer.dir
-  OBJECT_FILE_DIR = CMakeFiles\CSC10002_Data_structure_visualizer.dir\Gui\Layouts
+  OBJECT_DIR = CMakeFiles\CSC10002-Data_structure_visualizer.dir
+  OBJECT_FILE_DIR = CMakeFiles\CSC10002-Data_structure_visualizer.dir\Gui\Layouts
 
-build CMakeFiles/CSC10002_Data_structure_visualizer.dir/Gui/Layouts/FormLayout.cpp.obj: CXX_COMPILER__CSC10002_Data_structure_visualizer_Release E$:/KHTN/ki$ thuat$ lap$ trinh/CSC10002-Data_structure_visualizer/Gui/Layouts/FormLayout.cpp || cmake_object_order_depends_target_CSC10002_Data_structure_visualizer
+build CMakeFiles/CSC10002-Data_structure_visualizer.dir/Gui/Layouts/FormLayout.cpp.obj: CXX_COMPILER__CSC10002-Data_structure_visualizer_Release E$:/KHTN/ki$ thuat$ lap$ trinh/CSC10002-Data_structure_visualizer/Gui/Layouts/FormLayout.cpp || cmake_object_order_depends_target_CSC10002-Data_structure_visualizer
   DEFINES = -DSFML_STATIC -DTGUI_STATIC
-  DEP_FILE = CMakeFiles\CSC10002_Data_structure_visualizer.dir\Gui\Layouts\FormLayout.cpp.obj.d
+  DEP_FILE = CMakeFiles\CSC10002-Data_structure_visualizer.dir\Gui\Layouts\FormLayout.cpp.obj.d
   FLAGS = -O3 -DNDEBUG -fdiagnostics-color=always -std=gnu++14
   INCLUDES = -isystem C:/SFML/include -isystem C:/TGUI-1.0/include
-  OBJECT_DIR = CMakeFiles\CSC10002_Data_structure_visualizer.dir
-  OBJECT_FILE_DIR = CMakeFiles\CSC10002_Data_structure_visualizer.dir\Gui\Layouts
+  OBJECT_DIR = CMakeFiles\CSC10002-Data_structure_visualizer.dir
+  OBJECT_FILE_DIR = CMakeFiles\CSC10002-Data_structure_visualizer.dir\Gui\Layouts
 
-build CMakeFiles/CSC10002_Data_structure_visualizer.dir/Gui/Menu.cpp.obj: CXX_COMPILER__CSC10002_Data_structure_visualizer_Release E$:/KHTN/ki$ thuat$ lap$ trinh/CSC10002-Data_structure_visualizer/Gui/Menu.cpp || cmake_object_order_depends_target_CSC10002_Data_structure_visualizer
+build CMakeFiles/CSC10002-Data_structure_visualizer.dir/Gui/Menu.cpp.obj: CXX_COMPILER__CSC10002-Data_structure_visualizer_Release E$:/KHTN/ki$ thuat$ lap$ trinh/CSC10002-Data_structure_visualizer/Gui/Menu.cpp || cmake_object_order_depends_target_CSC10002-Data_structure_visualizer
   DEFINES = -DSFML_STATIC -DTGUI_STATIC
-  DEP_FILE = CMakeFiles\CSC10002_Data_structure_visualizer.dir\Gui\Menu.cpp.obj.d
+  DEP_FILE = CMakeFiles\CSC10002-Data_structure_visualizer.dir\Gui\Menu.cpp.obj.d
   FLAGS = -O3 -DNDEBUG -fdiagnostics-color=always -std=gnu++14
   INCLUDES = -isystem C:/SFML/include -isystem C:/TGUI-1.0/include
-  OBJECT_DIR = CMakeFiles\CSC10002_Data_structure_visualizer.dir
-  OBJECT_FILE_DIR = CMakeFiles\CSC10002_Data_structure_visualizer.dir\Gui
+  OBJECT_DIR = CMakeFiles\CSC10002-Data_structure_visualizer.dir
+  OBJECT_FILE_DIR = CMakeFiles\CSC10002-Data_structure_visualizer.dir\Gui
 
-build CMakeFiles/CSC10002_Data_structure_visualizer.dir/Gui/Layouts/VBoxLayout.cpp.obj: CXX_COMPILER__CSC10002_Data_structure_visualizer_Release E$:/KHTN/ki$ thuat$ lap$ trinh/CSC10002-Data_structure_visualizer/Gui/Layouts/VBoxLayout.cpp || cmake_object_order_depends_target_CSC10002_Data_structure_visualizer
+build CMakeFiles/CSC10002-Data_structure_visualizer.dir/Gui/Layouts/VBoxLayout.cpp.obj: CXX_COMPILER__CSC10002-Data_structure_visualizer_Release E$:/KHTN/ki$ thuat$ lap$ trinh/CSC10002-Data_structure_visualizer/Gui/Layouts/VBoxLayout.cpp || cmake_object_order_depends_target_CSC10002-Data_structure_visualizer
   DEFINES = -DSFML_STATIC -DTGUI_STATIC
-  DEP_FILE = CMakeFiles\CSC10002_Data_structure_visualizer.dir\Gui\Layouts\VBoxLayout.cpp.obj.d
+  DEP_FILE = CMakeFiles\CSC10002-Data_structure_visualizer.dir\Gui\Layouts\VBoxLayout.cpp.obj.d
   FLAGS = -O3 -DNDEBUG -fdiagnostics-color=always -std=gnu++14
   INCLUDES = -isystem C:/SFML/include -isystem C:/TGUI-1.0/include
-  OBJECT_DIR = CMakeFiles\CSC10002_Data_structure_visualizer.dir
-  OBJECT_FILE_DIR = CMakeFiles\CSC10002_Data_structure_visualizer.dir\Gui\Layouts
+  OBJECT_DIR = CMakeFiles\CSC10002-Data_structure_visualizer.dir
+  OBJECT_FILE_DIR = CMakeFiles\CSC10002-Data_structure_visualizer.dir\Gui\Layouts
 
-build CMakeFiles/CSC10002_Data_structure_visualizer.dir/Gui/Layouts/HBoxLayout.cpp.obj: CXX_COMPILER__CSC10002_Data_structure_visualizer_Release E$:/KHTN/ki$ thuat$ lap$ trinh/CSC10002-Data_structure_visualizer/Gui/Layouts/HBoxLayout.cpp || cmake_object_order_depends_target_CSC10002_Data_structure_visualizer
+build CMakeFiles/CSC10002-Data_structure_visualizer.dir/Gui/Layouts/HBoxLayout.cpp.obj: CXX_COMPILER__CSC10002-Data_structure_visualizer_Release E$:/KHTN/ki$ thuat$ lap$ trinh/CSC10002-Data_structure_visualizer/Gui/Layouts/HBoxLayout.cpp || cmake_object_order_depends_target_CSC10002-Data_structure_visualizer
   DEFINES = -DSFML_STATIC -DTGUI_STATIC
-  DEP_FILE = CMakeFiles\CSC10002_Data_structure_visualizer.dir\Gui\Layouts\HBoxLayout.cpp.obj.d
+  DEP_FILE = CMakeFiles\CSC10002-Data_structure_visualizer.dir\Gui\Layouts\HBoxLayout.cpp.obj.d
   FLAGS = -O3 -DNDEBUG -fdiagnostics-color=always -std=gnu++14
   INCLUDES = -isystem C:/SFML/include -isystem C:/TGUI-1.0/include
-  OBJECT_DIR = CMakeFiles\CSC10002_Data_structure_visualizer.dir
-  OBJECT_FILE_DIR = CMakeFiles\CSC10002_Data_structure_visualizer.dir\Gui\Layouts
+  OBJECT_DIR = CMakeFiles\CSC10002-Data_structure_visualizer.dir
+  OBJECT_FILE_DIR = CMakeFiles\CSC10002-Data_structure_visualizer.dir\Gui\Layouts
 
-build CMakeFiles/CSC10002_Data_structure_visualizer.dir/Gui/TextBox.cpp.obj: CXX_COMPILER__CSC10002_Data_structure_visualizer_Release E$:/KHTN/ki$ thuat$ lap$ trinh/CSC10002-Data_structure_visualizer/Gui/TextBox.cpp || cmake_object_order_depends_target_CSC10002_Data_structure_visualizer
+build CMakeFiles/CSC10002-Data_structure_visualizer.dir/Gui/TextBox.cpp.obj: CXX_COMPILER__CSC10002-Data_structure_visualizer_Release E$:/KHTN/ki$ thuat$ lap$ trinh/CSC10002-Data_structure_visualizer/Gui/TextBox.cpp || cmake_object_order_depends_target_CSC10002-Data_structure_visualizer
   DEFINES = -DSFML_STATIC -DTGUI_STATIC
-  DEP_FILE = CMakeFiles\CSC10002_Data_structure_visualizer.dir\Gui\TextBox.cpp.obj.d
+  DEP_FILE = CMakeFiles\CSC10002-Data_structure_visualizer.dir\Gui\TextBox.cpp.obj.d
   FLAGS = -O3 -DNDEBUG -fdiagnostics-color=always -std=gnu++14
   INCLUDES = -isystem C:/SFML/include -isystem C:/TGUI-1.0/include
-  OBJECT_DIR = CMakeFiles\CSC10002_Data_structure_visualizer.dir
-  OBJECT_FILE_DIR = CMakeFiles\CSC10002_Data_structure_visualizer.dir\Gui
+  OBJECT_DIR = CMakeFiles\CSC10002-Data_structure_visualizer.dir
+  OBJECT_FILE_DIR = CMakeFiles\CSC10002-Data_structure_visualizer.dir\Gui
 
-build CMakeFiles/CSC10002_Data_structure_visualizer.dir/Gui/Image.cpp.obj: CXX_COMPILER__CSC10002_Data_structure_visualizer_Release E$:/KHTN/ki$ thuat$ lap$ trinh/CSC10002-Data_structure_visualizer/Gui/Image.cpp || cmake_object_order_depends_target_CSC10002_Data_structure_visualizer
+build CMakeFiles/CSC10002-Data_structure_visualizer.dir/Gui/Image.cpp.obj: CXX_COMPILER__CSC10002-Data_structure_visualizer_Release E$:/KHTN/ki$ thuat$ lap$ trinh/CSC10002-Data_structure_visualizer/Gui/Image.cpp || cmake_object_order_depends_target_CSC10002-Data_structure_visualizer
   DEFINES = -DSFML_STATIC -DTGUI_STATIC
-  DEP_FILE = CMakeFiles\CSC10002_Data_structure_visualizer.dir\Gui\Image.cpp.obj.d
+  DEP_FILE = CMakeFiles\CSC10002-Data_structure_visualizer.dir\Gui\Image.cpp.obj.d
   FLAGS = -O3 -DNDEBUG -fdiagnostics-color=always -std=gnu++14
   INCLUDES = -isystem C:/SFML/include -isystem C:/TGUI-1.0/include
-  OBJECT_DIR = CMakeFiles\CSC10002_Data_structure_visualizer.dir
-  OBJECT_FILE_DIR = CMakeFiles\CSC10002_Data_structure_visualizer.dir\Gui
+  OBJECT_DIR = CMakeFiles\CSC10002-Data_structure_visualizer.dir
+  OBJECT_FILE_DIR = CMakeFiles\CSC10002-Data_structure_visualizer.dir\Gui
 
-build CMakeFiles/CSC10002_Data_structure_visualizer.dir/Gui/ProgressBar.cpp.obj: CXX_COMPILER__CSC10002_Data_structure_visualizer_Release E$:/KHTN/ki$ thuat$ lap$ trinh/CSC10002-Data_structure_visualizer/Gui/ProgressBar.cpp || cmake_object_order_depends_target_CSC10002_Data_structure_visualizer
+build CMakeFiles/CSC10002-Data_structure_visualizer.dir/Gui/ProgressBar.cpp.obj: CXX_COMPILER__CSC10002-Data_structure_visualizer_Release E$:/KHTN/ki$ thuat$ lap$ trinh/CSC10002-Data_structure_visualizer/Gui/ProgressBar.cpp || cmake_object_order_depends_target_CSC10002-Data_structure_visualizer
   DEFINES = -DSFML_STATIC -DTGUI_STATIC
-  DEP_FILE = CMakeFiles\CSC10002_Data_structure_visualizer.dir\Gui\ProgressBar.cpp.obj.d
+  DEP_FILE = CMakeFiles\CSC10002-Data_structure_visualizer.dir\Gui\ProgressBar.cpp.obj.d
   FLAGS = -O3 -DNDEBUG -fdiagnostics-color=always -std=gnu++14
   INCLUDES = -isystem C:/SFML/include -isystem C:/TGUI-1.0/include
-  OBJECT_DIR = CMakeFiles\CSC10002_Data_structure_visualizer.dir
-  OBJECT_FILE_DIR = CMakeFiles\CSC10002_Data_structure_visualizer.dir\Gui
+  OBJECT_DIR = CMakeFiles\CSC10002-Data_structure_visualizer.dir
+  OBJECT_FILE_DIR = CMakeFiles\CSC10002-Data_structure_visualizer.dir\Gui
 
-build CMakeFiles/CSC10002_Data_structure_visualizer.dir/Gui/Theme.cpp.obj: CXX_COMPILER__CSC10002_Data_structure_visualizer_Release E$:/KHTN/ki$ thuat$ lap$ trinh/CSC10002-Data_structure_visualizer/Gui/Theme.cpp || cmake_object_order_depends_target_CSC10002_Data_structure_visualizer
+build CMakeFiles/CSC10002-Data_structure_visualizer.dir/Gui/Theme.cpp.obj: CXX_COMPILER__CSC10002-Data_structure_visualizer_Release E$:/KHTN/ki$ thuat$ lap$ trinh/CSC10002-Data_structure_visualizer/Gui/Theme.cpp || cmake_object_order_depends_target_CSC10002-Data_structure_visualizer
   DEFINES = -DSFML_STATIC -DTGUI_STATIC
-  DEP_FILE = CMakeFiles\CSC10002_Data_structure_visualizer.dir\Gui\Theme.cpp.obj.d
+  DEP_FILE = CMakeFiles\CSC10002-Data_structure_visualizer.dir\Gui\Theme.cpp.obj.d
   FLAGS = -O3 -DNDEBUG -fdiagnostics-color=always -std=gnu++14
   INCLUDES = -isystem C:/SFML/include -isystem C:/TGUI-1.0/include
-  OBJECT_DIR = CMakeFiles\CSC10002_Data_structure_visualizer.dir
-  OBJECT_FILE_DIR = CMakeFiles\CSC10002_Data_structure_visualizer.dir\Gui
+  OBJECT_DIR = CMakeFiles\CSC10002-Data_structure_visualizer.dir
+  OBJECT_FILE_DIR = CMakeFiles\CSC10002-Data_structure_visualizer.dir\Gui
 
-build CMakeFiles/CSC10002_Data_structure_visualizer.dir/Gui/Widget.cpp.obj: CXX_COMPILER__CSC10002_Data_structure_visualizer_Release E$:/KHTN/ki$ thuat$ lap$ trinh/CSC10002-Data_structure_visualizer/Gui/Widget.cpp || cmake_object_order_depends_target_CSC10002_Data_structure_visualizer
+build CMakeFiles/CSC10002-Data_structure_visualizer.dir/Gui/Widget.cpp.obj: CXX_COMPILER__CSC10002-Data_structure_visualizer_Release E$:/KHTN/ki$ thuat$ lap$ trinh/CSC10002-Data_structure_visualizer/Gui/Widget.cpp || cmake_object_order_depends_target_CSC10002-Data_structure_visualizer
   DEFINES = -DSFML_STATIC -DTGUI_STATIC
-  DEP_FILE = CMakeFiles\CSC10002_Data_structure_visualizer.dir\Gui\Widget.cpp.obj.d
+  DEP_FILE = CMakeFiles\CSC10002-Data_structure_visualizer.dir\Gui\Widget.cpp.obj.d
   FLAGS = -O3 -DNDEBUG -fdiagnostics-color=always -std=gnu++14
   INCLUDES = -isystem C:/SFML/include -isystem C:/TGUI-1.0/include
-  OBJECT_DIR = CMakeFiles\CSC10002_Data_structure_visualizer.dir
-  OBJECT_FILE_DIR = CMakeFiles\CSC10002_Data_structure_visualizer.dir\Gui
+  OBJECT_DIR = CMakeFiles\CSC10002-Data_structure_visualizer.dir
+  OBJECT_FILE_DIR = CMakeFiles\CSC10002-Data_structure_visualizer.dir\Gui
 
-build CMakeFiles/CSC10002_Data_structure_visualizer.dir/Gui/Utils/Arrow.cpp.obj: CXX_COMPILER__CSC10002_Data_structure_visualizer_Release E$:/KHTN/ki$ thuat$ lap$ trinh/CSC10002-Data_structure_visualizer/Gui/Utils/Arrow.cpp || cmake_object_order_depends_target_CSC10002_Data_structure_visualizer
+build CMakeFiles/CSC10002-Data_structure_visualizer.dir/Gui/Utils/Arrow.cpp.obj: CXX_COMPILER__CSC10002-Data_structure_visualizer_Release E$:/KHTN/ki$ thuat$ lap$ trinh/CSC10002-Data_structure_visualizer/Gui/Utils/Arrow.cpp || cmake_object_order_depends_target_CSC10002-Data_structure_visualizer
   DEFINES = -DSFML_STATIC -DTGUI_STATIC
-  DEP_FILE = CMakeFiles\CSC10002_Data_structure_visualizer.dir\Gui\Utils\Arrow.cpp.obj.d
+  DEP_FILE = CMakeFiles\CSC10002-Data_structure_visualizer.dir\Gui\Utils\Arrow.cpp.obj.d
   FLAGS = -O3 -DNDEBUG -fdiagnostics-color=always -std=gnu++14
   INCLUDES = -isystem C:/SFML/include -isystem C:/TGUI-1.0/include
-  OBJECT_DIR = CMakeFiles\CSC10002_Data_structure_visualizer.dir
-  OBJECT_FILE_DIR = CMakeFiles\CSC10002_Data_structure_visualizer.dir\Gui\Utils
+  OBJECT_DIR = CMakeFiles\CSC10002-Data_structure_visualizer.dir
+  OBJECT_FILE_DIR = CMakeFiles\CSC10002-Data_structure_visualizer.dir\Gui\Utils
 
-build CMakeFiles/CSC10002_Data_structure_visualizer.dir/Gui/Utils/Box.cpp.obj: CXX_COMPILER__CSC10002_Data_structure_visualizer_Release E$:/KHTN/ki$ thuat$ lap$ trinh/CSC10002-Data_structure_visualizer/Gui/Utils/Box.cpp || cmake_object_order_depends_target_CSC10002_Data_structure_visualizer
+build CMakeFiles/CSC10002-Data_structure_visualizer.dir/Gui/Utils/Box.cpp.obj: CXX_COMPILER__CSC10002-Data_structure_visualizer_Release E$:/KHTN/ki$ thuat$ lap$ trinh/CSC10002-Data_structure_visualizer/Gui/Utils/Box.cpp || cmake_object_order_depends_target_CSC10002-Data_structure_visualizer
   DEFINES = -DSFML_STATIC -DTGUI_STATIC
-  DEP_FILE = CMakeFiles\CSC10002_Data_structure_visualizer.dir\Gui\Utils\Box.cpp.obj.d
+  DEP_FILE = CMakeFiles\CSC10002-Data_structure_visualizer.dir\Gui\Utils\Box.cpp.obj.d
   FLAGS = -O3 -DNDEBUG -fdiagnostics-color=always -std=gnu++14
   INCLUDES = -isystem C:/SFML/include -isystem C:/TGUI-1.0/include
-  OBJECT_DIR = CMakeFiles\CSC10002_Data_structure_visualizer.dir
-  OBJECT_FILE_DIR = CMakeFiles\CSC10002_Data_structure_visualizer.dir\Gui\Utils
+  OBJECT_DIR = CMakeFiles\CSC10002-Data_structure_visualizer.dir
+  OBJECT_FILE_DIR = CMakeFiles\CSC10002-Data_structure_visualizer.dir\Gui\Utils
 
-build CMakeFiles/CSC10002_Data_structure_visualizer.dir/Gui/Utils/Cross.cpp.obj: CXX_COMPILER__CSC10002_Data_structure_visualizer_Release E$:/KHTN/ki$ thuat$ lap$ trinh/CSC10002-Data_structure_visualizer/Gui/Utils/Cross.cpp || cmake_object_order_depends_target_CSC10002_Data_structure_visualizer
+build CMakeFiles/CSC10002-Data_structure_visualizer.dir/Gui/Utils/Cross.cpp.obj: CXX_COMPILER__CSC10002-Data_structure_visualizer_Release E$:/KHTN/ki$ thuat$ lap$ trinh/CSC10002-Data_structure_visualizer/Gui/Utils/Cross.cpp || cmake_object_order_depends_target_CSC10002-Data_structure_visualizer
   DEFINES = -DSFML_STATIC -DTGUI_STATIC
-  DEP_FILE = CMakeFiles\CSC10002_Data_structure_visualizer.dir\Gui\Utils\Cross.cpp.obj.d
+  DEP_FILE = CMakeFiles\CSC10002-Data_structure_visualizer.dir\Gui\Utils\Cross.cpp.obj.d
   FLAGS = -O3 -DNDEBUG -fdiagnostics-color=always -std=gnu++14
   INCLUDES = -isystem C:/SFML/include -isystem C:/TGUI-1.0/include
-  OBJECT_DIR = CMakeFiles\CSC10002_Data_structure_visualizer.dir
-  OBJECT_FILE_DIR = CMakeFiles\CSC10002_Data_structure_visualizer.dir\Gui\Utils
+  OBJECT_DIR = CMakeFiles\CSC10002-Data_structure_visualizer.dir
+  OBJECT_FILE_DIR = CMakeFiles\CSC10002-Data_structure_visualizer.dir\Gui\Utils
 
-build CMakeFiles/CSC10002_Data_structure_visualizer.dir/src/mainMenu.cpp.obj: CXX_COMPILER__CSC10002_Data_structure_visualizer_Release E$:/KHTN/ki$ thuat$ lap$ trinh/CSC10002-Data_structure_visualizer/src/mainMenu.cpp || cmake_object_order_depends_target_CSC10002_Data_structure_visualizer
+build CMakeFiles/CSC10002-Data_structure_visualizer.dir/src/mainMenu.cpp.obj: CXX_COMPILER__CSC10002-Data_structure_visualizer_Release E$:/KHTN/ki$ thuat$ lap$ trinh/CSC10002-Data_structure_visualizer/src/mainMenu.cpp || cmake_object_order_depends_target_CSC10002-Data_structure_visualizer
   DEFINES = -DSFML_STATIC -DTGUI_STATIC
-  DEP_FILE = CMakeFiles\CSC10002_Data_structure_visualizer.dir\src\mainMenu.cpp.obj.d
+  DEP_FILE = CMakeFiles\CSC10002-Data_structure_visualizer.dir\src\mainMenu.cpp.obj.d
   FLAGS = -O3 -DNDEBUG -fdiagnostics-color=always -std=gnu++14
   INCLUDES = -isystem C:/SFML/include -isystem C:/TGUI-1.0/include
-  OBJECT_DIR = CMakeFiles\CSC10002_Data_structure_visualizer.dir
-  OBJECT_FILE_DIR = CMakeFiles\CSC10002_Data_structure_visualizer.dir\src
+  OBJECT_DIR = CMakeFiles\CSC10002-Data_structure_visualizer.dir
+  OBJECT_FILE_DIR = CMakeFiles\CSC10002-Data_structure_visualizer.dir\src
 
-build CMakeFiles/CSC10002_Data_structure_visualizer.dir/src/linkedList.cpp.obj: CXX_COMPILER__CSC10002_Data_structure_visualizer_Release E$:/KHTN/ki$ thuat$ lap$ trinh/CSC10002-Data_structure_visualizer/src/linkedList.cpp || cmake_object_order_depends_target_CSC10002_Data_structure_visualizer
+build CMakeFiles/CSC10002-Data_structure_visualizer.dir/src/linkedList.cpp.obj: CXX_COMPILER__CSC10002-Data_structure_visualizer_Release E$:/KHTN/ki$ thuat$ lap$ trinh/CSC10002-Data_structure_visualizer/src/linkedList.cpp || cmake_object_order_depends_target_CSC10002-Data_structure_visualizer
   DEFINES = -DSFML_STATIC -DTGUI_STATIC
-  DEP_FILE = CMakeFiles\CSC10002_Data_structure_visualizer.dir\src\linkedList.cpp.obj.d
+  DEP_FILE = CMakeFiles\CSC10002-Data_structure_visualizer.dir\src\linkedList.cpp.obj.d
   FLAGS = -O3 -DNDEBUG -fdiagnostics-color=always -std=gnu++14
   INCLUDES = -isystem C:/SFML/include -isystem C:/TGUI-1.0/include
-  OBJECT_DIR = CMakeFiles\CSC10002_Data_structure_visualizer.dir
-  OBJECT_FILE_DIR = CMakeFiles\CSC10002_Data_structure_visualizer.dir\src
+  OBJECT_DIR = CMakeFiles\CSC10002-Data_structure_visualizer.dir
+  OBJECT_FILE_DIR = CMakeFiles\CSC10002-Data_structure_visualizer.dir\src
 
-build CMakeFiles/CSC10002_Data_structure_visualizer.dir/src/displayLinkedList.cpp.obj: CXX_COMPILER__CSC10002_Data_structure_visualizer_Release E$:/KHTN/ki$ thuat$ lap$ trinh/CSC10002-Data_structure_visualizer/src/displayLinkedList.cpp || cmake_object_order_depends_target_CSC10002_Data_structure_visualizer
+build CMakeFiles/CSC10002-Data_structure_visualizer.dir/src/displayLinkedList.cpp.obj: CXX_COMPILER__CSC10002-Data_structure_visualizer_Release E$:/KHTN/ki$ thuat$ lap$ trinh/CSC10002-Data_structure_visualizer/src/displayLinkedList.cpp || cmake_object_order_depends_target_CSC10002-Data_structure_visualizer
   DEFINES = -DSFML_STATIC -DTGUI_STATIC
-  DEP_FILE = CMakeFiles\CSC10002_Data_structure_visualizer.dir\src\displayLinkedList.cpp.obj.d
+  DEP_FILE = CMakeFiles\CSC10002-Data_structure_visualizer.dir\src\displayLinkedList.cpp.obj.d
   FLAGS = -O3 -DNDEBUG -fdiagnostics-color=always -std=gnu++14
   INCLUDES = -isystem C:/SFML/include -isystem C:/TGUI-1.0/include
-  OBJECT_DIR = CMakeFiles\CSC10002_Data_structure_visualizer.dir
-  OBJECT_FILE_DIR = CMakeFiles\CSC10002_Data_structure_visualizer.dir\src
+  OBJECT_DIR = CMakeFiles\CSC10002-Data_structure_visualizer.dir
+  OBJECT_FILE_DIR = CMakeFiles\CSC10002-Data_structure_visualizer.dir\src
 
-build CMakeFiles/CSC10002_Data_structure_visualizer.dir/src/popUpMenu.cpp.obj: CXX_COMPILER__CSC10002_Data_structure_visualizer_Release E$:/KHTN/ki$ thuat$ lap$ trinh/CSC10002-Data_structure_visualizer/src/popUpMenu.cpp || cmake_object_order_depends_target_CSC10002_Data_structure_visualizer
+build CMakeFiles/CSC10002-Data_structure_visualizer.dir/src/popUpMenu.cpp.obj: CXX_COMPILER__CSC10002-Data_structure_visualizer_Release E$:/KHTN/ki$ thuat$ lap$ trinh/CSC10002-Data_structure_visualizer/src/popUpMenu.cpp || cmake_object_order_depends_target_CSC10002-Data_structure_visualizer
   DEFINES = -DSFML_STATIC -DTGUI_STATIC
-  DEP_FILE = CMakeFiles\CSC10002_Data_structure_visualizer.dir\src\popUpMenu.cpp.obj.d
+  DEP_FILE = CMakeFiles\CSC10002-Data_structure_visualizer.dir\src\popUpMenu.cpp.obj.d
   FLAGS = -O3 -DNDEBUG -fdiagnostics-color=always -std=gnu++14
   INCLUDES = -isystem C:/SFML/include -isystem C:/TGUI-1.0/include
-  OBJECT_DIR = CMakeFiles\CSC10002_Data_structure_visualizer.dir
-  OBJECT_FILE_DIR = CMakeFiles\CSC10002_Data_structure_visualizer.dir\src
+  OBJECT_DIR = CMakeFiles\CSC10002-Data_structure_visualizer.dir
+  OBJECT_FILE_DIR = CMakeFiles\CSC10002-Data_structure_visualizer.dir\src
 
 
 # =============================================================================
-# Link build statements for EXECUTABLE target CSC10002_Data_structure_visualizer
+# Link build statements for EXECUTABLE target CSC10002-Data_structure_visualizer
 
 
 #############################################
-# Link the executable E:\KHTN\ki thuat lap trinh\CSC10002-Data_structure_visualizer\CSC10002_Data_structure_visualizer.exe
+# Link the executable E:\KHTN\ki thuat lap trinh\CSC10002-Data_structure_visualizer\CSC10002-Data_structure_visualizer.exe
 
-build E$:/KHTN/ki$ thuat$ lap$ trinh/CSC10002-Data_structure_visualizer/CSC10002_Data_structure_visualizer.exe: CXX_EXECUTABLE_LINKER__CSC10002_Data_structure_visualizer_Release CMakeFiles/CSC10002_Data_structure_visualizer.dir/src/main.cpp.obj CMakeFiles/CSC10002_Data_structure_visualizer.dir/src/render.cpp.obj CMakeFiles/CSC10002_Data_structure_visualizer.dir/src/menu.cpp.obj CMakeFiles/CSC10002_Data_structure_visualizer.dir/src/Button.cpp.obj CMakeFiles/CSC10002_Data_structure_visualizer.dir/src/selectingMenu.cpp.obj CMakeFiles/CSC10002_Data_structure_visualizer.dir/Gui/Button.cpp.obj CMakeFiles/CSC10002_Data_structure_visualizer.dir/Gui/SpriteButton.cpp.obj CMakeFiles/CSC10002_Data_structure_visualizer.dir/Gui/CheckBox.cpp.obj CMakeFiles/CSC10002_Data_structure_visualizer.dir/Gui/Slider.cpp.obj CMakeFiles/CSC10002_Data_structure_visualizer.dir/Gui/Label.cpp.obj CMakeFiles/CSC10002_Data_structure_visualizer.dir/Gui/Layouts/Layout.cpp.obj CMakeFiles/CSC10002_Data_structure_visualizer.dir/Gui/Layouts/FormLayout.cpp.obj CMakeFiles/CSC10002_Data_structure_visualizer.dir/Gui/Menu.cpp.obj CMakeFiles/CSC10002_Data_structure_visualizer.dir/Gui/Layouts/VBoxLayout.cpp.obj CMakeFiles/CSC10002_Data_structure_visualizer.dir/Gui/Layouts/HBoxLayout.cpp.obj CMakeFiles/CSC10002_Data_structure_visualizer.dir/Gui/TextBox.cpp.obj CMakeFiles/CSC10002_Data_structure_visualizer.dir/Gui/Image.cpp.obj CMakeFiles/CSC10002_Data_structure_visualizer.dir/Gui/ProgressBar.cpp.obj CMakeFiles/CSC10002_Data_structure_visualizer.dir/Gui/Theme.cpp.obj CMakeFiles/CSC10002_Data_structure_visualizer.dir/Gui/Widget.cpp.obj CMakeFiles/CSC10002_Data_structure_visualizer.dir/Gui/Utils/Arrow.cpp.obj CMakeFiles/CSC10002_Data_structure_visualizer.dir/Gui/Utils/Box.cpp.obj CMakeFiles/CSC10002_Data_structure_visualizer.dir/Gui/Utils/Cross.cpp.obj CMakeFiles/CSC10002_Data_structure_visualizer.dir/src/mainMenu.cpp.obj CMakeFiles/CSC10002_Data_structure_visualizer.dir/src/linkedList.cpp.obj CMakeFiles/CSC10002_Data_structure_visualizer.dir/src/displayLinkedList.cpp.obj CMakeFiles/CSC10002_Data_structure_visualizer.dir/src/popUpMenu.cpp.obj | C$:/SFML/lib/libsfml-graphics-s.a C$:/SFML/lib/libsfml-audio-s.a C$:/SFML/lib/libsfml-window-s.a C$:/TGUI-1.0/lib/libtgui-s.a C$:/SFML/lib/libopenal32.a C$:/SFML/lib/libvorbisfile.a C$:/SFML/lib/libvorbisenc.a C$:/SFML/lib/libvorbis.a C$:/SFML/lib/libogg.a C$:/SFML/lib/libFLAC.a C$:/SFML/lib/libsfml-graphics-s.a C$:/SFML/lib/libsfml-window-s.a C$:/SFML/lib/libsfml-system-s.a C$:/SFML/lib/libfreetype.a
+build E$:/KHTN/ki$ thuat$ lap$ trinh/CSC10002-Data_structure_visualizer/CSC10002-Data_structure_visualizer.exe: CXX_EXECUTABLE_LINKER__CSC10002-Data_structure_visualizer_Release CMakeFiles/CSC10002-Data_structure_visualizer.dir/src/main.cpp.obj CMakeFiles/CSC10002-Data_structure_visualizer.dir/src/render.cpp.obj CMakeFiles/CSC10002-Data_structure_visualizer.dir/src/menu.cpp.obj CMakeFiles/CSC10002-Data_structure_visualizer.dir/src/Button.cpp.obj CMakeFiles/CSC10002-Data_structure_visualizer.dir/src/selectingMenu.cpp.obj CMakeFiles/CSC10002-Data_structure_visualizer.dir/Gui/Button.cpp.obj CMakeFiles/CSC10002-Data_structure_visualizer.dir/Gui/SpriteButton.cpp.obj CMakeFiles/CSC10002-Data_structure_visualizer.dir/Gui/CheckBox.cpp.obj CMakeFiles/CSC10002-Data_structure_visualizer.dir/Gui/Slider.cpp.obj CMakeFiles/CSC10002-Data_structure_visualizer.dir/Gui/Label.cpp.obj CMakeFiles/CSC10002-Data_structure_visualizer.dir/Gui/Layouts/Layout.cpp.obj CMakeFiles/CSC10002-Data_structure_visualizer.dir/Gui/Layouts/FormLayout.cpp.obj CMakeFiles/CSC10002-Data_structure_visualizer.dir/Gui/Menu.cpp.obj CMakeFiles/CSC10002-Data_structure_visualizer.dir/Gui/Layouts/VBoxLayout.cpp.obj CMakeFiles/CSC10002-Data_structure_visualizer.dir/Gui/Layouts/HBoxLayout.cpp.obj CMakeFiles/CSC10002-Data_structure_visualizer.dir/Gui/TextBox.cpp.obj CMakeFiles/CSC10002-Data_structure_visualizer.dir/Gui/Image.cpp.obj CMakeFiles/CSC10002-Data_structure_visualizer.dir/Gui/ProgressBar.cpp.obj CMakeFiles/CSC10002-Data_structure_visualizer.dir/Gui/Theme.cpp.obj CMakeFiles/CSC10002-Data_structure_visualizer.dir/Gui/Widget.cpp.obj CMakeFiles/CSC10002-Data_structure_visualizer.dir/Gui/Utils/Arrow.cpp.obj CMakeFiles/CSC10002-Data_structure_visualizer.dir/Gui/Utils/Box.cpp.obj CMakeFiles/CSC10002-Data_structure_visualizer.dir/Gui/Utils/Cross.cpp.obj CMakeFiles/CSC10002-Data_structure_visualizer.dir/src/mainMenu.cpp.obj CMakeFiles/CSC10002-Data_structure_visualizer.dir/src/linkedList.cpp.obj CMakeFiles/CSC10002-Data_structure_visualizer.dir/src/displayLinkedList.cpp.obj CMakeFiles/CSC10002-Data_structure_visualizer.dir/src/popUpMenu.cpp.obj | C$:/SFML/lib/libsfml-graphics-s.a C$:/SFML/lib/libsfml-audio-s.a C$:/SFML/lib/libsfml-window-s.a C$:/TGUI-1.0/lib/libtgui-s.a C$:/SFML/lib/libopenal32.a C$:/SFML/lib/libvorbisfile.a C$:/SFML/lib/libvorbisenc.a C$:/SFML/lib/libvorbis.a C$:/SFML/lib/libogg.a C$:/SFML/lib/libFLAC.a C$:/SFML/lib/libsfml-graphics-s.a C$:/SFML/lib/libsfml-window-s.a C$:/SFML/lib/libsfml-system-s.a C$:/SFML/lib/libfreetype.a
   FLAGS = -O3 -DNDEBUG
   LINK_LIBRARIES = C:/SFML/lib/libsfml-graphics-s.a  C:/SFML/lib/libsfml-audio-s.a  C:/SFML/lib/libsfml-window-s.a  C:/TGUI-1.0/lib/libtgui-s.a  C:/SFML/lib/libopenal32.a  C:/SFML/lib/libvorbisfile.a  C:/SFML/lib/libvorbisenc.a  C:/SFML/lib/libvorbis.a  C:/SFML/lib/libogg.a  C:/SFML/lib/libFLAC.a  C:/SFML/lib/libsfml-graphics-s.a  C:/SFML/lib/libsfml-window-s.a  C:/SFML/lib/libsfml-system-s.a  -lwinmm  -lgdi32  -lOpenGL32  C:/SFML/lib/libfreetype.a  -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32
-  OBJECT_DIR = CMakeFiles\CSC10002_Data_structure_visualizer.dir
+  OBJECT_DIR = CMakeFiles\CSC10002-Data_structure_visualizer.dir
   POST_BUILD = cd .
   PRE_LINK = cd .
-  TARGET_FILE = "E:\KHTN\ki thuat lap trinh\CSC10002-Data_structure_visualizer\CSC10002_Data_structure_visualizer.exe"
-  TARGET_IMPLIB = libCSC10002_Data_structure_visualizer.dll.a
-  TARGET_PDB = CSC10002_Data_structure_visualizer.exe.dbg
+  TARGET_FILE = "E:\KHTN\ki thuat lap trinh\CSC10002-Data_structure_visualizer\CSC10002-Data_structure_visualizer.exe"
+  TARGET_IMPLIB = libCSC10002-Data_structure_visualizer.dll.a
+  TARGET_PDB = CSC10002-Data_structure_visualizer.exe.dbg
 
 
 #############################################
@@ -309,9 +309,9 @@ build rebuild_cache: phony CMakeFiles/rebuild_cache.util
 # =============================================================================
 # Target aliases.
 
-build CSC10002_Data_structure_visualizer: phony E$:/KHTN/ki$ thuat$ lap$ trinh/CSC10002-Data_structure_visualizer/CSC10002_Data_structure_visualizer.exe
+build CSC10002-Data_structure_visualizer: phony E$:/KHTN/ki$ thuat$ lap$ trinh/CSC10002-Data_structure_visualizer/CSC10002-Data_structure_visualizer.exe
 
-build CSC10002_Data_structure_visualizer.exe: phony E$:/KHTN/ki$ thuat$ lap$ trinh/CSC10002-Data_structure_visualizer/CSC10002_Data_structure_visualizer.exe
+build CSC10002-Data_structure_visualizer.exe: phony E$:/KHTN/ki$ thuat$ lap$ trinh/CSC10002-Data_structure_visualizer/CSC10002-Data_structure_visualizer.exe
 
 # =============================================================================
 # Folder targets.
@@ -321,7 +321,7 @@ build CSC10002_Data_structure_visualizer.exe: phony E$:/KHTN/ki$ thuat$ lap$ tri
 #############################################
 # Folder: E:/KHTN/ki thuat lap trinh/CSC10002-Data_structure_visualizer/cmake-build-release
 
-build all: phony E$:/KHTN/ki$ thuat$ lap$ trinh/CSC10002-Data_structure_visualizer/CSC10002_Data_structure_visualizer.exe
+build all: phony E$:/KHTN/ki$ thuat$ lap$ trinh/CSC10002-Data_structure_visualizer/CSC10002-Data_structure_visualizer.exe
 
 # =============================================================================
 # Built-in targets
