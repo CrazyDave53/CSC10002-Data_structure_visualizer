@@ -23,11 +23,8 @@ void Application::renderWindow() {
         window.clear();
         switch (windowType) {
             case mainMenuType:
-                mainMenu.render(window, windowType);
+                mainMenu.mainloop(window, windowType);
                 break;
         }
-
-
-        window.display();
     }
 }

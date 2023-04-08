@@ -2,8 +2,8 @@
 #define CSC10002_DATA_STRUCTURE_VISUALIZER_BUTTON_H
 
 #include <SFML/Graphics.hpp>
-
-#include <SFML/Graphics.hpp>
+#include <iostream>
+#include <functional>
 
 class Button {
 public:
@@ -25,6 +25,10 @@ public:
 
     sf::FloatRect getGlobalBounds();
 
+    void setCallback(std::function<void(void)> callback);
+
+    void triggerCallback();
+
 private:
     sf::Texture normalTexture_;
     sf::Texture hoverTexture_;
@@ -35,6 +39,7 @@ private:
     bool isToggled_;
     bool Toggled_;
     std::string name_;
+    std::function<void(void)> callback_;
 };
 
 #endif

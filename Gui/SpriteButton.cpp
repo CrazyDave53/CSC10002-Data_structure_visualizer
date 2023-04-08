@@ -4,9 +4,10 @@
 namespace gui
 {
 
-SpriteButton::SpriteButton(const sf::Texture& texture, const sf::String& string):
+SpriteButton::SpriteButton(const sf::Texture& texture, const sf::String& string, bool canToggle):
     Widget(),
-    m_pressed(false)
+    m_pressed(false),
+    m_canToggle(canToggle)
 {
     size_t width = texture.getSize().x;
     size_t height = texture.getSize().y / 3; // default, hover, focus

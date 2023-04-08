@@ -224,7 +224,7 @@
 			"compileCommandFragments" : 
 			[
 				{
-					"fragment" : "-O3 -DNDEBUG -fdiagnostics-color=always"
+					"fragment" : "-g -fdiagnostics-color=always"
 				},
 				{
 					"fragment" : "-std=gnu++14"
@@ -269,7 +269,29 @@
 				1,
 				4,
 				5,
-				7
+				7,
+				9,
+				10,
+				11,
+				12,
+				13,
+				14,
+				15,
+				16,
+				17,
+				18,
+				19,
+				20,
+				21,
+				22,
+				23,
+				24,
+				25,
+				26,
+				27,
+				30,
+				32,
+				34
 			]
 		}
 	],
@@ -279,7 +301,7 @@
 		"commandFragments" : 
 		[
 			{
-				"fragment" : "-O3 -DNDEBUG",
+				"fragment" : "-g",
 				"role" : "flags"
 			},
 			{
@@ -288,22 +310,22 @@
 			},
 			{
 				"backtrace" : 2,
-				"fragment" : "C:\\SFML\\lib\\libsfml-graphics-s.a",
+				"fragment" : "C:\\SFML\\lib\\libsfml-graphics-s-d.a",
 				"role" : "libraries"
 			},
 			{
 				"backtrace" : 2,
-				"fragment" : "C:\\SFML\\lib\\libsfml-audio-s.a",
+				"fragment" : "C:\\SFML\\lib\\libsfml-audio-s-d.a",
 				"role" : "libraries"
 			},
 			{
 				"backtrace" : 2,
-				"fragment" : "C:\\SFML\\lib\\libsfml-window-s.a",
+				"fragment" : "C:\\SFML\\lib\\libsfml-window-s-d.a",
 				"role" : "libraries"
 			},
 			{
 				"backtrace" : 2,
-				"fragment" : "C:\\TGUI-1.0\\lib\\libtgui-s.a",
+				"fragment" : "C:\\TGUI-1.0\\lib\\libtgui-s-d.a",
 				"role" : "libraries"
 			},
 			{
@@ -338,17 +360,17 @@
 			},
 			{
 				"backtrace" : 2,
-				"fragment" : "C:\\SFML\\lib\\libsfml-graphics-s.a",
+				"fragment" : "C:\\SFML\\lib\\libsfml-graphics-s-d.a",
 				"role" : "libraries"
 			},
 			{
 				"backtrace" : 2,
-				"fragment" : "C:\\SFML\\lib\\libsfml-window-s.a",
+				"fragment" : "C:\\SFML\\lib\\libsfml-window-s-d.a",
 				"role" : "libraries"
 			},
 			{
 				"backtrace" : 26,
-				"fragment" : "C:\\SFML\\lib\\libsfml-system-s.a",
+				"fragment" : "C:\\SFML\\lib\\libsfml-system-s-d.a",
 				"role" : "libraries"
 			},
 			{
@@ -395,7 +417,29 @@
 				1,
 				4,
 				5,
-				7
+				7,
+				9,
+				10,
+				11,
+				12,
+				13,
+				14,
+				15,
+				16,
+				17,
+				18,
+				19,
+				20,
+				21,
+				22,
+				23,
+				24,
+				25,
+				26,
+				27,
+				30,
+				32,
+				34
 			]
 		},
 		{
@@ -405,7 +449,12 @@
 				2,
 				3,
 				6,
-				8
+				8,
+				28,
+				29,
+				31,
+				33,
+				35
 			]
 		}
 	],
@@ -459,6 +508,163 @@
 		{
 			"backtrace" : 1,
 			"path" : "src/selectingMenu.h",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "Gui/Button.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "Gui/SpriteButton.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "Gui/CheckBox.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "Gui/Slider.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "Gui/Label.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "Gui/Layouts/Layout.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "Gui/Layouts/FormLayout.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "Gui/Menu.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "Gui/Layouts/VBoxLayout.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "Gui/Layouts/HBoxLayout.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "Gui/TextBox.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "Gui/Image.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "Gui/ProgressBar.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "Gui/Theme.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "Gui/Widget.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "Gui/Utils/Arrow.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "Gui/Utils/Box.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "Gui/Utils/Cross.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "src/mainMenu.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"path" : "src/mainMenu.h",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 1,
+			"path" : "src/windowsList.h",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "src/linkedList.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"path" : "src/linkedList.h",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "src/displayLinkedList.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"path" : "src/displayLinkedList.h",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "src/popUpMenu.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"path" : "src/popUpMenu.h",
 			"sourceGroupIndex" : 1
 		}
 	],

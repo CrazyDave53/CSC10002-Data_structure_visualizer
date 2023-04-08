@@ -12,7 +12,7 @@ namespace gui
 class SpriteButton: public Widget
 {
 public:
-    SpriteButton(const sf::Texture& texture, const sf::String& label = "");
+    SpriteButton(const sf::Texture& texture, const sf::String& label = "", bool canToggle = 0);
 
     void setString(const sf::String& string);
     const sf::String& getString() const;
@@ -39,6 +39,8 @@ private:
     sf::Text m_text;
     sf::Sprite m_background;
     bool m_pressed;
+    bool m_canToggle;
+    bool m_isToggled;
 };
 
 }

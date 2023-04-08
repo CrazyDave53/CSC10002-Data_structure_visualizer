@@ -83,3 +83,13 @@ bool Button::isToggled() {
 sf::FloatRect Button::getGlobalBounds() {
     return normalSprite_.getGlobalBounds();
 }
+
+void Button::setCallback(std::function<void()> callback) {
+    callback_ = callback;
+}
+
+void Button::triggerCallback() {
+    if (callback_){
+        callback_();
+    }
+}

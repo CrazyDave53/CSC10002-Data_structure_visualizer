@@ -2,13 +2,13 @@
 #include <iostream>
 
 menu::menu() :
-    mainButton("mainLogo", sf::Vector2f(540,540), true),
-    playButton("menuPlay", sf::Vector2f(400,400), true),
+    mainButton("button", sf::Vector2f(540,540), true),
+    playButton("button", sf::Vector2f(400,400), true),
     settingButton("button", sf::Vector2f(800,800), true),
-    quitButton("button", sf::Vector2f(1000,800), true)
+    quitButton("button", sf::Vector2f(1000,1000), true)
     {}
 
-void menu::render(sf::RenderWindow &window, int &windowType) {
+void menu::mainloop(sf::RenderWindow &window, int &windowType) {
     while (window.isOpen()) {
         sf::Event event;
         while (window.pollEvent(event)) {
