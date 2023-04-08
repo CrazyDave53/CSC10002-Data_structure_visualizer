@@ -30,4 +30,5 @@ windowType displayLinkedList::mainloop(sf::RenderWindow &window) {
         window.display();
     }
     return nextWindow;
+    
 }
