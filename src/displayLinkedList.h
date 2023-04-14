@@ -6,7 +6,9 @@
 #include <SFML/Graphics.hpp>
 #include "windowsList.h"
 #include "popUpMenu.h"
+#include "node.h"
 #include "iostream"
+#include "linkedList.h"
 
 class displayLinkedList{
 public:
@@ -17,6 +19,11 @@ private:
     windowType nextWindow;
     popUpMenu createMenu;
     popUpMenu searchMenu;
+    sf::Texture buttonBG;
+    gui::SpriteButton* createRandom;
+    gui::TextBox* inputSize;
+    gui::SpriteButton* goCreateRandom;
+    LinkedList linkedList;
 };
 
 #endif //CSC10002_DATA_STRUCTURE_VISUALIZER_DISPLAYLINKEDLIST_H

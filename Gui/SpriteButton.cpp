@@ -146,9 +146,15 @@ void SpriteButton::release()
 {
     if (m_pressed)
     {
+        if (m_canToggle)
+            m_isToggled = !m_isToggled;
         m_pressed = false;
         m_text.move(0, -1);
     }
+}
+
+bool SpriteButton::isToggled() {
+    return m_isToggled;
 }
 
 }

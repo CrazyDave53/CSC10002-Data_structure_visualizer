@@ -48,6 +48,29 @@ Widget* Layout::add(Widget* widget)
     return widget;
 }
 
+void Layout::removeLast() {
+    Widget* widget = m_first;
+    if (widget == nullptr)
+        return;
+    if (widget->m_next == nullptr){
+        delete widget;
+        m_first = nullptr;
+        return;
+    }
+    while (widget->m_next->m_next != nullptr){
+        widget = widget->m_next;
+    }
+    std::cout <<"delete: "<< widget->m_next << "\n";
+    delete widget->m_next;
+    widget->m_next = nullptr;
+    m_last = widget;
+    return;
+}
+
+void Layout::removeAll() {
+
+}
+
 
 Button* Layout::addButton(const sf::String& string, std::function<void(void)> callback)
 {

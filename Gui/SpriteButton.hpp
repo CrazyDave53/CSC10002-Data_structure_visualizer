@@ -31,6 +31,8 @@ public:
     void onKeyPressed(const sf::Event::KeyEvent& key) override;
     void onKeyReleased(const sf::Event::KeyEvent& key) override;
 
+    bool isToggled();
+
 private:
     void draw(sf::RenderTarget& target, sf::RenderStates states) const override;
     void press();

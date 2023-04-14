@@ -2,10 +2,11 @@
 #include "displayLinkedList.h"
 
 int main(){
+    srand(time(NULL));
     gui::Theme::loadFont("./assets/textures/tahoma.ttf");
     gui::Theme::textSize = 20;
     gui::Theme::PADDING = 2.f;
-    gui::Theme::windowBgColor = sf::Color(255,255,255);
+    gui::Theme::windowBgColor = sf::Color(0,0,0);
 
     sf::RenderWindow app(sf::VideoMode(1920, 1080), "SFML Widgets", sf::Style::Close);
     app.setFramerateLimit(60);

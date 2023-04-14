@@ -30,6 +30,9 @@ public:
      */
     Widget* add(Widget* widget);
 
+    void removeLast();
+    void removeAll();
+
     /// Helpers
     Button* addButton(const sf::String& string, std::function<void(void)> callback);
     Label* addLabel(const sf::String& string);
