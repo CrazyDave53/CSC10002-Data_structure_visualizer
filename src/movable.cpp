@@ -5,7 +5,8 @@ movable::movable() :
     startingPoint(),
     endingPoint(),
     velocity(),
-    acceleration()
+    acceleration(),
+    isMoving()
 {
 }
 
@@ -17,20 +18,22 @@ void movable::setEndingPoint(float x, float y) {
     acceleration -= acceleration;
     acceleration = (endingPoint - startingPoint);
     acceleration = acceleration * (float)(0.001);
+    isMoving = true;
 }
 
 void movable::updatePos() {
     if(pos == endingPoint){
         isMoving = false;
     }
-    isMoving = true;
-    if((endingPoint - pos).x / (pos - startingPoint).x <= 0.95){
+    else
+        isMoving = true;
+    if(((endingPoint - pos).x * (endingPoint - pos).x + (endingPoint - pos).y * (endingPoint - pos).y) / ((pos - startingPoint).x * (pos - startingPoint).x + (pos - startingPoint).y * (pos - startingPoint).y) <= 0.95){
         velocity -= acceleration;
     }
     else
         velocity += acceleration;
     pos += velocity;
-    if((endingPoint - pos).x / (pos - startingPoint).x <= 0){
+    if(((endingPoint - startingPoint).x * (endingPoint - startingPoint).x + (endingPoint - startingPoint).y * (endingPoint - startingPoint).y) <= ((pos - startingPoint).x * (pos - startingPoint).x + (pos - startingPoint).y * (pos - startingPoint).y)){
         acceleration -= acceleration;
         velocity -= velocity;
         startingPoint = endingPoint;

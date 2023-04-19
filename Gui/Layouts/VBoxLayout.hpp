@@ -11,7 +11,7 @@ namespace gui
  */
 class VBoxLayout: public Layout
 {
-private:
+public:
     void recomputeGeometry() override;
 };
 

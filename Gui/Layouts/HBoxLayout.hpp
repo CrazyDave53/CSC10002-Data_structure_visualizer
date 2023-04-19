@@ -12,7 +12,6 @@ namespace gui
 class HBoxLayout: public Layout
 {
 public:
-private:
     void recomputeGeometry() override;
 };
 

@@ -50,7 +50,18 @@ void Arrow::setEnd(sf::Vector2f end) {
     m_end = end;
     update();
 }
+
+
+void Arrow::moveEnd(sf::Vector2f end) {
+    pos = m_start;
+    setEndingPoint(end.x, end.y);
+}
+
 void Arrow::update() {
+    if(isMoving){
+        updatePos();
+        m_end = pos;
+    }
     sf::Vector2f diff = m_end - m_start;
     float length = std::sqrt(diff.x * diff.x + diff.y * diff.y)-m_triangleSize;
     float angle = std::atan2(diff.y, diff.x) * 180.f / M_PI;
@@ -69,4 +80,5 @@ void Arrow::draw(sf::RenderWindow &window) {
     window.draw(m_rect);
     window.draw(m_triangle);
 }
+
 

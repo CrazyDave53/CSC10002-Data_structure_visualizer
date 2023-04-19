@@ -9,6 +9,7 @@
 #include "node.h"
 #include "iostream"
 #include "linkedList.h"
+#include "background.h"
 
 class displayLinkedList{
 public:
@@ -19,11 +20,49 @@ private:
     windowType nextWindow;
     popUpMenu createMenu;
     popUpMenu searchMenu;
+    popUpMenu insertMenu;
+    popUpMenu deleteMenu;
     sf::Texture buttonBG;
+
+    gui::VBoxLayout* createRandomFrame;
     gui::SpriteButton* createRandom;
-    gui::TextBox* inputSize;
-    gui::SpriteButton* goCreateRandom;
+    gui::HBoxLayout* createRandomSizeFrame;
+    gui::TextBox* inputSizeCreateRandom;
+    gui::Button* goCreateRandom;
+
+    gui::TextBox* inputSearchValue;
+    gui::Button* goSearch;
+
+    gui::SpriteButton* insertHead;
+    gui::SpriteButton* insertTail;
+    gui::SpriteButton* insertArbitrary;
+
+    gui::VBoxLayout* insertHeadFrame;
+    gui::VBoxLayout* insertTailFrame;
+    gui::VBoxLayout* insertArbitraryFrame;
+
+    gui::HBoxLayout* insertFrame;
+    gui::TextBox* inputInsertValue;
+    gui::TextBox* inputInsertIndex;
+    gui::Button* goInsert;
+
+    gui::SpriteButton* deleteHead;
+    gui::SpriteButton* deleteTail;
+    gui::SpriteButton* deleteArbitrary;
+
+    gui::VBoxLayout* deleteHeadFrame;
+    gui::VBoxLayout* deleteTailFrame;
+    gui::VBoxLayout* deleteArbitraryFrame;
+
+    gui::HBoxLayout* deleteFrame;
+    gui::TextBox* inputDeleteIndex;
+    gui::TextBox* inputDeleteValue;
+    gui::Button* goDelete;
+
+
+
     LinkedList linkedList;
+    backGround bg;
 };
 
 #endif //CSC10002_DATA_STRUCTURE_VISUALIZER_DISPLAYLINKEDLIST_H

@@ -6,15 +6,17 @@
 #include <iostream>
 
 #include <SFML/Graphics.hpp>
+#include "movable.h"
 
 
-class Arrow {
+class Arrow : public movable{
 public:
     Arrow(sf::Vector2f start, sf::Vector2f end);
     void setThickness(float thickness);
     void setTriangleSize(float size);
     void setStart(sf::Vector2f start);
     void setEnd(sf::Vector2f end);
+    void moveEnd(sf::Vector2f end);
     void draw(sf::RenderWindow& window);
     void update();
 private:

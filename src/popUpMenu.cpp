@@ -8,13 +8,12 @@ popUpMenu::popUpMenu(gui::Menu &menu, std::string _name) :
     name(_name)
 {
     mainframe = menu.addHBoxLayout();
-    buttonBG.loadFromFile("./assets/button/button.png");
+    buttonBG.loadFromFile("./assets/button/newbutton.png");
     mainButton = new gui::SpriteButton(buttonBG, name);
     mainframe->add(mainButton);
 }
 
 void popUpMenu::deleteFrame() {
-    std::cout << frame << "\n";
     if(frame != nullptr){
         mainframe->removeLast();
         frame = nullptr;

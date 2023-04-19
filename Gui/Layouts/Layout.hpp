@@ -40,6 +40,7 @@ public:
     HBoxLayout* addHBoxLayout();
     VBoxLayout* addVBoxLayout();
 
+    Widget* m_last;
 protected:
     void draw(sf::RenderTarget& target, sf::RenderStates states) const override;
 
@@ -68,7 +69,6 @@ private:
     bool focusWidget(Widget* widget);
 
     Widget* m_first;
-    Widget* m_last;
     Widget* m_hover;
     Widget* m_focus;
 };
