@@ -81,4 +81,9 @@ void Arrow::draw(sf::RenderWindow &window) {
     window.draw(m_triangle);
 }
 
+void Arrow::setOpacity(float opacity) {
+    m_rect.setFillColor(sf::Color(255, 255, 255, opacity));
+    m_triangle.setFillColor(sf::Color(255, 255, 255, opacity));
+}
+
 

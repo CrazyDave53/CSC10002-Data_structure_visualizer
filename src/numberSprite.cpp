@@ -48,4 +48,14 @@ void numberSprite::update(sf::Vector2f center) {
     }
 }
 
+void numberSprite::setOpacity(float opacity) {
+    if (number < 10){
+        m_digitSprites[number].setColor(sf::Color(255, 255, 255, opacity));
+    }
+    else{
+        m_digitSprites[tens+10].setColor(sf::Color(255, 255, 255, opacity));
+        m_digitSprites[ones].setColor(sf::Color(255, 255, 255, opacity));
+    }
+}
+
 

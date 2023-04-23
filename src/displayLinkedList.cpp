@@ -220,11 +220,11 @@ displayLinkedList::displayLinkedList(sf::RenderWindow &window):
         deleteArbitraryFrame->add(deleteArbitrary);
 
         deleteHead->setCallback([this]{
-
+            linkedList.deleteHead();
         });
 
         deleteTail->setCallback([this]{
-
+            linkedList.deleteTail();
         });
 
         deleteArbitrary->setCallback([this]{
@@ -239,13 +239,13 @@ displayLinkedList::displayLinkedList(sf::RenderWindow &window):
 
             deleteFrame = deleteArbitraryFrame->addHBoxLayout();
             inputDeleteIndex = new gui::TextBox(100);
-            inputDeleteIndex->setMaxLength(2);
+            inputDeleteIndex->setMaxLength(1);
             inputDeleteIndex->setPlaceholder("Index");
             deleteFrame->add(inputDeleteIndex);
 
             goDelete = deleteFrame->addButton("GO", [this]{
-//                if(inputDeleteIndex->getText().toAnsiString() != "")
-//                    linkedList.deleteArbitrary(std::stoi(inputDeleteIndex->getText().toAnsiString()));
+                if(inputDeleteIndex->getText().toAnsiString() != "")
+                    linkedList.deleteArbitrary(std::stoi(inputDeleteIndex->getText().toAnsiString()));
             });
             deleteHeadFrame->recomputeGeometry();
             deleteTailFrame->recomputeGeometry();
@@ -281,6 +281,11 @@ windowType displayLinkedList::mainloop(sf::RenderWindow &window) {
         if(!insertMenu.mainframe->isFocused()){
             insertMenu.deleteFrame();
             insertMenu.mainframe->recomputeGeometry();
+            menu.recomputeGeometry();
+        }
+        if(!deleteMenu.mainframe->isFocused()){
+            deleteMenu.deleteFrame();
+            deleteMenu.mainframe->recomputeGeometry();
             menu.recomputeGeometry();
         }
         window.clear(gui::Theme::windowBgColor);

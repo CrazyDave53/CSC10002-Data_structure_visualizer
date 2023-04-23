@@ -4,7 +4,8 @@ transition::transition() :
     isFading(),
     opacity(),
     speed(),
-    isAppearing()
+    isAppearing(),
+    isDisappearing()
 {
 }
 
@@ -15,7 +16,7 @@ void transition::startFading(float duration) {
 }
 
 void transition::updateOpacity() {
-    if(!isFading && !isAppearing)
+    if(!isFading && !isAppearing && !isDisappearing)
         return;
     if(isFading){
         opacity -= speed;
@@ -31,9 +32,22 @@ void transition::updateOpacity() {
             isAppearing = false;
         }
     }
+    if(isDisappearing){
+        opacity -= speed;
+        if(opacity<=0){
+            opacity = 0;
+            isDisappearing = false;
+        }
+    }
 }
 
 void transition::startAppearing(float duration) {
+    opacity = 0;
+    isAppearing = true;
+    speed = 255.0/duration*1000/60;
+}
+
+void transition::startDisappearing(float duration) {
     opacity = 0;
     isAppearing = true;
     speed = 255.0/duration*1000/60;

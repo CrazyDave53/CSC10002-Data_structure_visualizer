@@ -19,6 +19,7 @@ public:
     void moveEnd(sf::Vector2f end);
     void draw(sf::RenderWindow& window);
     void update();
+    void setOpacity(float opacity);
 private:
     sf::RectangleShape m_rect;
     sf::ConvexShape m_triangle;

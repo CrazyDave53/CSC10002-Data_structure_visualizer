@@ -6,9 +6,11 @@ public:
    transition();
    void startFading(float duration);
    void startAppearing(float duration);
+   void startDisappearing(float duration);
    void updateOpacity();
    bool isFading;
    bool isAppearing;
+   bool isDisappearing;
    float opacity;
    float speed;
 };
