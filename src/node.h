@@ -27,6 +27,8 @@ public:
     void appear();
     void setText(const std::string& newString);
     void centerText();
+    void clearText();
+    void concatText(const std::string& newString);
     node *next;
     node *prev;
     Arrow arrow;

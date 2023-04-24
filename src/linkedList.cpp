@@ -1,5 +1,6 @@
 #include "linkedList.h"
 #include "thread"
+#include "time.h"
 LinkedList::LinkedList() :
         head(),
         tail(),
@@ -25,6 +26,7 @@ LinkedList::LinkedList() :
         deleteIndex(),
         code()
 {
+
 }
 
 LinkedList::~LinkedList() {
@@ -67,6 +69,13 @@ void LinkedList::draw(sf::RenderWindow& window) {
         insertNode->draw(window);
     if(deletedNode != nullptr)
         deletedNode->draw(window);
+
+    if(isSearching || isInserting || isInsertingHead || isInsertingTail || isDeletingHead || isDeletingTail || isDeletingArbitrary){
+        sf::Vector2f pos = sf::Vector2f(1920 - 100, 1080 - 100) - code.getSize();
+        code.setPosition(pos.x, pos.y);
+        code.draw(window);
+    }
+
 }
 
 void LinkedList::deleteList() {
@@ -95,6 +104,13 @@ void LinkedList::update() {
         updateDeleteTail();
     if(isDeletingArbitrary)
         updateDeleteArbitrary();
+    if(isInserting || isInsertingHead || isInsertingTail || isDeletingHead || isDeletingTail || isDeletingArbitrary){
+        cur = nullptr;
+        preInsert = nullptr;
+        afterInsert = nullptr;
+        insertNode = nullptr;
+        deletedNode = nullptr;
+    }
     node *pt = head;
     node *pre = nullptr;
     updateText();
@@ -119,12 +135,21 @@ void LinkedList::updateArrow() {
 void LinkedList::updateText() {
     node *pt = head;
     while (pt != nullptr) {
+        pt->clearText();
         if (pt == head)
-            pt->setText("head");
-        else if (pt == tail)
-            pt->setText("tail");
-        else
-            pt->setText("");
+            pt->concatText("Head");
+        if (pt == tail)
+            pt->concatText("Tail");
+        if (pt == cur)
+            pt->concatText("cur");
+        if (pt == preInsert)
+            pt->concatText("pre");
+        if (pt == afterInsert)
+            pt->concatText("aft");
+        if (pt == deletedNode)
+            pt->concatText("del");
+        if (pt == insertNode)
+            pt->concatText("ins");
         pt->centerText();
         pt = pt->next;
     }
@@ -137,18 +162,26 @@ void LinkedList::updateSearch() {
 //    Phase 3: If the node is not, make it red
 //    Phase 4: Reinit some values that got touch
     if(cur == nullptr){
+        if(head->isFading)
+            return;
         isSearching = false;
         cur = head;
         return;
     }
     switch(cur->phase){
         case 0:
+            if(head->isFading)
+                return;
             cur->setState(highlighted,2000);
             cur->phase = 1;
+            code.deHighlightAll();
+            code.setHighlight(2);
             break;
         case 1:
             if(cur->isFading)
                 return;
+            code.deHighlightAll();
+            code.setHighlight(3);
             if(cur->number == searchTarget){
                 cur->setState(green,2000);
                 cur->phase = 2;
@@ -161,31 +194,49 @@ void LinkedList::updateSearch() {
         case 2:
             if(cur->isFading)
                 return;
-            isSearching = false;
-            cur->setState(normal,2000);
             cur->phase = 0;
-            cur = head;
+            cur->setState(normal, 10000);
+            cur = nullptr;
+            head->setState(normal, 10000);
+            code.deHighlightAll();
+            code.setHighlight(4);
             break;
         case 3:
             if(cur->isFading)
                 return;
+            code.deHighlightAll();
+            code.setHighlight(5);
+            cur->setState(normal,2000);
             cur->phase = 4;
             break;
         case 4:
-            cur->setState(normal,2000);
+            if(cur->isFading)
+                return;
             cur->phase = 0;
             cur = cur->next;
+            if(cur == nullptr) {
+                head->setState(normal, 10000);
+                code.deHighlightAll();
+                code.setHighlight(6);
+            }
+            else
+                head->setState(normal, 2000);
+
     }
 }
 
 void LinkedList::updateSearchImmediately() {
     if(cur == nullptr){
+        if(head->isFading)
+            return;
         isSearching = false;
         cur = head;
         return;
     }
     switch(cur->phase){
         case 0:
+            if(head->isFading)
+                return;
             cur->setStateImmediately(highlighted);
             cur->phase = 1;
             break;
@@ -218,6 +269,7 @@ void LinkedList::updateSearchImmediately() {
             cur->setStateImmediately(normal);
             cur->phase = 0;
             cur = cur->next;
+            head->setState(normal, 2000);
     }
 }
 
@@ -226,7 +278,18 @@ void LinkedList::search(int m_target) {
     searchTarget = m_target;
     isSearching = true;
     code.setText({
+        "if empty, return NOT_FOUND",
+        "index = 0, tmp = head",
+        "while(!tmp)",
+        "   if(tmp.value == target)",
+        "       return index",
+        "   tmp = tmp.next, index++",
+        "return NOT_FOUND"
     });
+    code.setHighlight(0);
+    code.setHighlight(1);
+    head->setState(normal, 2000);
+    size++;
 }
 
 void LinkedList::updateNodePos(float x, float y, float offset) {
@@ -243,6 +306,12 @@ void LinkedList::insertToHead(int value) {
     insertValue = value;
     isInsertingHead = true;
     phase = 0;
+    code.setText({
+        "Vertex vtx = new Vertex(v)",
+        "vtx.next = head",
+        "head = vtx"
+    });
+    size++;
 }
 
 void LinkedList::updateInsertHead() {
@@ -251,6 +320,8 @@ void LinkedList::updateInsertHead() {
     std::cout<<phase<<"\n";
     switch (phase){
         case 0:
+            code.deHighlightAll();
+            code.setHighlight(0);
             insertNode = new node(insertValue, 100, 200 + 215);
             insertNode->setStateImmediately(invisible);
             insertNode->setState(green, 2000);
@@ -259,6 +330,8 @@ void LinkedList::updateInsertHead() {
         case 1:
             if(insertNode->isFading)
                 return;
+            code.deHighlightAll();
+            code.setHighlight(1);
             insertNode->next = head;
             head = insertNode;
             updateArrow();
@@ -268,6 +341,8 @@ void LinkedList::updateInsertHead() {
         case 2:
             if(insertNode->arrow.isMoving)
                 return;
+            code.deHighlightAll();
+            code.setHighlight(2);
             updateNodePos(100, 200, 215);
             head->setState(normal, 2000);
             phase = 3;
@@ -285,6 +360,7 @@ void LinkedList::insertToTail(int value) {
     insertValue = value;
     isInsertingTail = true;
     phase = 0;
+    size++;
 }
 
 void LinkedList::updateInsertTail() {
@@ -331,6 +407,7 @@ void LinkedList::insertArbitrary(int value, int index) {
     isInserting = true;
     preInsert = head;
     indexNow = 0;
+    size++;
 }
 
 void LinkedList::updateArbitraryInsert() {
@@ -410,9 +487,9 @@ void LinkedList::updateArbitraryInsert() {
 void LinkedList::deleteHead() {
     if(head == nullptr)
         return;
-
     deletedNode = head;
     isDeletingHead = true;
+    size--;
 }
 
 void LinkedList::updateDeleteHead() {
@@ -460,6 +537,7 @@ void LinkedList::deleteTail() {
     preDelete = nullptr;
     deletedNode = head;
     isDeletingTail = true;
+    size--;
 }
 
 void LinkedList::updateDeleteTail() {
@@ -514,6 +592,7 @@ void LinkedList::deleteArbitrary(int index) {
     preDelete = head;
     deletedNode = head->next;
     indexNow = 0;
+    size--;
 }
 
 void LinkedList::updateDeleteArbitrary() {
@@ -566,7 +645,6 @@ void LinkedList::updateDeleteArbitrary() {
             isDeletingArbitrary = false;
             preDelete->setState(normal, 2000);
             updateNodePos(100, 200, 215);
-            size--;
             preDelete->phase = 0;
             break;
 

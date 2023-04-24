@@ -203,6 +203,7 @@ void node::appear() {
 void node::setText(const std::string& newString) {
     text.setString(newString);
     textString = newString;
+    centerText();
 }
 
 void node::centerText() {
@@ -211,6 +212,19 @@ void node::centerText() {
     text.setOrigin(textRect.left + textRect.width/2.0f,
                    textRect.top  + textRect.height/2.0f);
     text.setPosition(pos.x, pos.y - 100);
+}
+
+void node::clearText() {
+    textString = "";
+    setText(textString);
+}
+
+void node::concatText(const std::string &newString) {
+    if (!textString.empty()) {
+        textString += "/";
+    }
+    textString += newString;
+    setText(textString);
 }
 
 

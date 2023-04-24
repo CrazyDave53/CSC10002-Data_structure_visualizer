@@ -6,7 +6,8 @@ movable::movable() :
     endingPoint(),
     velocity(),
     acceleration(),
-    isMoving()
+    isMoving(),
+    speed(0.001)
 {
 }
 
@@ -17,7 +18,7 @@ void movable::setEndingPoint(float x, float y) {
     velocity -= velocity;
     acceleration -= acceleration;
     acceleration = (endingPoint - startingPoint);
-    acceleration = acceleration * (float)(0.001);
+    acceleration = acceleration * (float)(speed);
     isMoving = true;
 }
 
@@ -39,4 +40,8 @@ void movable::updatePos() {
         startingPoint = endingPoint;
         pos = endingPoint;
     }
+}
+
+void movable::changeSpeed(float m_speed) {
+    speed = m_speed;
 }

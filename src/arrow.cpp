@@ -25,6 +25,8 @@ Arrow::Arrow(sf::Vector2f start, sf::Vector2f end)
     m_triangle.setPosition(end);
     m_triangle.setRotation(angle);
     m_triangle.setFillColor(sf::Color::White);
+
+    changeSpeed(0.00003);
 }
 
 void Arrow::setThickness(float thickness)
