@@ -21,6 +21,7 @@ public:
     void draw(sf::RenderWindow& window);
     void setState(circleState newState, float duration);
     void setStateImmediately(circleState newState);
+    void setPosition(float x, float y);
     void update();
     void updateArrow();
     void updateFading();

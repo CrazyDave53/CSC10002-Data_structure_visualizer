@@ -41,8 +41,10 @@ public:
     VBoxLayout* addVBoxLayout();
 
     Widget* m_last;
-protected:
+
     void draw(sf::RenderTarget& target, sf::RenderStates states) const override;
+
+protected:
 
     // Callbacks ---------------------------------------------------------------
     void onStateChanged(State state) override;

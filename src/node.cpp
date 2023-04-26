@@ -227,5 +227,11 @@ void node::concatText(const std::string &newString) {
     setText(textString);
 }
 
+void node::setPosition(float x, float y) {
+    startingPoint = {x,y};
+    pos = startingPoint;
+    endingPoint = startingPoint;
+}
+
 
 

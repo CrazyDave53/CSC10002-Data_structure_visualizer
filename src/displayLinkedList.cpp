@@ -4,6 +4,7 @@
 displayLinkedList::displayLinkedList(sf::RenderWindow &window):
     menu(window),
     nextWindow(singlyLinkedListWindow),
+    mediaBar(menu),
     createMenu(menu, "Create"),
     searchMenu(menu, "Search"),
     insertMenu(menu, "Insert"),
@@ -252,6 +253,25 @@ displayLinkedList::displayLinkedList(sf::RenderWindow &window):
             deleteArbitraryFrame->recomputeGeometry();
         });
     });
+
+    mediaBar.m_forwardButton->setCallback([this]{
+        linkedList.fastForward();
+    });
+    mediaBar.m_backwardButton->setCallback([this]{
+        linkedList.rewind();
+    });
+    mediaBar.m_playButton->setCallback([this]{
+        if(linkedList.isPausing)
+            linkedList.resume();
+        else
+            linkedList.pause();
+    });
+
+//    mediaBar.m_backwardButton->setPosition(sf::Vector2f {860,1000} - mediaBar.m_mediaBar->getPosition() - menu.getPosition());
+//    mediaBar.m_playButton->setPosition(sf::Vector2f {960,1000} - mediaBar.m_mediaBar->getPosition() - menu.getPosition());
+//    mediaBar.m_forwardButton->setPosition(sf::Vector2f {1060,1000} - mediaBar.m_mediaBar->getPosition() - menu.getPosition());
+
+
 }
 
 windowType displayLinkedList::mainloop(sf::RenderWindow &window) {
@@ -259,6 +279,8 @@ windowType displayLinkedList::mainloop(sf::RenderWindow &window) {
     while (window.isOpen() && nextWindow == singlyLinkedListWindow)
     {
         sf::Event event;
+
+
         while (window.pollEvent(event))
         {
             // Send events to menu
@@ -271,26 +293,36 @@ windowType displayLinkedList::mainloop(sf::RenderWindow &window) {
         if(!createMenu.mainframe->isFocused()){
             createMenu.deleteFrame();
             createMenu.mainframe->recomputeGeometry();
-            menu.recomputeGeometry();
+//            menu.recomputeGeometry();
         }
         if(!searchMenu.mainframe->isFocused()){
             searchMenu.deleteFrame();
             searchMenu.mainframe->recomputeGeometry();
-            menu.recomputeGeometry();
+//            menu.recomputeGeometry();
         }
         if(!insertMenu.mainframe->isFocused()){
             insertMenu.deleteFrame();
             insertMenu.mainframe->recomputeGeometry();
-            menu.recomputeGeometry();
+//            menu.recomputeGeometry();
         }
         if(!deleteMenu.mainframe->isFocused()){
             deleteMenu.deleteFrame();
             deleteMenu.mainframe->recomputeGeometry();
-            menu.recomputeGeometry();
+//            menu.recomputeGeometry();
         }
+
+        mediaBar.setPauseState(linkedList.isPausing);
+
+        mediaBar.m_backwardButton->setPosition(sf::Vector2f {860,1000} - menu.getPosition());
+        mediaBar.m_playButton->setPosition(sf::Vector2f {960,1000} - menu.getPosition());
+        mediaBar.m_forwardButton->setPosition(sf::Vector2f {1060,1000} - menu.getPosition());
+
         window.clear(gui::Theme::windowBgColor);
 
+
         bg.draw(window);
+
+        mediaBar.draw(window);
         linkedList.draw(window);
         window.draw(menu);
         // Update the window

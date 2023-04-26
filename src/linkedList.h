@@ -9,8 +9,13 @@ public:
     ~LinkedList();
     void deleteList();
     void createRandom(int sz);
+    void createList(std::vector<int> v);
+
+    void saveListState();
+    void loadListState();
 
     void refreshList();
+    void refreshListPos();
 
     void search(int target);
     void updateSearch();
@@ -22,13 +27,20 @@ public:
     void updateNodePos(float x, float y, float offset);
     void updateArrow();
     void updateText();
+    void updatePrev();
+    bool isArrowMoving();
 
     void insertToHead(int value);
     void updateInsertHead();
+    void updateInsertHeadImmediately();
+
     void insertToTail(int value);
     void updateInsertTail();
+    void updateInsertTailImmediately();
+
     void insertArbitrary(int value, int index);
     void updateArbitraryInsert();
+    void updateArbitraryInsertImmediately();
 
     void deleteHead();
     void updateDeleteHead();
@@ -39,9 +51,18 @@ public:
     void deleteArbitrary(int index);
     void updateDeleteArbitrary();
 
+    void rewind();
+    void fastForward();
+
+    void pause();
+    void resume();
+    void moveToStep(int targetStep);
+
     node *head;
     node *tail;
     int size;
+
+    bool isPausing;
 private:
     node* cur;
     CodeFrame code;
@@ -67,6 +88,10 @@ private:
 
     bool isDeletingArbitrary;
     int deleteIndex;
+
+    int step;
+
+    std::vector<int> list;
 };
 
 #endif //CSC10002_DATA_STRUCTURE_VISUALIZER_LINKEDLIST_H

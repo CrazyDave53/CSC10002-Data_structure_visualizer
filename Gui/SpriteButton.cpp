@@ -157,4 +157,8 @@ bool SpriteButton::isToggled() {
     return m_isToggled;
 }
 
+void SpriteButton::setTexture(const sf::Texture &texture) {
+    m_background.setTexture(texture);
+}
+
 }

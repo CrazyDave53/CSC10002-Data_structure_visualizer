@@ -11,6 +11,7 @@
 #include "linkedList.h"
 #include "background.h"
 #include "codeFrame.h"
+#include "mediaBar.h"
 
 class displayLinkedList{
 public:
@@ -64,6 +65,7 @@ private:
 
     LinkedList linkedList;
     backGround bg;
+    mediaBar mediaBar;
 };
 
 #endif //CSC10002_DATA_STRUCTURE_VISUALIZER_DISPLAYLINKEDLIST_H
