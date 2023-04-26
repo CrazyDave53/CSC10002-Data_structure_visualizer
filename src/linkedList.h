@@ -44,6 +44,7 @@ public:
 
     void deleteHead();
     void updateDeleteHead();
+    void updateDeleteHeadImmediately();
 
     void deleteTail();
     void updateDeleteTail();

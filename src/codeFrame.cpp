@@ -79,7 +79,7 @@ void CodeFrame::setPosition(float x, float y)
 
 void CodeFrame::update() {
     // Calculate size of background rectangle based on text size
-    maxWidth = 0;
+    maxWidth = 200;
     float totalHeight = 0;
     for (const auto& text : m_textLines)
     {
