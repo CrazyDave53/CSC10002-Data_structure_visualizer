@@ -11,6 +11,8 @@ public:
     void createRandom(int sz);
     void createList(std::vector<int> v);
 
+    int getSize();
+
     void saveListState();
     void loadListState();
 
@@ -48,9 +50,11 @@ public:
 
     void deleteTail();
     void updateDeleteTail();
+    void updateDeleteTailImmediately();
 
     void deleteArbitrary(int index);
     void updateDeleteArbitrary();
+    void updateDeleteArbitraryImmediately();
 
     void rewind();
     void fastForward();

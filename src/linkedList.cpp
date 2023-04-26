@@ -52,6 +52,16 @@ void LinkedList::createRandom(int sz) {
     update();
 }
 
+int LinkedList::getSize() {
+    Node *pt = head;
+    size = 0;
+    while(pt != nullptr){
+        pt = pt->next;
+        size++;
+    }
+    return size;
+}
+
 void LinkedList::saveListState() {
     node* pt = head;
     list.clear();
@@ -78,8 +88,6 @@ void LinkedList::loadListState() {
         cur = cur->next;
     }
     size = list.size();
-    std::cout << "load list state" << std::endl;
-    std::cout << "size = " << size << std::endl;
     updatePrev();
     refreshList();
     updateArrow();
@@ -151,6 +159,8 @@ void LinkedList::deleteList() {
 }
 
 void LinkedList::update() {
+    std::cout<<"Step "<<step<<std::endl;
+    updatePrev();
     if(!isPausing){
         if(isSearching)
             updateSearch();
@@ -169,21 +179,20 @@ void LinkedList::update() {
     }
     if(!(isSearching || isInserting || isInsertingHead || isInsertingTail || isDeletingHead || isDeletingTail || isDeletingArbitrary))
         refreshList();
-
-    updatePrev();
 }
 
 void LinkedList::updatePrev() {
     node *pt = head;
     node *pre = nullptr;
-    updateText();
     while(pt != nullptr){
         pt->update();
         pt->prev = pre;
         if(pt->next == nullptr)
             tail = pt;
+        pre = pt;
         pt = pt->next;
     }
+    updateText();
 }
 
 void LinkedList::updateArrow() {
@@ -212,7 +221,19 @@ void LinkedList::updateText() {
             pt->concatText("del");
         if (pt == insertNode)
             pt->concatText("ins");
+        if (pt == preDelete)
+            pt->concatText("pre");
         pt->centerText();
+        pt = pt->next;
+    }
+}
+
+void LinkedList::updateNodePos(float x, float y, float offset) {
+    node* pt = head;
+    while(pt != nullptr){
+        if(pt->pos != sf::Vector2f(x, y))
+            pt->setEndingPoint(x, y);
+        x += offset;
         pt = pt->next;
     }
 }
@@ -378,16 +399,6 @@ void LinkedList::updateSearchImmediately() {
                 head->setStateImmediately(normal);
             step++;
             break;
-    }
-}
-
-void LinkedList::updateNodePos(float x, float y, float offset) {
-    node* pt = head;
-    while(pt != nullptr){
-        if(pt->pos != sf::Vector2f(x, y))
-            pt->setEndingPoint(x, y);
-        x += offset;
-        pt = pt->next;
     }
 }
 
@@ -619,8 +630,7 @@ void LinkedList::insertArbitrary(int value, int index) {
         "    pre = pre.next",
         "Node aft = pre.next",
         "Node ins = new Node(v)",
-        "ins.next = pre.next",
-        "pre.next = ins"
+        "ins.next = pre.next, pre.next = ins"
     });
     insertValue = value;
     insertIndex = index;
@@ -649,6 +659,7 @@ void LinkedList::updateArbitraryInsert() {
                 preInsert->phase = 2;
             else
                 preInsert->phase = 1;
+            step++;
             break;
         case 1:
             if(preInsert->isFading)
@@ -659,6 +670,7 @@ void LinkedList::updateArbitraryInsert() {
             preInsert->phase = 0;
             preInsert = preInsert->next;
             indexNow++;
+            step++;
             break;
         case 2:
             if(preInsert->isFading)
@@ -669,6 +681,7 @@ void LinkedList::updateArbitraryInsert() {
             afterInsert = preInsert->next;
             afterInsert->setState(green, 2000);
             preInsert->phase = 3;
+            step++;
             break;
         case 3:
             if(afterInsert->isFading)
@@ -679,6 +692,7 @@ void LinkedList::updateArbitraryInsert() {
             insertNode->setStateImmediately(invisible);
             insertNode->setState(normal, 2000);
             preInsert->phase = 4;
+            step++;
             break;
         case 4:
             if(insertNode->isFading)
@@ -691,7 +705,9 @@ void LinkedList::updateArbitraryInsert() {
             updateArrow();
             preInsert->arrow.moveEnd(insertNode->inPivot);
             insertNode->arrow.moveEnd(afterInsert->inPivot);
+            insertNode = nullptr;
             preInsert->phase = 5;
+            step++;
             break;
         case 5:
             if(preInsert->arrow.isMoving || insertNode->arrow.isMoving)
@@ -700,18 +716,20 @@ void LinkedList::updateArbitraryInsert() {
             preInsert->setState(normal, 2000);
             afterInsert->setState(normal, 2000);
             isInserting = false;
-            insertNode = nullptr;
-            preInsert->phase = 0;
             preInsert = nullptr;
             afterInsert = nullptr;
             refreshList();
             indexNow = 0;
+            step++;
             break;
 
     }
 }
 
 void LinkedList::updateArbitraryInsertImmediately() {
+    std::cout << "insertNode" << insertNode << std::endl;
+    std::cout << "preInsert" << preInsert << std::endl;
+    std::cout << "afterInsert" << afterInsert << std::endl;
     if(!isInserting)
         return;
     std::cout << preInsert->phase << std::endl;
@@ -756,29 +774,31 @@ void LinkedList::updateArbitraryInsertImmediately() {
         case 4:
             code.deHighlightAll();
             code.setHighlight(5);
-            code.setHighlight(6);
             preInsert->next = insertNode;
             insertNode->next = afterInsert;
             updateArrow();
             preInsert->arrow.setEnd(insertNode->inPivot);
             insertNode->arrow.setEnd(afterInsert->inPivot);
-            insertNode = nullptr;
             preInsert->phase = 5;
+
+            insertNode = nullptr;
             step++;
             break;
         case 5:
+            std::cout << "here" << std::endl;
             refreshList();
             refreshListPos();
             preInsert->setStateImmediately(normal);
             afterInsert->setStateImmediately(normal);
+            preInsert->phase = 0;
             isInserting = false;
             insertNode = nullptr;
-            preInsert->phase = 0;
             preInsert = nullptr;
             afterInsert = nullptr;
             refreshList();
             indexNow = 0;
             step++;
+            std::cout << "here" << std::endl;
             break;
 
     }
@@ -887,6 +907,9 @@ void LinkedList::updateDeleteHeadImmediately() {
 }
 
 void LinkedList::deleteTail() {
+    saveListState();
+    isPausing = false;
+
     if(head == nullptr)
         return;
     if(head->next == nullptr){
@@ -894,10 +917,23 @@ void LinkedList::deleteTail() {
         return;
     }
 
+    code.setText({
+        "pre = head, del = head.next",
+        "while (del.next != null)",
+        "  pre = pre.next",
+        "pre.next = null",
+        "delete del, tail = pre"
+    });
+    code.deHighlightAll();
+    code.setHighlight(0);
+
+    head->setState(normal, 2000);
+
     preDelete = nullptr;
     deletedNode = head;
     isDeletingTail = true;
     size--;
+    step = 0;
 }
 
 void LinkedList::updateDeleteTail() {
@@ -905,11 +941,19 @@ void LinkedList::updateDeleteTail() {
         return;
     switch (deletedNode->phase) {
         case 0:
+            if(preDelete != nullptr && preDelete->isFading)
+                return;
+            if(head->isFading)
+                return;
             deletedNode->setState(highlighted, 2000);
             if(deletedNode->next == nullptr)
                 deletedNode->phase = 2;
             else
                 deletedNode->phase = 1;
+            code.deHighlightAll();
+            code.setHighlight(1);
+
+            step++;
             break;
         case 1:
             if(deletedNode->isFading)
@@ -918,6 +962,9 @@ void LinkedList::updateDeleteTail() {
             deletedNode->phase = 0;
             preDelete = deletedNode;
             deletedNode = deletedNode->next;
+            code.deHighlightAll();
+            code.setHighlight(2);
+            step++;
             break;
         case 2:
             if(deletedNode->isFading)
@@ -926,12 +973,18 @@ void LinkedList::updateDeleteTail() {
             preDelete->next = nullptr;
             tail = preDelete;
             deletedNode->phase = 3;
+            code.deHighlightAll();
+            code.setHighlight(3);
+            step++;
             break;
         case 3:
             if(deletedNode->isFading)
                 return;
             deletedNode->setState(invisible, 2000);
             deletedNode->phase = 4;
+            code.deHighlightAll();
+            code.setHighlight(4);
+            step++;
             break;
         case 4:
             if(deletedNode->isFading)
@@ -940,31 +993,106 @@ void LinkedList::updateDeleteTail() {
             deletedNode = nullptr;
             isDeletingTail = false;
             updateNodePos(100, 200, 215);
+            step++;
+            break;
+    }
+}
+
+void LinkedList::updateDeleteTailImmediately() {
+    if(!isDeletingTail)
+        return;
+    switch (deletedNode->phase) {
+        case 0:
+            deletedNode->setStateImmediately(highlighted);
+            if(deletedNode->next == nullptr)
+                deletedNode->phase = 2;
+            else
+                deletedNode->phase = 1;
+            code.deHighlightAll();
+            code.setHighlight(1);
+
+            step++;
+            break;
+        case 1:
+            deletedNode->setStateImmediately(normal);
+            deletedNode->phase = 0;
+            preDelete = deletedNode;
+            deletedNode = deletedNode->next;
+            code.deHighlightAll();
+            code.setHighlight(2);
+            step++;
+            break;
+        case 2:
+            deletedNode->setStateImmediately(red);
+            preDelete->next = nullptr;
+            tail = preDelete;
+            deletedNode->phase = 3;
+            code.deHighlightAll();
+            code.setHighlight(3);
+            step++;
+            break;
+        case 3:
+            deletedNode->setStateImmediately(invisible);
+            deletedNode->phase = 4;
+            code.deHighlightAll();
+            code.setHighlight(4);
+            step++;
+            break;
+        case 4:
+            delete deletedNode;
+            deletedNode = nullptr;
+            isDeletingTail = false;
+            refreshListPos();
+            step++;
             break;
     }
 }
 
 void LinkedList::deleteArbitrary(int index) {
+    saveListState();
+    isPausing = false;
+
     if(index<=0 || index>=size-1)
         return;
+
+    code.setText({
+        "pre = head",
+        "for (k = 0; k < i-1; k++)",
+        "  pre = pre.next",
+        "del = pre.next, aft = del.next",
+        "pre.next = aft",
+        "delete del"
+    });
+    code.deHighlightAll();
+    code.setHighlight(0);
+    head->setState(normal, 2000);
     deleteIndex = index;
     isDeletingArbitrary = true;
     preDelete = head;
     deletedNode = head->next;
     indexNow = 0;
+    step = 0;
     size--;
 }
 
 void LinkedList::updateDeleteArbitrary() {
     if (!isDeletingArbitrary)
         return;
+    if (head->isFading)
+        return;
     switch (preDelete->phase) {
         case 0:
+            if(preDelete != head && preDelete->prev->isFading)
+                return;
             preDelete->setState(highlighted, 2000);
             if(indexNow + 1 == deleteIndex)
                 preDelete->phase = 2;
             else
                 preDelete->phase = 1;
+
+            code.deHighlightAll();
+            code.setHighlight(1);
+            step++;
             break;
         case 1:
             if(preDelete->isFading)
@@ -972,8 +1100,12 @@ void LinkedList::updateDeleteArbitrary() {
             preDelete->setState(normal, 2000);
             preDelete->phase = 0;
             preDelete = preDelete->next;
-            deletedNode = deletedNode->next;
+            deletedNode = preDelete->next;
             indexNow++;
+
+            code.deHighlightAll();
+            code.setHighlight(2);
+            step++;
             break;
         case 2:
             if(preDelete->isFading)
@@ -981,12 +1113,20 @@ void LinkedList::updateDeleteArbitrary() {
             preDelete->setState(green, 2000);
             deletedNode->setState(red, 2000);
             preDelete->phase = 3;
+
+            code.deHighlightAll();
+            code.setHighlight(3);
+            step++;
             break;
         case 3:
             if(preDelete->isFading || deletedNode->isFading)
                 return;
             deletedNode->setEndingPoint(deletedNode->pos.x, deletedNode->pos.y + 215);
             preDelete->phase = 4;
+
+            code.deHighlightAll();
+            code.setHighlight(4);
+            step++;
             break;
         case 4:
             if(deletedNode->isMoving)
@@ -996,6 +1136,10 @@ void LinkedList::updateDeleteArbitrary() {
             preDelete->arrow.moveEnd(deletedNode->next->inPivot);
             deletedNode->setState(invisible, 2000);
             preDelete->phase = 5;
+
+            code.deHighlightAll();
+            code.setHighlight(5);
+            step++;
             break;
         case 5:
             if(deletedNode->isFading)
@@ -1006,23 +1150,120 @@ void LinkedList::updateDeleteArbitrary() {
             preDelete->setState(normal, 2000);
             updateNodePos(100, 200, 215);
             preDelete->phase = 0;
+
+            step++;
             break;
-
     }
+}
 
+void LinkedList::updateDeleteArbitraryImmediately() {
+    if (!isDeletingArbitrary)
+        return;
+    switch (preDelete->phase) {
+        case 0:
+            preDelete->setStateImmediately(highlighted);
+            if(indexNow + 1 == deleteIndex)
+                preDelete->phase = 2;
+            else
+                preDelete->phase = 1;
+
+            code.deHighlightAll();
+            code.setHighlight(1);
+            step++;
+            break;
+        case 1:
+            preDelete->setStateImmediately(normal);
+            preDelete->phase = 0;
+            preDelete = preDelete->next;
+            deletedNode = preDelete->next;
+            indexNow++;
+
+            code.deHighlightAll();
+            code.setHighlight(2);
+            step++;
+            break;
+        case 2:
+            preDelete->setStateImmediately(green);
+            deletedNode->setStateImmediately(red);
+            preDelete->phase = 3;
+
+            code.deHighlightAll();
+            code.setHighlight(3);
+            step++;
+            break;
+        case 3:
+            deletedNode->setPosition(deletedNode->pos.x, deletedNode->pos.y + 215);
+            preDelete->phase = 4;
+
+            code.deHighlightAll();
+            code.setHighlight(4);
+            step++;
+            break;
+        case 4:
+            preDelete->next = deletedNode->next;
+            updateArrow();
+            preDelete->arrow.setEnd(deletedNode->next->inPivot);
+            deletedNode->setStateImmediately(invisible);
+            preDelete->phase = 5;
+
+            code.deHighlightAll();
+            code.setHighlight(5);
+            step++;
+            break;
+        case 5:
+            delete deletedNode;
+            deletedNode = nullptr;
+            isDeletingArbitrary = false;
+            preDelete->setStateImmediately(normal);
+            refreshListPos();
+            preDelete->phase = 0;
+
+            step++;
+            break;
+    }
 }
 
 void LinkedList::rewind() {
     if(!(isSearching || isInsertingHead || isInsertingTail || isInserting || isDeletingHead || isDeletingTail || isDeletingArbitrary))
         return;
-    moveToStep(step-1);
+    moveToStep(step-2);
+    isPausing = false;
+    if(isSearching)
+        updateSearch();
+    else if(isInsertingHead)
+        updateInsertHead();
+    else if(isInsertingTail)
+        updateInsertTail();
+    else if(isInserting)
+        updateArbitraryInsert();
+    else if(isDeletingHead)
+        updateDeleteHead();
+    else if(isDeletingTail)
+        updateDeleteTail();
+    else if(isDeletingArbitrary)
+        updateDeleteArbitrary();
     isPausing = true;
 }
 
 void LinkedList::fastForward() {
     if(!(isSearching || isInsertingHead || isInsertingTail || isInserting || isDeletingHead || isDeletingTail || isDeletingArbitrary))
         return;
-    moveToStep(step+1);
+    moveToStep(step);
+    isPausing = false;
+    if (isSearching)
+        updateSearch();
+    else if (isInsertingHead)
+        updateInsertHead();
+    else if (isInsertingTail)
+        updateInsertTail();
+    else if (isInserting)
+        updateArbitraryInsert();
+    else if (isDeletingHead)
+        updateDeleteHead();
+    else if (isDeletingTail)
+        updateDeleteTail();
+    else if (isDeletingArbitrary)
+        updateDeleteArbitrary();
     isPausing = true;
 }
 
@@ -1035,6 +1276,8 @@ void LinkedList::resume() {
 }
 
 void LinkedList::moveToStep(int targetStep) {
+    size = getSize();
+    std::cout << "move to step " << targetStep << std::endl;
     if(targetStep <= 0)
         targetStep = 0;
     if(isSearching){
@@ -1042,6 +1285,9 @@ void LinkedList::moveToStep(int targetStep) {
         cur = head;
         int target = targetStep;
         step = 0;
+        code.deHighlightAll();
+        code.setHighlight(0);
+        code.setHighlight(1);
         while(step < target && isSearching){
             updateSearchImmediately();
         }
@@ -1051,6 +1297,8 @@ void LinkedList::moveToStep(int targetStep) {
         phase = 0;
         int target = targetStep;
         step = 0;
+        code.deHighlightAll();
+
         while(step < target && isInsertingHead){
             updateInsertHeadImmediately();
         }
@@ -1060,6 +1308,8 @@ void LinkedList::moveToStep(int targetStep) {
         phase = 0;
         int target = targetStep;
         step = 0;
+        code.deHighlightAll();
+
         while(step < target && isInsertingTail){
             updateInsertTailImmediately();
         }
@@ -1071,6 +1321,10 @@ void LinkedList::moveToStep(int targetStep) {
         phase = 0;
         int target = targetStep;
         step = 0;
+
+        code.deHighlightAll();
+        code.setHighlight(0);
+        std::cout << "still Working" << std::endl;
         while(step < target && isInserting){
             updateArbitraryInsertImmediately();
         }
@@ -1082,10 +1336,44 @@ void LinkedList::moveToStep(int targetStep) {
         step = 0;
 
         deletedNode = head;
+        code.deHighlightAll();
+        code.setHighlight(0);
 
         while(step < target && isDeletingHead){
             updateDeleteHeadImmediately();
         }
     }
+    if(isDeletingTail){
+        loadListState();
+        phase = 0;
+        int target = targetStep;
+        step = 0;
+
+        preDelete = nullptr;
+        deletedNode = head;
+        code.deHighlightAll();
+        code.setHighlight(0);
+
+        while(step < target && isDeletingTail){
+            updateDeleteTailImmediately();
+        }
+    }
+    if(isDeletingArbitrary){
+        loadListState();
+        indexNow = 0;
+        phase = 0;
+        int target = targetStep;
+        preDelete = head;
+        deletedNode = head->next;
+
+
+        code.deHighlightAll();
+        code.setHighlight(0);
+        step = 0;
+        while(step < target && isDeletingArbitrary){
+            updateDeleteArbitraryImmediately();
+        }
+    }
+
     isPausing = true;
 }
