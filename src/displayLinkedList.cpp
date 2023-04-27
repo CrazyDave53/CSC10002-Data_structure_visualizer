@@ -9,9 +9,20 @@ displayLinkedList::displayLinkedList(sf::RenderWindow &window):
     searchMenu(menu, "Search"),
     insertMenu(menu, "Insert"),
     deleteMenu(menu, "Delete"),
-    createRandom(),
+
     createRandomFrame(),
-    createRandomSizeFrame(),
+    createRandom(),
+    createFrame(),
+    inputCreate(),
+    goCreate(),
+
+    createFromFileFrame(),
+    createFromFile(),
+
+    createUserInputFrame(),
+    createUserInput(),
+
+
     inputSearchValue(),
     goSearch(),
     buttonBG(),
@@ -47,31 +58,105 @@ displayLinkedList::displayLinkedList(sf::RenderWindow &window):
         createMenu.deleteFrame();
         //init null
         createRandomFrame = nullptr;
-        createRandomSizeFrame = nullptr;
-        goCreateRandom = nullptr;
-        inputSizeCreateRandom = nullptr;
+        createRandom = nullptr;
+        createFrame = nullptr;
+        goCreate = nullptr;
+        inputCreate = nullptr;
+        createUserInputFrame = nullptr;
+        createUserInput = nullptr;
+        inputCreate = nullptr;
 
         createMenu.frame = createMenu.mainframe->addHBoxLayout();
 
         createRandomFrame = createMenu.frame->addVBoxLayout();
         createRandom = new gui::SpriteButton(buttonBG,"Random");
         createRandomFrame->add(createRandom);
+
+        createFromFileFrame = createMenu.frame->addVBoxLayout();
+        createFromFile = new gui::SpriteButton(buttonBG,"From File");
+        createFromFileFrame->add(createFromFile);
+
+        createUserInputFrame = createMenu.frame->addVBoxLayout();
+        createUserInput = new gui::SpriteButton(buttonBG,"User Input");
+        createUserInputFrame->add(createUserInput);
+
+        //Set callback
         createRandom->setCallback([this]{
-            if(createRandomSizeFrame != nullptr){
-                createRandomFrame->removeLast();//remove createRandomSizeFrame
-                inputSizeCreateRandom = nullptr;
-                goCreateRandom = nullptr;
+            if(createRandomFrame->m_last == createFrame){
+                createRandomFrame->removeLast();//remove createFrame
             }
-            createRandomSizeFrame = createRandomFrame->addHBoxLayout();
-            inputSizeCreateRandom = new gui::TextBox(100);
-            inputSizeCreateRandom->setMaxLength(1);
-            inputSizeCreateRandom->setPlaceholder("Input size");
-            createRandomSizeFrame->add(inputSizeCreateRandom);
-            goCreateRandom = createRandomSizeFrame->addButton("GO", [this]{
-                if(inputSizeCreateRandom->getText().toAnsiString() != "")
-                    linkedList.createRandom(std::stoi(inputSizeCreateRandom->getText().toAnsiString()));
+            if(createUserInputFrame->m_last == createFrame){
+                createUserInputFrame->removeLast();//remove createFrame
+            }
+            if(createFromFileFrame->m_last == createFrame){
+                createFromFileFrame->removeLast();//remove createFrame
+            }
+
+            createFrame = nullptr;
+            inputCreate = nullptr;
+            goCreate = nullptr;
+
+            createFrame = createRandomFrame->addHBoxLayout();
+            inputCreate = new gui::TextBox(100);
+            inputCreate->setMaxLength(1);
+            inputCreate->setPlaceholder("Input size");
+            createFrame->add(inputCreate);
+            goCreate = createFrame->addButton("GO", [this]{
+                if(!inputCreate->getText().toAnsiString().empty()){
+                    try{
+                        linkedList.createRandom(std::stoi(inputCreate->getText().toAnsiString()));
+                    }
+                    catch(std::invalid_argument& e){
+                        //do nothing
+                    }
+                }
             });
         });
+        createFromFile->setCallback([this]{
+            if(createRandomFrame->m_last == createFrame){
+                createRandomFrame->removeLast();//remove createFrame
+            }
+            if(createUserInputFrame->m_last == createFrame){
+                createUserInputFrame->removeLast();//remove createFrame
+            }
+            if(createFromFileFrame->m_last == createFrame){
+                createFromFileFrame->removeLast();//remove createFrame
+            }
+            createFrame = nullptr;
+            inputCreate = nullptr;
+            goCreate = nullptr;
+
+            createFrame = createFromFileFrame->addHBoxLayout();
+            goCreate = createFrame->addButton("      Browse      ", [this]{
+                linkedList.createFromFile();
+            });
+
+        });
+        createUserInput->setCallback([this]{
+            if(createRandomFrame->m_last == createFrame){
+                createRandomFrame->removeLast();//remove createFrame
+            }
+            if(createUserInputFrame->m_last == createFrame){
+                createUserInputFrame->removeLast();//remove createFrame
+            }
+            if(createFromFileFrame->m_last == createFrame){
+                createFromFileFrame->removeLast();//remove createFrame
+            }
+            createFrame = nullptr;
+            inputCreate = nullptr;
+            goCreate = nullptr;
+
+            createFrame = createUserInputFrame->addHBoxLayout();
+            inputCreate = new gui::TextBox(300);
+            inputCreate->setMaxLength(300);
+            inputCreate->setPlaceholder("e.g. 1,3,4,6,22,15,47,32");
+            createFrame->add(inputCreate);
+            goCreate = createFrame->addButton("GO", [this]{
+                if(!inputCreate->getText().toAnsiString().empty())
+                    linkedList.createUserInput(inputCreate->getText().toAnsiString());
+            });
+        });
+
     });
     searchMenu.mainButton->setCallback([this]{
         searchMenu.deleteFrame();
@@ -85,8 +170,12 @@ displayLinkedList::displayLinkedList(sf::RenderWindow &window):
         searchMenu.frame->add(inputSearchValue);;
 
         goSearch = searchMenu.frame->addButton("GO",[this]{
-            if(inputSearchValue->getText().toAnsiString() != ""){
-                linkedList.search(std::stoi(inputSearchValue->getText().toAnsiString()));
+            if(!inputSearchValue->getText().toAnsiString().empty()){
+                try{
+                    linkedList.search(std::stoi(inputSearchValue->getText().toAnsiString()));
+                }catch(std::invalid_argument){
+                    //do nothing
+                }
             }
         });
     });
@@ -132,8 +221,12 @@ displayLinkedList::displayLinkedList(sf::RenderWindow &window):
             inputInsertValue->setPlaceholder("Value");
             insertFrame->add(inputInsertValue);
             goInsert = insertFrame->addButton("GO", [this]{
-                if(inputInsertValue->getText().toAnsiString() != "")
-                    linkedList.insertToHead(std::stoi(inputInsertValue->getText().toAnsiString()));
+                if(!inputInsertValue->getText().toAnsiString().empty())
+                    try{
+                        linkedList.insertToHead(std::stoi(inputInsertValue->getText().toAnsiString()));
+                    }catch(std::invalid_argument){
+                        //do nothing
+                    }
             });
             insertHeadFrame->recomputeGeometry();
             insertTailFrame->recomputeGeometry();
@@ -157,8 +250,13 @@ displayLinkedList::displayLinkedList(sf::RenderWindow &window):
             inputInsertValue->setPlaceholder("Value");
             insertFrame->add(inputInsertValue);
             goInsert = insertFrame->addButton("GO", [this]{
-                if(inputInsertValue->getText().toAnsiString() != "")
-                    linkedList.insertToTail(std::stoi(inputInsertValue->getText().toAnsiString()));
+                if(!inputInsertValue->getText().toAnsiString().empty()){
+                    try{
+                        linkedList.insertToTail(std::stoi(inputInsertValue->getText().toAnsiString()));
+                    }catch(std::invalid_argument){
+                        //do nothing
+                    }
+                }
             });
             insertHeadFrame->recomputeGeometry();
             insertTailFrame->recomputeGeometry();
@@ -188,8 +286,14 @@ displayLinkedList::displayLinkedList(sf::RenderWindow &window):
             insertFrame->add(inputInsertIndex);
 
             goInsert = insertFrame->addButton("GO", [this]{
-                if(inputInsertValue->getText().toAnsiString() != "" && inputInsertIndex->getText().toAnsiString() != "")
-                    linkedList.insertArbitrary(std::stoi(inputInsertValue->getText().toAnsiString()), std::stoi(inputInsertIndex->getText().toAnsiString()));
+                if(!inputInsertValue->getText().toAnsiString().empty() && !inputInsertIndex->getText().toAnsiString().empty()) {
+                    try {
+                        linkedList.insertArbitrary(std::stoi(inputInsertValue->getText().toAnsiString()),
+                                                   std::stoi(inputInsertIndex->getText().toAnsiString()));
+                    } catch (std::invalid_argument) {
+                        //do nothing
+                    }
+                }
             });
             insertHeadFrame->recomputeGeometry();
             insertTailFrame->recomputeGeometry();
@@ -245,8 +349,13 @@ displayLinkedList::displayLinkedList(sf::RenderWindow &window):
             deleteFrame->add(inputDeleteIndex);
 
             goDelete = deleteFrame->addButton("GO", [this]{
-                if(inputDeleteIndex->getText().toAnsiString() != "")
-                    linkedList.deleteArbitrary(std::stoi(inputDeleteIndex->getText().toAnsiString()));
+                if(!inputDeleteIndex->getText().toAnsiString().empty()){
+                    try{
+                        linkedList.deleteArbitrary(std::stoi(inputDeleteIndex->getText().toAnsiString()));
+                    }catch(std::invalid_argument){
+                        //do nothing
+                    }
+                }
             });
             deleteHeadFrame->recomputeGeometry();
             deleteTailFrame->recomputeGeometry();

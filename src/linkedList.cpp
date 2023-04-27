@@ -27,13 +27,36 @@ LinkedList::LinkedList() :
         code(),
         step(),
         isPausing(),
-        list()
+        list(),
+
+        openDialog()
 {
 
 }
 
 LinkedList::~LinkedList() {
     deleteList();
+}
+
+std::vector<int> LinkedList::stringToVector(std::string input) {
+    std::vector<int> v;
+    std::string temp;
+    for (int i = 0; i < input.size(); ++i) {
+        if(input[i] == ','){
+            try{
+                v.push_back(std::stoi(temp));
+            }
+            catch (std::invalid_argument& e){
+                return {};
+            }
+            temp.clear();
+        }
+        else
+            temp += input[i];
+    }
+    if(!temp.empty())
+        v.push_back(std::stoi(temp));
+    return v;
 }
 
 void LinkedList::createRandom(int sz) {
@@ -52,8 +75,24 @@ void LinkedList::createRandom(int sz) {
     update();
 }
 
+void LinkedList::createUserInput(std::string input) {
+    deleteList();
+    std::vector<int> v = stringToVector(input);
+    if (v.size() > 9)
+        v.resize(9);
+    createList(v);
+}
+
+void LinkedList::createFromFile() {
+    std::cout << "I love u\n";
+    std::string content;
+    if(openDialog.ShowOpenFileDialog(content)){
+        createList(stringToVector(content));
+    }
+}
+
 int LinkedList::getSize() {
-    Node *pt = head;
+    node *pt = head;
     size = 0;
     while(pt != nullptr){
         pt = pt->next;
@@ -1377,3 +1416,4 @@ void LinkedList::moveToStep(int targetStep) {
 
     isPausing = true;
 }
+

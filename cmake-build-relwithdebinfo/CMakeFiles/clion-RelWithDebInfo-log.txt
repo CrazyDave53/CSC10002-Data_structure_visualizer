@@ -1,0 +1,25 @@
+"C:\Program Files\JetBrains\CLion 2022.3.2\bin\cmake\win\x64\bin\cmake.exe" -DCMAKE_BUILD_TYPE=RelWithDebInfo "-DCMAKE_MAKE_PROGRAM=C:/Program Files/JetBrains/CLion 2022.3.2/bin/ninja/win/x64/ninja.exe" -G Ninja -S "E:\KHTN\ki thuat lap trinh\CSC10002-Data_structure_visualizer" -B "E:\KHTN\ki thuat lap trinh\CSC10002-Data_structure_visualizer\cmake-build-relwithdebinfo"
+-- The C compiler identification is MSVC 19.35.32217.1
+-- The CXX compiler identification is MSVC 19.35.32217.1
+-- Detecting C compiler ABI info
+-- Detecting C compiler ABI info - done
+-- Check for working C compiler: C:/Program Files/Microsoft Visual Studio/2022/Community/VC/Tools/MSVC/14.35.32215/bin/Hostx86/x86/cl.exe - skipped
+-- Detecting C compile features
+-- Detecting C compile features - done
+-- Detecting CXX compiler ABI info
+-- Detecting CXX compiler ABI info - done
+-- Check for working CXX compiler: C:/Program Files/Microsoft Visual Studio/2022/Community/VC/Tools/MSVC/14.35.32215/bin/Hostx86/x86/cl.exe - skipped
+-- Detecting CXX compile features
+-- Detecting CXX compile features - done
+CMake Error at CMakeLists.txt:18 (find_package):
+  Could not find a configuration file for package "SFML" that is compatible
+  with requested version "".
+
+  The following configuration files were considered but not accepted:
+
+    C:/SFML/lib/cmake/SFML/SFMLConfig.cmake, version: 2.5.1 (64bit)
+
+
+
+-- Configuring incomplete, errors occurred!
+See also "E:/KHTN/ki thuat lap trinh/CSC10002-Data_structure_visualizer/cmake-build-relwithdebinfo/CMakeFiles/CMakeOutput.log".

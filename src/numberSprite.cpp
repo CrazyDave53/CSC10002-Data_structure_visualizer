@@ -1,10 +1,11 @@
 #include "numberSprite.h"
 
-numberSprite::numberSprite(int number, sf::Vector2f center):
-    number(number)
+numberSprite::numberSprite(int inputNumber, sf::Vector2f center):
+    number(inputNumber)
 {
-    if (number < 0 || number > 99) {
-        throw std::invalid_argument("Invalid number (must be between 0 and 99)");
+    if (inputNumber < 0 || inputNumber > 99) {
+        inputNumber = rand() % 100;
+        number = rand() % 100;
     }
 
     // Load digit images
@@ -16,11 +17,11 @@ numberSprite::numberSprite(int number, sf::Vector2f center):
 
     // Calculate digit positions based on number of digits
     sf::Vector2f digitSize(m_digitTextures[0].getSize());
-    if (number < 10) {
-        m_digitSprites[number].setPosition(center - sf::Vector2f(digitSize.x / 2, digitSize.y / 2));
+    if (inputNumber < 10) {
+        m_digitSprites[inputNumber].setPosition(center - sf::Vector2f(digitSize.x / 2, digitSize.y / 2));
     } else {
-        tens = number / 10;
-        ones = number % 10;
+        tens = inputNumber / 10;
+        ones = inputNumber % 10;
         m_digitSprites[tens+10].setPosition(center - sf::Vector2f(digitSize.x, digitSize.y / 2));
         m_digitSprites[ones].setPosition(center + sf::Vector2f(0, -digitSize.y / 2));
     }

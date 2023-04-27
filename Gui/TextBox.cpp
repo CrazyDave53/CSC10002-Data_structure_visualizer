@@ -363,7 +363,7 @@ void TextBox::onMouseMoved(float x, float)
 
 void TextBox::onTextEntered(sf::Uint32 unicode)
 {
-    if (48 <= unicode && unicode <= 57)
+    if ((48 <= unicode && unicode <= 57) || unicode == 44)
     {
         // Delete selected text when a new input is received
         deleteSelectedText();

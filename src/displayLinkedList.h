@@ -28,9 +28,16 @@ private:
 
     gui::VBoxLayout* createRandomFrame;
     gui::SpriteButton* createRandom;
-    gui::HBoxLayout* createRandomSizeFrame;
-    gui::TextBox* inputSizeCreateRandom;
-    gui::Button* goCreateRandom;
+    gui::HBoxLayout* createFrame;
+    gui::TextBox* inputCreate;
+    gui::Button* goCreate;
+
+    gui::VBoxLayout* createFromFileFrame;
+    gui::SpriteButton* createFromFile;
+
+    gui::VBoxLayout* createUserInputFrame;
+    gui::SpriteButton* createUserInput;
+
 
     gui::TextBox* inputSearchValue;
     gui::Button* goSearch;

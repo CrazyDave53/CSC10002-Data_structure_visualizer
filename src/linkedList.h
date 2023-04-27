@@ -3,12 +3,17 @@
 
 #include "node.h"
 #include "codeFrame.h"
-class LinkedList{
+#include "FileSelectionDialog.h"
+
+class LinkedList {
 public:
     LinkedList();
     ~LinkedList();
     void deleteList();
     void createRandom(int sz);
+    void createUserInput(std::string input);
+    void createFromFile();
+
     void createList(std::vector<int> v);
 
     int getSize();
@@ -69,6 +74,8 @@ public:
 
     bool isPausing;
 private:
+    std::vector<int> stringToVector(std::string input);
+
     node* cur;
     CodeFrame code;
     int searchTarget;
@@ -95,6 +102,7 @@ private:
     int deleteIndex;
 
     int step;
+    FileDialog openDialog;
 
     std::vector<int> list;
 };
