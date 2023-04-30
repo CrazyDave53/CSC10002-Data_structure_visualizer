@@ -16,6 +16,7 @@ LinkedList::LinkedList() :
         isInserting(),
         isInsertingHead(),
         isInsertingTail(),
+        isUpdating(),
         indexNow(),
         phase(),
         deletedNode(),
@@ -29,13 +30,18 @@ LinkedList::LinkedList() :
         isPausing(),
         list(),
 
-        openDialog()
+        openDialog(),
+        alertBox()
 {
 
 }
 
 LinkedList::~LinkedList() {
     deleteList();
+}
+
+void LinkedList::onEvent(sf::Event event) {
+    alertBox.isCloseButtonPressed(event);
 }
 
 std::vector<int> LinkedList::stringToVector(std::string input) {
@@ -47,6 +53,8 @@ std::vector<int> LinkedList::stringToVector(std::string input) {
                 v.push_back(std::stoi(temp));
             }
             catch (std::invalid_argument& e){
+                alertBox.setMessage("Error: Invalid input. Please enter a list of integers separated by commas.");
+                alertBox.setEnabled(true);
                 return {};
             }
             temp.clear();
@@ -78,17 +86,17 @@ void LinkedList::createRandom(int sz) {
 void LinkedList::createUserInput(std::string input) {
     deleteList();
     std::vector<int> v = stringToVector(input);
-    if (v.size() > 9)
+    if (v.size() > 9){
         v.resize(9);
+        alertBox.setMessage("Warning: The input is too long, only the first 9 numbers will be used.");
+        alertBox.setEnabled(true);
+    }
     createList(v);
 }
 
 void LinkedList::createFromFile() {
-    std::cout << "I love u\n";
-    std::string content;
-    if(openDialog.ShowOpenFileDialog(content)){
-        createList(stringToVector(content));
-    }
+    std::string content = openDialog.ShowOpenFileDialog();
+    createList(stringToVector(content));
 }
 
 int LinkedList::getSize() {
@@ -137,6 +145,18 @@ void LinkedList::createList(std::vector<int> v) {
     deleteList();
     if(v.empty())
         return;
+    if(v.size() > 9){
+        v.resize(9);
+        alertBox.setMessage("Warning: The input is too long, only the first 9 numbers will be used.");
+        alertBox.setEnabled(true);
+    }
+    for(int i = 0; i < v.size(); ++i){
+        if(v[i] < 0 || v[i] > 99){
+            alertBox.setMessage("Warning: The input contains numbers that are out of range.\nEvery out-of-range number will be set to a random number between 0 and 99.");
+            alertBox.setEnabled(true);
+            v[i] = rand() % 100;
+        }
+    }
     head = new node(v[0], 0, -100);
     head->setEndingPoint(100, 200);
     node* cur = head;
@@ -178,12 +198,13 @@ void LinkedList::draw(sf::RenderWindow& window) {
     if(deletedNode != nullptr)
         deletedNode->draw(window);
 
-    if(isSearching || isInserting || isInsertingHead || isInsertingTail || isDeletingHead || isDeletingTail || isDeletingArbitrary){
+    if(isSearching || isInserting || isInsertingHead || isInsertingTail || isDeletingHead || isDeletingTail || isDeletingArbitrary || isUpdating){
         sf::Vector2f pos = sf::Vector2f(1920 - 100, 1080 - 100) - code.getSize();
         code.setPosition(pos.x, pos.y);
         code.draw(window);
     }
 
+    alertBox.draw(window);
 }
 
 void LinkedList::deleteList() {
@@ -200,9 +221,12 @@ void LinkedList::deleteList() {
 void LinkedList::update() {
     std::cout<<"Step "<<step<<std::endl;
     updatePrev();
+    updateArrow();
     if(!isPausing){
         if(isSearching)
             updateSearch();
+        if(isUpdating)
+            updateUpdateNode();
         if(isInsertingHead)
             updateInsertHead();
         if(isInsertingTail)
@@ -216,8 +240,15 @@ void LinkedList::update() {
         if(isDeletingArbitrary)
             updateDeleteArbitrary();
     }
-    if(!(isSearching || isInserting || isInsertingHead || isInsertingTail || isDeletingHead || isDeletingTail || isDeletingArbitrary))
+    if(!(isSearching || isInserting || isInsertingHead || isInsertingTail || isDeletingHead || isDeletingTail || isDeletingArbitrary || isUpdating))
         refreshList();
+
+//    if(deletedNode != nullptr){
+//        deletedNode->update();
+//    }
+//    if(insertNode != nullptr){
+//        insertNode->update();
+//    }
 }
 
 void LinkedList::updatePrev() {
@@ -262,6 +293,8 @@ void LinkedList::updateText() {
             pt->concatText("ins");
         if (pt == preDelete)
             pt->concatText("pre");
+        if (pt == afterDelete)
+            pt->concatText("aft");
         pt->centerText();
         pt = pt->next;
     }
@@ -288,6 +321,8 @@ bool LinkedList::isArrowMoving() {
 }
 
 void LinkedList::search(int m_target) {
+    if (head == nullptr)
+        return;
     saveListState();
     isPausing = false;
 
@@ -441,7 +476,135 @@ void LinkedList::updateSearchImmediately() {
     }
 }
 
+void LinkedList::updateNode(int index, int value) {
+    if(index < 0 || index >= size){
+        alertBox.setMessage("Index out of range");
+        alertBox.setEnabled(true);
+        return;
+    }
+    saveListState();
+    isPausing = false;
+
+    updateIndex = index;
+    updateValue = value;
+    isUpdating = true;
+    indexNow = 0;
+    cur = head;
+    code.setText({
+        "index = 0, cur = head",
+        "while(index < updateIndex)",
+        "   cur = cur.next, index++",
+        "cur.value = updateValue"
+    });
+    code.deHighlightAll();
+    code.setHighlight(0);
+    head->setState(normal, 2000);
+    step = 0;
+}
+
+void LinkedList::updateUpdateNode() {
+    if(!isUpdating)
+        return;
+    if(head->isFading)
+        return;
+    switch (cur->phase){
+        case 0:
+            if(cur->prev && cur->prev->isFading)
+                return; // Wait for the previous node to fade
+            cur->setState(highlighted, 2000);
+            if(indexNow == updateIndex){
+                cur->phase = 2;
+            }
+            else{
+                cur->phase = 1;
+            }
+            code.deHighlightAll();
+            code.setHighlight(1);
+            step++;
+            break;
+        case 1:
+            if(cur->isFading)
+                return;
+            cur->setState(normal, 2000);
+            cur->phase = 0;
+            cur = cur->next;
+            indexNow++;
+            code.deHighlightAll();
+            code.setHighlight(2);
+            step++;
+            break;
+        case 2:
+            if(cur->isFading)
+                return;
+            cur->setState(green, 2000);
+            cur->phase = 3;
+            code.deHighlightAll();
+            code.setHighlight(3);
+            step++;
+            break;
+        case 3:
+            if(cur->isFading)
+                return;
+            cur->setState(normal, 10000);
+            cur->phase = 0;
+            cur->number = updateValue;
+            cur->update();
+            isUpdating = false;
+            step++;
+            break;
+    }
+}
+
+void LinkedList::updateUpdateNodeImmediately() {
+    if(!isUpdating)
+        return;
+    switch (cur->phase){
+        case 0:
+            cur->setStateImmediately(highlighted);
+            if(indexNow == updateIndex){
+                cur->phase = 2;
+            }
+            else{
+                cur->phase = 1;
+            }
+            code.deHighlightAll();
+            code.setHighlight(1);
+            step++;
+            break;
+        case 1:
+            cur->setStateImmediately(normal);
+            cur->phase = 0;
+            cur = cur->next;
+            indexNow++;
+            code.deHighlightAll();
+            code.setHighlight(2);
+            step++;
+            break;
+        case 2:
+            cur->setStateImmediately(green);
+            cur->phase = 3;
+            code.deHighlightAll();
+            code.setHighlight(3);
+            step++;
+            break;
+        case 3:
+            cur->setStateImmediately(normal);
+            cur->phase = 0;
+            cur->number = updateValue;
+            cur->update();
+            isUpdating = false;
+            step++;
+            break;
+    }
+
+}
+
 void LinkedList::insertToHead(int value) {
+    if(size >= 9){
+        alertBox.setMessage("The list only supports 9 nodes");
+        alertBox.setEnabled(true);
+        return;
+    }
     saveListState();
     isPausing = false;
 
@@ -477,8 +640,10 @@ void LinkedList::updateInsertHead() {
             code.setHighlight(1);
             insertNode->next = head;
             head = insertNode;
+            updatePrev();
             updateArrow();
-            insertNode->arrow.moveEnd(insertNode->next->inPivot);
+            if(insertNode->next != nullptr)
+                insertNode->arrow.moveEnd(insertNode->next->inPivot);
             insertNode = nullptr;
             phase = 2;
             step++;
@@ -549,6 +714,15 @@ void LinkedList::updateInsertHeadImmediately() {
 }
 
 void LinkedList::insertToTail(int value) {
+    if(size >= 9){
+        alertBox.setMessage("The list only supports 9 nodes");
+        alertBox.setEnabled(true);
+        return;
+    }
+    if(tail == nullptr){
+        insertToHead(value);
+        return;
+    }
     saveListState();
     isPausing = false;
 
@@ -656,11 +830,27 @@ void LinkedList::updateInsertTailImmediately() {
 }
 
 void LinkedList::insertArbitrary(int value, int index) {
+    if(size >= 9){
+        alertBox.setMessage("The list only supports 9 nodes");
+        alertBox.setEnabled(true);
+        return;
+    }
+    if(index<0 || index>size){
+        alertBox.setMessage("Index out of bound");
+        alertBox.setEnabled(true);
+        return;
+    }
+    if(index == 0){
+        insertToHead(value);
+        return;
+    }
+    if(index == size){
+        insertToTail(value);
+        return;
+    }
+
     saveListState();
     isPausing = false;
-
-    if(index<=0 || index>=size)
-        return;
 
     step = 0;
     code.setText({
@@ -749,7 +939,7 @@ void LinkedList::updateArbitraryInsert() {
             step++;
             break;
         case 5:
-            if(preInsert->arrow.isMoving || insertNode->arrow.isMoving)
+            if(preInsert->arrow.isMoving)
                 return;
             updateNodePos(100, 200, 215);
             preInsert->setState(normal, 2000);
@@ -761,7 +951,6 @@ void LinkedList::updateArbitraryInsert() {
             indexNow = 0;
             step++;
             break;
-
     }
 }
 
@@ -844,6 +1033,11 @@ void LinkedList::updateArbitraryInsertImmediately() {
 }
 
 void LinkedList::deleteHead() {
+    if(head == nullptr){
+        alertBox.setMessage("List is empty");
+        alertBox.setEnabled(true);
+        return;
+    }
     saveListState();
     isPausing = false;
 
@@ -872,7 +1066,8 @@ void LinkedList::updateDeleteHead() {
             code.setHighlight(0);
             deletedNode->setState(red, 2000);
             head = head->next;
-            head->prev = nullptr;
+            if(head)
+                head->prev = nullptr;
             deletedNode->phase = 1;
             step++;
             break;
@@ -881,12 +1076,13 @@ void LinkedList::updateDeleteHead() {
                 return;
             code.deHighlightAll();
             code.setHighlight(1);
-            head->setState(green, 2000);
+            if(head != nullptr)
+                head->setState(green, 2000);
             deletedNode->phase = 2;
             step++;
             break;
         case 2:
-            if(head->isFading)
+            if(head && head->isFading)
                 return;
             code.deHighlightAll();
             code.setHighlight(2);
@@ -900,7 +1096,8 @@ void LinkedList::updateDeleteHead() {
             delete deletedNode;
             deletedNode = nullptr;
             isDeletingHead = false;
-            head->setState(normal, 2000);
+            if(head != nullptr)
+                head->setState(normal, 2000);
             updateNodePos(100, 200, 215);
             step++;
             break;
@@ -946,6 +1143,15 @@ void LinkedList::updateDeleteHeadImmediately() {
 }
 
 void LinkedList::deleteTail() {
+    if(head == nullptr){
+        alertBox.setMessage("List is empty");
+        alertBox.setEnabled(true);
+        return;
+    }
+    if(head == tail){
+        deleteHead();
+        return;
+    }
     saveListState();
     isPausing = false;
 
@@ -958,9 +1164,9 @@ void LinkedList::deleteTail() {
 
     code.setText({
         "pre = head, del = head.next",
-        "while (del.next != null)",
+        "while (del.next != nullptr)",
         "  pre = pre.next",
-        "pre.next = null",
+        "pre.next = nullptr",
         "delete del, tail = pre"
     });
     code.deHighlightAll();
@@ -1088,11 +1294,22 @@ void LinkedList::updateDeleteTailImmediately() {
 }
 
 void LinkedList::deleteArbitrary(int index) {
+    if(index == 0){
+        deleteHead();
+        return;
+    }
+    if(index == size-1){
+        deleteTail();
+        return;
+    }
+    if(index<=0 || index>=size-1){
+        alertBox.setMessage("Index out of range");
+        alertBox.setEnabled(true);
+        return;
+    }
+
     saveListState();
     isPausing = false;
-
-    if(index<=0 || index>=size-1)
-        return;
 
     code.setText({
         "pre = head",
@@ -1263,12 +1480,14 @@ void LinkedList::updateDeleteArbitraryImmediately() {
 }
 
 void LinkedList::rewind() {
-    if(!(isSearching || isInsertingHead || isInsertingTail || isInserting || isDeletingHead || isDeletingTail || isDeletingArbitrary))
+    if(!(isSearching || isInsertingHead || isInsertingTail || isInserting || isDeletingHead || isDeletingTail || isDeletingArbitrary || isUpdating))
         return;
     moveToStep(step-2);
     isPausing = false;
     if(isSearching)
         updateSearch();
+    else if(isUpdating)
+        updateUpdateNode();
     else if(isInsertingHead)
         updateInsertHead();
     else if(isInsertingTail)
@@ -1285,12 +1504,14 @@ void LinkedList::rewind() {
 }
 
 void LinkedList::fastForward() {
-    if(!(isSearching || isInsertingHead || isInsertingTail || isInserting || isDeletingHead || isDeletingTail || isDeletingArbitrary))
+    if(!(isSearching || isInsertingHead || isInsertingTail || isInserting || isDeletingHead || isDeletingTail || isDeletingArbitrary || isUpdating))
         return;
     moveToStep(step);
     isPausing = false;
     if (isSearching)
         updateSearch();
+    else if(isUpdating)
+        updateUpdateNode();
     else if (isInsertingHead)
         updateInsertHead();
     else if (isInsertingTail)
@@ -1329,6 +1550,22 @@ void LinkedList::moveToStep(int targetStep) {
         code.setHighlight(1);
         while(step < target && isSearching){
             updateSearchImmediately();
+        }
+    }
+    if(isUpdating){
+        loadListState();
+        cur = head;
+        int target = targetStep;
+
+        indexNow = 0;
+        cur = head;
+
+        step = 0;
+        code.deHighlightAll();
+        code.setHighlight(0);
+        code.setHighlight(1);
+        while(step < target && isUpdating){
+            updateUpdateNodeImmediately();
         }
     }
     if(isInsertingHead){

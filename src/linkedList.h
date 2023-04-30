@@ -4,22 +4,28 @@
 #include "node.h"
 #include "codeFrame.h"
 #include "FileSelectionDialog.h"
+#include "AlertBox.h"
 
 class LinkedList {
 public:
     LinkedList();
     ~LinkedList();
+
+    void onEvent(sf::Event event);
+
     void deleteList();
-    void createRandom(int sz);
+
+    virtual void createRandom(int sz);
     void createUserInput(std::string input);
     void createFromFile();
 
-    void createList(std::vector<int> v);
+    virtual void createList(std::vector<int> v);
 
     int getSize();
 
     void saveListState();
-    void loadListState();
+
+    virtual void loadListState();
 
     void refreshList();
     void refreshListPos();
@@ -27,6 +33,10 @@ public:
     void search(int target);
     void updateSearch();
     void updateSearchImmediately();
+
+    void updateNode(int index, int value);
+    void updateUpdateNode();
+    void updateUpdateNodeImmediately();
 
     void draw(sf::RenderWindow& window);
     void update();
@@ -38,28 +48,36 @@ public:
     bool isArrowMoving();
 
     void insertToHead(int value);
-    void updateInsertHead();
-    void updateInsertHeadImmediately();
+
+    virtual void updateInsertHead();
+
+    virtual void updateInsertHeadImmediately();
 
     void insertToTail(int value);
-    void updateInsertTail();
-    void updateInsertTailImmediately();
+
+    virtual void updateInsertTail();
+
+    virtual void updateInsertTailImmediately();
 
     void insertArbitrary(int value, int index);
-    void updateArbitraryInsert();
-    void updateArbitraryInsertImmediately();
 
-    void deleteHead();
+    virtual void updateArbitraryInsert();
+
+    virtual void updateArbitraryInsertImmediately();
+
+    virtual void deleteHead();
     void updateDeleteHead();
     void updateDeleteHeadImmediately();
 
-    void deleteTail();
+    virtual void deleteTail();
     void updateDeleteTail();
     void updateDeleteTailImmediately();
 
-    void deleteArbitrary(int index);
-    void updateDeleteArbitrary();
-    void updateDeleteArbitraryImmediately();
+    virtual void deleteArbitrary(int index);
+
+    virtual void updateDeleteArbitrary();
+
+    virtual void updateDeleteArbitraryImmediately();
 
     void rewind();
     void fastForward();
@@ -73,38 +91,45 @@ public:
     int size;
 
     bool isPausing;
+
+    AlertBox alertBox;
 private:
     std::vector<int> stringToVector(std::string input);
+    FileDialog openDialog;
+
+protected:
+    node* afterInsert;
+    std::vector<int> list;
+    node* insertNode;
+    bool isInserting;
+    int phase;
+    bool isInsertingHead;
+    CodeFrame code;
+    int insertIndex;
+    node* preInsert;
+    int step;
 
     node* cur;
-    CodeFrame code;
     int searchTarget;
     bool isSearching;
 
+    int updateIndex;
+    int updateValue;
+    bool isUpdating;
+
     int insertValue;
-    int insertIndex;
-    node* preInsert;
-    node* afterInsert;
-    node* insertNode;
     int indexNow;
-    bool isInserting;
-    bool isInsertingHead;
     bool isInsertingTail;
-    int phase;
 
     node* deletedNode;
     bool isDeletingHead;
 
     bool isDeletingTail;
     node* preDelete;
+    node* afterDelete;
 
     bool isDeletingArbitrary;
     int deleteIndex;
-
-    int step;
-    FileDialog openDialog;
-
-    std::vector<int> list;
 };
 
 #endif //CSC10002_DATA_STRUCTURE_VISUALIZER_LINKEDLIST_H

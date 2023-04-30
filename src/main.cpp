@@ -1,5 +1,6 @@
 #include "mainMenu.h"
 #include "displayLinkedList.h"
+#include "displayDoublyLinkedList.h"
 
 
 int main(){
@@ -19,6 +20,7 @@ int main(){
 
     mainMenu mainMenu(app);
     displayLinkedList displayLinkedList(app);
+    displayDoublyLinkedList displayDoublyLinkedList(app);
 
     windowType nowDisplay;
     while(app.isOpen()){
@@ -30,6 +32,9 @@ int main(){
                 break;
             case singlyLinkedListWindow:
                 nowDisplay = displayLinkedList.mainloop(app);
+                break;
+            case doublyLinkedListWindow:
+                nowDisplay = displayDoublyLinkedList.mainloop(app);
                 break;
         }
     }

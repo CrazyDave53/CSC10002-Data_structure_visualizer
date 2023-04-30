@@ -7,8 +7,12 @@ displayLinkedList::displayLinkedList(sf::RenderWindow &window):
     mediaBar(menu),
     createMenu(menu, "Create"),
     searchMenu(menu, "Search"),
+    updateMenu(menu, "Update"),
     insertMenu(menu, "Insert"),
     deleteMenu(menu, "Delete"),
+
+    linkedList(),
+    buttonBG(),
 
     createRandomFrame(),
     createRandom(),
@@ -22,11 +26,12 @@ displayLinkedList::displayLinkedList(sf::RenderWindow &window):
     createUserInputFrame(),
     createUserInput(),
 
-
     inputSearchValue(),
     goSearch(),
-    buttonBG(),
-    linkedList(),
+
+    inputUpdateIndex(),
+    inputUpdateValue(),
+    goUpdate(),
 
     insertHead(),
     insertTail(),
@@ -50,7 +55,9 @@ displayLinkedList::displayLinkedList(sf::RenderWindow &window):
     deleteFrame(),
     goDelete(),
 
-    bg()
+    bg(),
+    changeWindow(),
+    backToMenu()
 {
     menu.setPosition(100,600);
     buttonBG.loadFromFile("./assets/button/newbutton.png");
@@ -173,6 +180,35 @@ displayLinkedList::displayLinkedList(sf::RenderWindow &window):
             if(!inputSearchValue->getText().toAnsiString().empty()){
                 try{
                     linkedList.search(std::stoi(inputSearchValue->getText().toAnsiString()));
+                }catch(std::invalid_argument){
+                    //do nothing
+                }
+            }
+        });
+    });
+    updateMenu.mainButton->setCallback([this]{
+        updateMenu.deleteFrame();
+        //init
+        updateMenu.frame = nullptr;
+        inputUpdateIndex = nullptr;
+        inputUpdateValue = nullptr;
+        goUpdate = nullptr;
+
+        updateMenu.frame = updateMenu.mainframe->addHBoxLayout();
+        inputUpdateIndex = new gui::TextBox(80);
+        inputUpdateIndex->setMaxLength(1);
+        inputUpdateIndex->setPlaceholder("Index");
+        updateMenu.frame->add(inputUpdateIndex);
+
+        inputUpdateValue = new gui::TextBox(80);
+        inputUpdateValue->setMaxLength(2);
+        inputUpdateValue->setPlaceholder("Value");
+        updateMenu.frame->add(inputUpdateValue);
+
+        goUpdate = updateMenu.frame->addButton("GO", [this]{
+            if(!inputUpdateIndex->getText().toAnsiString().empty() && !inputUpdateValue->getText().toAnsiString().empty()){
+                try{
+                    linkedList.updateNode(std::stoi(inputUpdateIndex->getText().toAnsiString()), std::stoi(inputUpdateValue->getText().toAnsiString()));
                 }catch(std::invalid_argument){
                     //do nothing
                 }
@@ -376,10 +412,38 @@ displayLinkedList::displayLinkedList(sf::RenderWindow &window):
             linkedList.pause();
     });
 
+    changeWindow = new gui::OptionsBox<windowType>();
+    changeWindow->addItem("Singly Linked List",singlyLinkedListWindow);
+    changeWindow->addItem("Doubly Linked List",doublyLinkedListWindow);
+    changeWindow->addItem("Circular Linked List",circularLinkedListWindow);
+    changeWindow->addItem("Stack",stackWindow);
+    changeWindow->addItem("Queue",queueWindow);
+
+    changeWindow->selectItem(0);
+    changeWindow->setCallback([this](){
+        nextWindow = changeWindow->getSelectedValue();
+    });
+
+    menu.add(changeWindow);
+    changeWindow->setPosition(sf::Vector2f {10,10});
+
+    backToMenu = new gui::SpriteButton(buttonBG, "Back to Menu");
+    backToMenu->setCallback([this]{
+        nextWindow = mainMenuWindow;
+    });
+    menu.add(backToMenu);
+    backToMenu->setPosition(sf::Vector2f {1700,10} - menu.getPosition());
+
+
+
 //    mediaBar.m_backwardButton->setPosition(sf::Vector2f {860,1000} - mediaBar.m_mediaBar->getPosition() - menu.getPosition());
 //    mediaBar.m_playButton->setPosition(sf::Vector2f {960,1000} - mediaBar.m_mediaBar->getPosition() - menu.getPosition());
 //    mediaBar.m_forwardButton->setPosition(sf::Vector2f {1060,1000} - mediaBar.m_mediaBar->getPosition() - menu.getPosition());
 
+
+}
+
+displayLinkedList::~displayLinkedList() {
 
 }
 
@@ -394,6 +458,7 @@ windowType displayLinkedList::mainloop(sf::RenderWindow &window) {
         {
             // Send events to menu
             menu.onEvent(event);
+            linkedList.onEvent(event);
             if (event.type == sf::Event::Closed)
                 window.close();
         }
@@ -408,6 +473,10 @@ windowType displayLinkedList::mainloop(sf::RenderWindow &window) {
             searchMenu.deleteFrame();
             searchMenu.mainframe->recomputeGeometry();
 //            menu.recomputeGeometry();
+        }
+        if(!updateMenu.mainframe->isFocused()){
+            updateMenu.deleteFrame();
+            updateMenu.mainframe->recomputeGeometry();
         }
         if(!insertMenu.mainframe->isFocused()){
             insertMenu.deleteFrame();
@@ -425,6 +494,9 @@ windowType displayLinkedList::mainloop(sf::RenderWindow &window) {
         mediaBar.m_backwardButton->setPosition(sf::Vector2f {860,1000} - menu.getPosition());
         mediaBar.m_playButton->setPosition(sf::Vector2f {960,1000} - menu.getPosition());
         mediaBar.m_forwardButton->setPosition(sf::Vector2f {1060,1000} - menu.getPosition());
+
+        changeWindow->setPosition(sf::Vector2f {10,10} - menu.getPosition());
+        backToMenu->setPosition(sf::Vector2f {1750,10} - menu.getPosition());
 
         window.clear(gui::Theme::windowBgColor);
 

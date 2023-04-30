@@ -16,14 +16,17 @@
 class displayLinkedList{
 public:
     displayLinkedList(sf::RenderWindow& window);
+    ~displayLinkedList();
     windowType mainloop(sf::RenderWindow& window);
 private:
     gui::Menu menu;
     windowType nextWindow;
     popUpMenu createMenu;
     popUpMenu searchMenu;
+    popUpMenu updateMenu;
     popUpMenu insertMenu;
     popUpMenu deleteMenu;
+
     sf::Texture buttonBG;
 
     gui::VBoxLayout* createRandomFrame;
@@ -41,6 +44,10 @@ private:
 
     gui::TextBox* inputSearchValue;
     gui::Button* goSearch;
+
+    gui::TextBox* inputUpdateIndex;
+    gui::TextBox* inputUpdateValue;
+    gui::Button* goUpdate;
 
     gui::SpriteButton* insertHead;
     gui::SpriteButton* insertTail;
@@ -68,7 +75,9 @@ private:
     gui::TextBox* inputDeleteValue;
     gui::Button* goDelete;
 
+    gui::OptionsBox<windowType>* changeWindow;
 
+    gui::SpriteButton* backToMenu;
 
     LinkedList linkedList;
     backGround bg;

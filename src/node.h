@@ -18,6 +18,7 @@ enum circleState{
 class node: public movable, public transition{
 public:
     node(int number, float x, float y);
+    node(int number, float x, float y, bool reversedArrow);
     void draw(sf::RenderWindow& window);
     void setState(circleState newState, float duration);
     void setStateImmediately(circleState newState);
@@ -33,11 +34,17 @@ public:
     node *next;
     node *prev;
     Arrow arrow;
+    Arrow arrowReverse;
     int number;
     int phase;
     sf::Vector2f inPivot;
     sf::Vector2f outPivot;
+    sf::Vector2f reversedInPivot;
+    sf::Vector2f reversedOutPivot;
+    bool isDoubly;
 private:
+    void rotate(sf::Vector2f& vec, float angle);
+
     sf::Texture osuCircle;
     sf::Texture highlightCircle;
     sf::Texture greenCircle;
@@ -50,6 +57,7 @@ private:
     sf::Font font;
     std::string textString;
     circleState state;//0: normal, 1:blue, 2:red, 3:green
+
 };
 
 #endif //CSC10002_DATA_STRUCTURE_VISUALIZER_NODE_H

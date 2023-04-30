@@ -1,13 +1,15 @@
 #include "numberSprite.h"
+#include <iostream>
 
 numberSprite::numberSprite(int inputNumber, sf::Vector2f center):
     number(inputNumber)
 {
     if (inputNumber < 0 || inputNumber > 99) {
         inputNumber = rand() % 100;
-        number = rand() % 100;
+        number = inputNumber;
+        std::cout << "Invalid number input, random number generated: " << inputNumber << std::endl;
     }
-
+    std::cout << "Invalid number input, random number generated: " << inputNumber << std::endl;
     // Load digit images
     for (int i = 0; i < 10; i++) {
         m_digitTextures[i].loadFromFile("./assets/textures/score-" + std::to_string(i) + ".png");

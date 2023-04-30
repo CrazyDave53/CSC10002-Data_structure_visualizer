@@ -10,12 +10,13 @@ public:
     void draw(sf::RenderWindow& window);
     void update(sf::Vector2f center);
     void setOpacity(float opacity);
+
+    int number;
 private:
     sf::Texture m_digitTextures[10];
     sf::Sprite m_digitSprites[20];
     int tens;
     int ones;
-    int number;
 };
 
 #endif //CSC10002_DATA_STRUCTURE_VISUALIZER_NUMBERSPRITE_H

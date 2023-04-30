@@ -19,10 +19,6 @@ mediaBar::mediaBar(gui::Menu &menu) :
     m_forwardButton = new gui::SpriteButton(m_forwardButtonTexture, "");
     m_backwardButton = new gui::SpriteButton(m_backwardButtonTexture, "");
 
-//    m_mediaBar = menu.addHBoxLayout();
-//    m_mediaBar->add(m_backwardButton);
-//    m_mediaBar->add(m_playButton);
-//    m_mediaBar->add(m_forwardButton);
 
     menu.add(m_backwardButton);
     menu.add(m_playButton);
@@ -34,9 +30,9 @@ mediaBar::mediaBar(gui::Menu &menu) :
 }
 
 mediaBar::~mediaBar() {
-    delete m_playButton;
-    delete m_forwardButton;
-    delete m_backwardButton;
+    m_playButton = nullptr;
+    m_forwardButton = nullptr;
+    m_backwardButton = nullptr;
 }
 
 void mediaBar::draw(sf::RenderWindow& window) {

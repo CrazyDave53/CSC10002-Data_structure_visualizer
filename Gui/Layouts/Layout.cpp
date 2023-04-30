@@ -24,6 +24,7 @@ Layout::~Layout()
     while (widget != nullptr)
     {
         const Widget* next = widget->m_next;
+        std::cout << "delete widget" << widget << std::endl;
         delete widget;
         widget = next;
     }
@@ -55,12 +56,12 @@ void Layout::removeLast() {
     if (widget->m_next == nullptr){
         delete widget;
         m_first = nullptr;
+        m_last = nullptr;  // add this line to update m_last
         return;
     }
     while (widget->m_next->m_next != nullptr){
         widget = widget->m_next;
     }
-    std::cout <<"delete: "<< widget->m_next << "\n";
     delete widget->m_next;
     widget->m_next = nullptr;
     m_last = widget;

@@ -1,23 +1,28 @@
 #include "node.h"
 
-node::node(int number, float x, float y):
-    osuCircle(),
-    highlightCircle(),
-    greenCircle(),
-    redCircle(),
-    circle(),
-    fadingCircle(),
-    inPivot(),
-    outPivot(),
-    text(),
-    next(),
-    prev(),
-    number(number),
-    numText(number,sf::Vector2f(x,y)),
-    arrow(inPivot,outPivot),
-    font(),
-    state(),
-    phase()
+node::node(int number, float x, float y, bool reversedArrow) :
+        osuCircle(),
+        highlightCircle(),
+        greenCircle(),
+        redCircle(),
+        circle(),
+        fadingCircle(),
+        inPivot(),
+        outPivot(),
+        reversedInPivot(),
+        reversedOutPivot(),
+        text(),
+        next(),
+        prev(),
+        number(number),
+        numText(number,sf::Vector2f(x,y)),
+        arrow(inPivot,outPivot),
+        arrowReverse(outPivot,inPivot),
+        font(),
+        state(),
+        phase(),
+        textString(),
+        isDoubly(reversedArrow)
 {
     pos.x = x;
     pos.y = y;
@@ -49,9 +54,17 @@ node::node(int number, float x, float y):
     update();
 }
 
+node::node(int number, float x, float y) :
+   node(number,x,y,false)
+{
+
+}
+
+
 void node::update() {
     updatePos();
     updateFading();
+    numText.number = number;
 
     circle.setPosition(pos);
     fadingCircle.setPosition(pos);
@@ -61,22 +74,46 @@ void node::update() {
 }
 
 void node::updateArrow() {
-    outPivot.x = circle.getGlobalBounds().left + circle.getGlobalBounds().width;
-    outPivot.y = circle.getGlobalBounds().top + circle.getGlobalBounds().height/2.0f;
+    if(isDoubly){
+        if(prev != nullptr) {
+            float distance = sqrt(pow(prev->pos.x - pos.x, 2) + pow(prev->pos.y - pos.y, 2));
+            sf::Vector2f inVec = (prev->pos - pos) / (distance) * circle.getGlobalBounds().width / 2.0f;
+            rotate(inVec, 15 * M_PI / 180);
+            inPivot = inVec + pos;
+            rotate(inVec, -30 * M_PI / 180);
+            reversedOutPivot = inVec + pos;
+            arrowReverse.setStart(reversedOutPivot);
+            arrowReverse.setEnd(prev->reversedInPivot);
+            arrowReverse.setThickness(5);
+            arrowReverse.update();
+        }
+        if(next != nullptr){
+            float distance = sqrt(pow(next->pos.x - pos.x, 2) + pow(next->pos.y - pos.y, 2));
+            sf::Vector2f inVec = (next->pos - pos) / (distance) * circle.getGlobalBounds().width / 2.0f;
+            rotate(inVec, -15 * M_PI / 180);
+            outPivot = inVec + pos;
+            rotate(inVec, 30 * M_PI / 180);
+            reversedInPivot = inVec + pos;
+            arrow.setStart(outPivot);
+            arrow.setEnd(next->inPivot);
+            arrow.setThickness(5);
+            arrow.update();
+        }
+    } else{
+        outPivot.x = circle.getGlobalBounds().left + circle.getGlobalBounds().width;
+        outPivot.y = circle.getGlobalBounds().top + circle.getGlobalBounds().height/2.0f;
 
-    if(next != nullptr){
-        float distance = sqrt(pow(next->pos.x - pos.x, 2) + pow(next->pos.y - pos.y, 2));
-        outPivot = (next->pos - pos)/(distance)*circle.getGlobalBounds().width/2.0f + pos;
-        next->inPivot = (pos - next->pos)/(distance)*circle.getGlobalBounds().width/2.0f + next->pos;
-        arrow.setStart(outPivot);
-        arrow.setEnd(next->inPivot);
-        arrow.setThickness(5);
-//        arrow.setArrowSize(7);
-        arrow.update();
+        if(next != nullptr){
+            float distance = sqrt(pow(next->pos.x - pos.x, 2) + pow(next->pos.y - pos.y, 2));
+            outPivot = (next->pos - pos)/(distance)*circle.getGlobalBounds().width/2.0f + pos;
+            next->inPivot = (pos - next->pos)/(distance)*circle.getGlobalBounds().width/2.0f + next->pos;
+            arrow.setStart(outPivot);
+            arrow.setEnd(next->inPivot);
+            arrow.setThickness(5);
+            arrow.update();
+        }
     }
 }
-
-
 
 void node::draw(sf::RenderWindow &window) {
     update();
@@ -89,8 +126,11 @@ void node::draw(sf::RenderWindow &window) {
         arrow.update();
         arrow.draw(window);
     }
+    if(isDoubly && prev != nullptr){
+        arrowReverse.update();
+        arrowReverse.draw(window);
+    }
 }
-
 
 void node::updateFading() {
     updateOpacity();
@@ -113,6 +153,7 @@ void node::updateFading() {
     if(state == invisible){
         numText.setOpacity(opacity);
         arrow.setOpacity(opacity);
+        arrowReverse.setOpacity(opacity);
     }
 }
 
@@ -231,6 +272,21 @@ void node::setPosition(float x, float y) {
     startingPoint = {x,y};
     pos = startingPoint;
     endingPoint = startingPoint;
+}
+
+void node::rotate(sf::Vector2f& vec, float angle) {
+    // Get the length of the vector
+    float length = std::sqrt(vec.x * vec.x + vec.y * vec.y);
+
+    // Calculate the new angle of the vector
+    float newAngle = std::atan2(vec.y, vec.x) + angle;
+
+    // Calculate the new x and y components of the vector
+    float newX = length * std::cos(newAngle);
+    float newY = length * std::sin(newAngle);
+
+    // Return the rotated vector
+    vec = {newX, newY};
 }
 
 

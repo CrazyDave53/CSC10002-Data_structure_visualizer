@@ -12,8 +12,12 @@
 
 class FileDialog {
 public:
-    FileDialog();
-    bool ShowOpenFileDialog(std::string& fileContent);
+    explicit FileDialog(HWND hwnd = nullptr);
+    std::string ShowOpenFileDialog();
+
+private:
+    HWND hwnd_;
+    TCHAR szFileName_[MAX_PATH];
 };
 
 #endif //CSC10002_DATA_STRUCTURE_VISUALIZER_FILESELECTIONDIALOG_H

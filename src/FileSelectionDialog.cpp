@@ -1,41 +1,34 @@
 #include "FileSelectionDialog.h"
 
+FileDialog::FileDialog(HWND hwnd) : hwnd_(hwnd) {}
 
-FileDialog::FileDialog()
-{
-
-}
-
-bool FileDialog::ShowOpenFileDialog(std::string& fileContent) {
-    std::cout << "I wanna die \n";
-    char cwd[MAX_PATH];
-    GetCurrentDirectory(MAX_PATH, cwd);
-
-    TCHAR szFileName[MAX_PATH] = { 0 };
+std::string FileDialog::ShowOpenFileDialog() {
+    // Save the current working directory
+    char currentDir[MAX_PATH];
+    GetCurrentDirectory(MAX_PATH, currentDir);
 
     OPENFILENAME ofn;
     ZeroMemory(&ofn, sizeof(ofn));
     ofn.lStructSize = sizeof(ofn);
-    // ofn.hwndOwner = hwnd;
+    ofn.hwndOwner = hwnd_;
     ofn.lpstrFilter = _T("Text Files (*.txt)\0*.txt\0All Files (*.*)\0*.*\0");
-    ofn.lpstrFile = szFileName;
+    ofn.lpstrFile = szFileName_;
     ofn.nMaxFile = MAX_PATH;
     ofn.Flags = OFN_EXPLORER | OFN_FILEMUSTEXIST | OFN_HIDEREADONLY;
     ofn.lpstrDefExt = _T("txt");
-
+    std::string content;
     if (GetOpenFileName(&ofn) == TRUE) {
         // User selected a file
-        // selectedFile = std::string(szFileName);
         std::ifstream file(ofn.lpstrFile);
-        std::string line;
-        std::getline(file, line);
-        fileContent = line;
-
-        SetCurrentDirectory(cwd);
-        return true;
-    }
-    else {
+        getline(file, content);
+        file.close();
+        OutputDebugString(content.c_str());
+    } else {
         // User cancelled the dialog
-        return false;
+        content = "";
     }
+    // Restore the current working directory
+    SetCurrentDirectory(currentDir);
+
+    return content;
 }
