@@ -86,7 +86,7 @@ void LinkedList::createRandom(int sz) {
 void LinkedList::createUserInput(std::string input) {
     deleteList();
     std::vector<int> v = stringToVector(input);
-    if (v.size() > 9){
+    if (v.size() > 9) {
         v.resize(9);
         alertBox.setMessage("Warning: The input is too long, only the first 9 numbers will be used.");
         alertBox.setEnabled(true);
@@ -330,14 +330,14 @@ void LinkedList::search(int m_target) {
     searchTarget = m_target;
     isSearching = true;
     code.setText({
-                         "if empty, return NOT_FOUND",
-                         "index = 0, cur = head",
-                         "while(!cur)",
-                         "   if(cur.value == target)",
-                         "       return index",
-                         "   cur = cur.next, index++",
-                         "return NOT_FOUND"
-                 });
+             "if empty, return NOT_FOUND",
+             "index = 0, cur = head",
+             "while(!cur)",
+             "   if(cur.value == target)",
+             "       return index",
+             "   cur = cur.next, index++",
+             "return NOT_FOUND"
+     });
     code.setHighlight(0);
     code.setHighlight(1);
     head->setState(normal, 2000);
@@ -1237,6 +1237,7 @@ void LinkedList::updateDeleteTail() {
             delete deletedNode;
             deletedNode = nullptr;
             isDeletingTail = false;
+            preDelete = nullptr;
             updateNodePos(100, 200, 215);
             step++;
             break;

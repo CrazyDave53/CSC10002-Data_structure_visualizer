@@ -3,13 +3,16 @@
 
 #include <SFML/Graphics.hpp>
 #include "transition.h"
+#include "movable.h"
 
-class numberSprite : public transition{
+class numberSprite : public transition, public movable{
 public:
     numberSprite(int number, sf::Vector2f center);
     void draw(sf::RenderWindow& window);
     void update(sf::Vector2f center);
+    void update();
     void setOpacity(float opacity);
+    void loadTexture();
 
     int number;
 private:

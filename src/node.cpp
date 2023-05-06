@@ -252,7 +252,7 @@ void node::centerText() {
 //    std::cout << textRect.left << " " << textRect.top << " " << textRect.width << " " << textRect.height << std::endl;
     text.setOrigin(textRect.left + textRect.width/2.0f,
                    textRect.top  + textRect.height/2.0f);
-    text.setPosition(pos.x, pos.y - 100);
+    text.setPosition(pos.x, pos.y + 100);
 }
 
 void node::clearText() {
@@ -287,6 +287,10 @@ void node::rotate(sf::Vector2f& vec, float angle) {
 
     // Return the rotated vector
     vec = {newX, newY};
+}
+
+sf::Vector2f node::getSize() {
+    return {circle.getGlobalBounds().width, circle.getGlobalBounds().height};
 }
 
 

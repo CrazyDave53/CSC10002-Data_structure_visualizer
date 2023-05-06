@@ -1,6 +1,9 @@
 #include "mainMenu.h"
 #include "displayLinkedList.h"
 #include "displayDoublyLinkedList.h"
+#include "displayCircularLinkedList.h"
+
+#include "displayDynamicArray.h"
 
 
 int main(){
@@ -21,6 +24,10 @@ int main(){
     mainMenu mainMenu(app);
     displayLinkedList displayLinkedList(app);
     displayDoublyLinkedList displayDoublyLinkedList(app);
+    displayCircularLinkedList displayCircularLinkedList(app);
+
+    displayDynamicArray displayDynamicArray(app);
+
 
     windowType nowDisplay;
     while(app.isOpen()){
@@ -35,6 +42,12 @@ int main(){
                 break;
             case doublyLinkedListWindow:
                 nowDisplay = displayDoublyLinkedList.mainloop(app);
+                break;
+            case circularLinkedListWindow:
+                nowDisplay = displayCircularLinkedList.mainloop(app);
+                break;
+            case dynamicArrayWindow:
+                nowDisplay = displayDynamicArray.mainloop(app);
                 break;
         }
     }

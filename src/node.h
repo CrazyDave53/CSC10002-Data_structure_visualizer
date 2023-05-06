@@ -42,6 +42,8 @@ public:
     sf::Vector2f reversedInPivot;
     sf::Vector2f reversedOutPivot;
     bool isDoubly;
+
+    sf::Vector2f getSize();
 private:
     void rotate(sf::Vector2f& vec, float angle);
 

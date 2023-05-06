@@ -417,6 +417,8 @@ displayDoublyLinkedList::displayDoublyLinkedList(sf::RenderWindow& window) :
     changeWindow->addItem("Circular Linked List",circularLinkedListWindow);
     changeWindow->addItem("Stack",stackWindow);
     changeWindow->addItem("Queue",queueWindow);
+    changeWindow->addItem("Static Array",staticArrayWindow);
+    changeWindow->addItem("Dynamic Array",dynamicArrayWindow);
 
     changeWindow->selectItem(1);
     changeWindow->setCallback([this](){

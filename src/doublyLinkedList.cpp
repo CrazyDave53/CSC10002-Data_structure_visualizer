@@ -529,10 +529,14 @@ void DoublyLinkedList::deleteHead() {
          "head = head.next, head.prev = nullptr",
          "delete del",
      });
+    code.deHighlightAll();
+    code.setHighlight(0);
 }
 
 void DoublyLinkedList::deleteTail() {
     LinkedList::deleteTail();
+    code.deHighlightAll();
+    code.setHighlight(0);
 }
 
 void DoublyLinkedList::deleteArbitrary(int index) {
@@ -546,6 +550,8 @@ void DoublyLinkedList::deleteArbitrary(int index) {
          "delete del"
      });
     afterDelete = deletedNode->next;
+    code.deHighlightAll();
+    code.setHighlight(0);
 }
 
 void DoublyLinkedList::updateDeleteArbitrary() {

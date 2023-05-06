@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="Statistic">
+    <option name="excludedDirectories">
+      <list>
+        <option value="$PROJECT_DIR$/Gui" />
+        <option value="$PROJECT_DIR$/cmake-build-release" />
+        <option value="$PROJECT_DIR$/cmake-build-relwithdebinfo" />
+        <option value="$PROJECT_DIR$/cmake-build-debug-visual-studio" />
+        <option value="$PROJECT_DIR$/cmake-build-debug-mingw" />
+        <option value="$PROJECT_DIR$/cmake-build-debug" />
+        <option value="$PROJECT_DIR$/example" />
+        <option value="$PROJECT_DIR$/fonts" />
+        <option value="$PROJECT_DIR$/Gui" />
+        <option value="$PROJECT_DIR$/headers" />
+        <option value="$PROJECT_DIR$/CSC10002-Data_structure_visualizer" />
+        <option value="$PROJECT_DIR$/assets" />
+        <option value="$PROJECT_DIR$/.idea" />
+      </list>
+    </option>
+  </component>
+</project>

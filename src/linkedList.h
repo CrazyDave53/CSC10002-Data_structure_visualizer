@@ -30,16 +30,19 @@ public:
     void refreshList();
     void refreshListPos();
 
-    void search(int target);
-    void updateSearch();
-    void updateSearchImmediately();
+    virtual void search(int target);
+
+    virtual void updateSearch();
+
+    virtual void updateSearchImmediately();
 
     void updateNode(int index, int value);
     void updateUpdateNode();
     void updateUpdateNodeImmediately();
 
-    void draw(sf::RenderWindow& window);
-    void update();
+    virtual void draw(sf::RenderWindow& window);
+
+    virtual void update();
 
     void updateNodePos(float x, float y, float offset);
     void updateArrow();
@@ -47,19 +50,19 @@ public:
     void updatePrev();
     bool isArrowMoving();
 
-    void insertToHead(int value);
+    virtual void insertToHead(int value);
 
     virtual void updateInsertHead();
 
     virtual void updateInsertHeadImmediately();
 
-    void insertToTail(int value);
+    virtual void insertToTail(int value);
 
     virtual void updateInsertTail();
 
     virtual void updateInsertTailImmediately();
 
-    void insertArbitrary(int value, int index);
+    virtual void insertArbitrary(int value, int index);
 
     virtual void updateArbitraryInsert();
 
