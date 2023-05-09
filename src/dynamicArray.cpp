@@ -77,6 +77,10 @@ DynamicArray::DynamicArray() :
     deleteNewArray();
 }
 
+void DynamicArray::onEvent(sf::Event event) {
+    alertBox.isCloseButtonPressed(event);
+}
+
 void DynamicArray::update() {
     updateText();
 

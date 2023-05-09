@@ -12,7 +12,10 @@ public:
     DynamicArray();
 
     void draw(sf::RenderWindow& window);
-    void update();
+
+    void onEvent(sf::Event event);
+
+    virtual void update();
     void updateSizeCapacity();
     void updateText();
 
@@ -53,14 +56,17 @@ public:
     void updateUpdateElement();
     void updateUpdateElementImmediately();
 
-    void insert(int index, int value);
-    void updateInsert();
-    void updateInsertImmediately();
+    virtual void insert(int index, int value);
+
+    virtual void updateInsert();
+
+    virtual void updateInsertImmediately();
     void insertToHead(int value);
     void insertToTail(int value);
 
     void deleteElement(int index);
-    void updateDeleteElement();
+
+    virtual void updateDeleteElement();
     void updateDeleteElementImmediately();
     void deleteHead();
     void deleteTail();
@@ -76,7 +82,7 @@ public:
     void moveToStep(int targetStep);
 
     bool isPausing;
-private:
+protected:
     std::vector<Cell> array;
     int arraySize;
     int arrayCapacity;

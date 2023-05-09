@@ -3,6 +3,8 @@
 #include "displayDoublyLinkedList.h"
 #include "displayCircularLinkedList.h"
 
+#include "displayQueue.h"
+#include "displayStaticArray.h"
 #include "displayDynamicArray.h"
 
 
@@ -25,11 +27,14 @@ int main(){
     displayLinkedList displayLinkedList(app);
     displayDoublyLinkedList displayDoublyLinkedList(app);
     displayCircularLinkedList displayCircularLinkedList(app);
-
+    displayQueue displayQueue(app);
+    displayStaticArray displayStaticArray(app);
     displayDynamicArray displayDynamicArray(app);
 
 
     windowType nowDisplay;
+    nowDisplay = mainMenuWindow;
+
     while(app.isOpen()){
         switch(nowDisplay){
             case mainMenuWindow:
@@ -45,6 +50,12 @@ int main(){
                 break;
             case circularLinkedListWindow:
                 nowDisplay = displayCircularLinkedList.mainloop(app);
+                break;
+            case queueWindow:
+                nowDisplay = displayQueue.mainloop(app);
+                break;
+            case staticArrayWindow:
+                nowDisplay = displayStaticArray.mainloop(app);
                 break;
             case dynamicArrayWindow:
                 nowDisplay = displayDynamicArray.mainloop(app);

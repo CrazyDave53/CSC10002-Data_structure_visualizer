@@ -82,12 +82,19 @@ public:
 
     virtual void updateDeleteArbitraryImmediately();
 
+    void clear();
+    void updateClear();
+    void updateClearImmediately();
+
     void rewind();
     void fastForward();
 
     void pause();
     void resume();
     void moveToStep(int targetStep);
+
+    void seek();
+    void updateSeek();
 
     node *head;
     node *tail;
@@ -133,6 +140,9 @@ protected:
 
     bool isDeletingArbitrary;
     int deleteIndex;
+
+    bool isClearing;
+    bool isSeeking;
 };
 
 #endif //CSC10002_DATA_STRUCTURE_VISUALIZER_LINKEDLIST_H

@@ -17,6 +17,11 @@ LinkedList::LinkedList() :
         isInsertingHead(),
         isInsertingTail(),
         isUpdating(),
+        isClearing(),
+        isSeeking(),
+        afterDelete(),
+        updateValue(),
+        updateIndex(),
         indexNow(),
         phase(),
         deletedNode(),
@@ -186,7 +191,7 @@ void LinkedList::refreshListPos() {
     }
 }
 
-void LinkedList::draw(sf::RenderWindow& window) {
+void LinkedList::draw(sf::RenderWindow &window) {
     update();
     node *cur = head;
     while(cur != nullptr){
@@ -198,7 +203,7 @@ void LinkedList::draw(sf::RenderWindow& window) {
     if(deletedNode != nullptr)
         deletedNode->draw(window);
 
-    if(isSearching || isInserting || isInsertingHead || isInsertingTail || isDeletingHead || isDeletingTail || isDeletingArbitrary || isUpdating){
+    if(isSearching || isInserting || isInsertingHead || isInsertingTail || isDeletingHead || isDeletingTail || isDeletingArbitrary || isUpdating || isClearing || isSeeking){
         sf::Vector2f pos = sf::Vector2f(1920 - 100, 1080 - 100) - code.getSize();
         code.setPosition(pos.x, pos.y);
         code.draw(window);
@@ -219,7 +224,6 @@ void LinkedList::deleteList() {
 }
 
 void LinkedList::update() {
-    std::cout<<"Step "<<step<<std::endl;
     updatePrev();
     updateArrow();
     if(!isPausing){
@@ -239,16 +243,13 @@ void LinkedList::update() {
             updateDeleteTail();
         if(isDeletingArbitrary)
             updateDeleteArbitrary();
+        if(isSeeking)
+            updateSeek();
+        if(isClearing)
+            updateClear();
     }
-    if(!(isSearching || isInserting || isInsertingHead || isInsertingTail || isDeletingHead || isDeletingTail || isDeletingArbitrary || isUpdating))
+    if(!(isSearching || isInserting || isInsertingHead || isInsertingTail || isDeletingHead || isDeletingTail || isDeletingArbitrary || isUpdating || isSeeking || isClearing))
         refreshList();
-
-//    if(deletedNode != nullptr){
-//        deletedNode->update();
-//    }
-//    if(insertNode != nullptr){
-//        insertNode->update();
-//    }
 }
 
 void LinkedList::updatePrev() {
@@ -717,6 +718,10 @@ void LinkedList::insertToTail(int value) {
     if(size >= 9){
         alertBox.setMessage("The list only supports 9 nodes");
         alertBox.setEnabled(true);
+        return;
+    }
+    if(size == 0){
+        insertToHead(value);
         return;
     }
     if(tail == nullptr){
@@ -1480,8 +1485,159 @@ void LinkedList::updateDeleteArbitraryImmediately() {
     }
 }
 
+void LinkedList::clear() {
+    if(head == nullptr)
+        return;
+    saveListState();
+    isPausing = false;
+    code.setText({
+        "while (head != nullptr)",
+        "  tmp = head, head = head.next",
+        "  delete tmp",
+    });
+    cur = head;
+    code.deHighlightAll();
+    isClearing = true;
+    step = 0;
+    size = 0;
+}
+
+void LinkedList::updateClear() {
+    if(!isClearing)
+        return;
+
+    if(head == nullptr) {
+        isClearing = false;
+        return;
+    }
+
+    switch(cur->phase){
+        case 0:
+            if(cur->isFading)
+                return;
+            cur->setState(highlighted, 2000);
+            cur->phase = 1;
+            code.deHighlightAll();
+            code.setHighlight(0);
+            step++;
+            break;
+        case 1:
+            if(cur->isFading)
+                return;
+            cur->setState(red, 2000);
+            cur->phase = 2;
+            code.deHighlightAll();
+            code.setHighlight(1);
+            step++;
+            break;
+        case 2:
+            if(cur->isFading)
+                return;
+            code.deHighlightAll();
+            code.setHighlight(2);
+            cur->setState(invisible, 2000);
+            cur->phase = 3;
+            step++;
+            break;
+        case 3:
+            if(cur->isFading)
+                return;
+            cur = cur->next;
+            delete head;
+            head = cur;
+
+            step++;
+            break;
+
+    }
+}
+
+void LinkedList::updateClearImmediately() {
+    if(!isClearing)
+        return;
+
+    if(head == nullptr) {
+        isClearing = false;
+        return;
+    }
+
+    switch(cur->phase){
+        case 0:
+            cur->setStateImmediately(highlighted);
+            cur->phase = 1;
+            code.deHighlightAll();
+            code.setHighlight(0);
+            step++;
+            break;
+        case 1:
+            cur->setStateImmediately(red);
+            cur->phase = 2;
+            code.deHighlightAll();
+            code.setHighlight(1);
+            step++;
+            break;
+        case 2:
+            cur->setStateImmediately(invisible);
+            cur->phase = 3;
+            code.deHighlightAll();
+            code.setHighlight(2);
+            step++;
+            break;
+        case 3:
+            cur = cur->next;
+            delete head;
+            head = cur;
+
+            step++;
+            break;
+    }
+}
+
+void LinkedList::seek() {
+    isPausing = false;
+
+    code.setText({
+                         "if empty, return NOT_FOUND",
+                         "return head.item"
+                 });
+    phase = 0;
+
+    isSeeking = true;
+}
+
+void LinkedList::updateSeek() {
+    if(!isSeeking)
+        return;
+
+    switch(phase) {
+        case 0:
+            code.deHighlightAll();
+            code.setHighlight(0);
+            if(head == nullptr) {
+                isSeeking = false;
+            }
+            else {
+                head->setState(green, 2000);
+                phase = 1;
+            }
+        case 1:
+            if(head->isFading){
+                return;
+            }
+            code.deHighlightAll();
+            code.setHighlight(1);
+            head->setState(normal, 10000);
+        case 2:
+            if(head->isFading){
+                return;
+            }
+            isSeeking = false;
+            break;
+    }
+}
+
 void LinkedList::rewind() {
-    if(!(isSearching || isInsertingHead || isInsertingTail || isInserting || isDeletingHead || isDeletingTail || isDeletingArbitrary || isUpdating))
+    if(!(isSearching || isInsertingHead || isInsertingTail || isInserting || isDeletingHead || isDeletingTail || isDeletingArbitrary || isUpdating || isClearing))
         return;
     moveToStep(step-2);
     isPausing = false;
@@ -1501,11 +1657,13 @@ void LinkedList::rewind() {
         updateDeleteTail();
     else if(isDeletingArbitrary)
         updateDeleteArbitrary();
+    else if(isClearing)
+        updateClear();
     isPausing = true;
 }
 
 void LinkedList::fastForward() {
-    if(!(isSearching || isInsertingHead || isInsertingTail || isInserting || isDeletingHead || isDeletingTail || isDeletingArbitrary || isUpdating))
+    if(!(isSearching || isInsertingHead || isInsertingTail || isInserting || isDeletingHead || isDeletingTail || isDeletingArbitrary || isUpdating || isClearing))
         return;
     moveToStep(step);
     isPausing = false;
@@ -1525,6 +1683,8 @@ void LinkedList::fastForward() {
         updateDeleteTail();
     else if (isDeletingArbitrary)
         updateDeleteArbitrary();
+    else if (isClearing)
+        updateClear();
     isPausing = true;
 }
 
@@ -1643,12 +1803,24 @@ void LinkedList::moveToStep(int targetStep) {
         preDelete = head;
         deletedNode = head->next;
 
-
         code.deHighlightAll();
         code.setHighlight(0);
         step = 0;
         while(step < target && isDeletingArbitrary){
             updateDeleteArbitraryImmediately();
+        }
+    }
+    if(isClearing){
+        loadListState();
+        phase = 0;
+        int target = targetStep;
+        step = 0;
+        cur = head;
+        code.deHighlightAll();
+        code.setHighlight(0);
+
+        while(step < target && isClearing){
+            updateClearImmediately();
         }
     }
 

@@ -415,8 +415,7 @@ displayDynamicArray::displayDynamicArray(sf::RenderWindow &window):
         goAllocate = allocateMenu.frame->addButton("GO",[this]{
             if(!inputAllocateSize->getText().toAnsiString().empty()){
                 try{
-//                      dynamicArray.allocateNew(std::stoi(inputAllocateSize->getText().toAnsiString()));
-                    dynamicArray.allocateNew(std::stoi(inputAllocateSize->getText().toAnsiString()));
+                    dynamicArray.allocate(std::stoi(inputAllocateSize->getText().toAnsiString()));
                 }catch(std::invalid_argument){
                     //do nothing
                 }
@@ -485,7 +484,7 @@ windowType displayDynamicArray::mainloop(sf::RenderWindow &window) {
         {
             // Send events to menu
             menu.onEvent(event);
-//            dynamicArray.onEvent(event);
+            dynamicArray.onEvent(event);
             if (event.type == sf::Event::Closed)
                 window.close();
         }
