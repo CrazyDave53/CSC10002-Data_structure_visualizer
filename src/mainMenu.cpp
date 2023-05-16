@@ -2,19 +2,22 @@
 
 mainMenu::mainMenu(sf::RenderWindow &window) :
     menu(window),
-    buttonBG(),
+    playBG(),
+    exitBG(),
     playButton(),
     exitButton(),
-    nextWindow(mainMenuWindow)
+    nextWindow(mainMenuWindow),
+    bg()
 {
     menu.setPosition(0,0);
 
-    buttonBG.loadFromFile("./assets/textures/themed-button.png");
-    playButton = new gui::SpriteButton(buttonBG,"Play");
-    exitButton = new gui::SpriteButton(buttonBG,"Exit");
+    playBG.loadFromFile("./assets/button/menuPlay.png");
+    exitBG.loadFromFile("./assets/button/menuExit.png");
+    playButton = new gui::SpriteButton(playBG);
+    exitButton = new gui::SpriteButton(exitBG);
 
     playButton->setCallback([&](){
-        nextWindow = singlyLinkedListWindow;
+        nextWindow = selectingMenuWindow;
     });
 
     exitButton->setCallback([&](){
@@ -27,7 +30,12 @@ mainMenu::mainMenu(sf::RenderWindow &window) :
     sf::Vector2f size;
     size = playButton->getSize();
     playButton->setPosition(1920/2 - size.x/2,1080/2 - size.y/2);
-    exitButton->setPosition(1920/2 - size.x/2,1080/2 - size.y/2 + 200);
+    exitButton->setPosition(1920/2 - size.x/2,1080/2 - size.y/2 + 300);
+
+    TitleTexture.loadFromFile("./assets/textures/Title.png");
+    TitleSprite.setTexture(TitleTexture);
+    TitleSprite.setOrigin(TitleTexture.getSize().x/2, TitleTexture.getSize().y/2);
+    TitleSprite.setPosition(1920/2, 200);
 }
 
 windowType mainMenu::mainloop(sf::RenderWindow &window) {
@@ -45,7 +53,9 @@ windowType mainMenu::mainloop(sf::RenderWindow &window) {
 
         // Clear screen
         window.clear(gui::Theme::windowBgColor);
+        bg.draw(window);
         window.draw(menu);
+        window.draw(TitleSprite);
         // Update the window
         window.display();
     }

@@ -57,12 +57,15 @@ void Layout::removeLast() {
         delete widget;
         m_first = nullptr;
         m_last = nullptr;  // add this line to update m_last
+        m_hover = nullptr;
         return;
     }
     while (widget->m_next->m_next != nullptr){
         widget = widget->m_next;
     }
     delete widget->m_next;
+    if(m_hover == widget->m_next)
+        m_hover = nullptr;
     widget->m_next = nullptr;
     m_last = widget;
     return;

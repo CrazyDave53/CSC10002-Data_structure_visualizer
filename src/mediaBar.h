@@ -15,6 +15,9 @@ public:
     gui::SpriteButton* m_forwardButton;
     gui::SpriteButton* m_backwardButton;
 
+    gui::Slider* m_speedSlider;
+    sf::Text* m_speedText;
+
     gui::HBoxLayout* m_mediaBar;
 private:
 

@@ -451,6 +451,7 @@ displayLinkedList::~displayLinkedList() {
 
 windowType displayLinkedList::mainloop(sf::RenderWindow &window) {
     nextWindow = singlyLinkedListWindow;
+    changeWindow->selectItem(0);
     while (window.isOpen() && nextWindow == singlyLinkedListWindow)
     {
         sf::Event event;
@@ -496,6 +497,7 @@ windowType displayLinkedList::mainloop(sf::RenderWindow &window) {
         mediaBar.m_backwardButton->setPosition(sf::Vector2f {860,1000} - menu.getPosition());
         mediaBar.m_playButton->setPosition(sf::Vector2f {960,1000} - menu.getPosition());
         mediaBar.m_forwardButton->setPosition(sf::Vector2f {1060,1000} - menu.getPosition());
+        mediaBar.m_speedSlider->setPosition(sf::Vector2f {100,1000} - menu.getPosition());
 
         changeWindow->setPosition(sf::Vector2f {10,10} - menu.getPosition());
         backToMenu->setPosition(sf::Vector2f {1750,10} - menu.getPosition());

@@ -475,6 +475,7 @@ displayDynamicArray::~displayDynamicArray() {
 
 windowType displayDynamicArray::mainloop(sf::RenderWindow &window) {
     nextWindow = dynamicArrayWindow;
+    changeWindow->selectItem(6);
     while (window.isOpen() && nextWindow == dynamicArrayWindow)
     {
         sf::Event event;
@@ -520,6 +521,7 @@ windowType displayDynamicArray::mainloop(sf::RenderWindow &window) {
         mediaBar.m_backwardButton->setPosition(sf::Vector2f {860,1000} - menu.getPosition());
         mediaBar.m_playButton->setPosition(sf::Vector2f {960,1000} - menu.getPosition());
         mediaBar.m_forwardButton->setPosition(sf::Vector2f {1060,1000} - menu.getPosition());
+        mediaBar.m_speedSlider->setPosition(sf::Vector2f {100,1000} - menu.getPosition());
 
         changeWindow->setPosition(sf::Vector2f {10,10} - menu.getPosition());
         backToMenu->setPosition(sf::Vector2f {1750,10} - menu.getPosition());

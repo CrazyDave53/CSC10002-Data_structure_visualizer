@@ -443,6 +443,7 @@ displayDoublyLinkedList::~displayDoublyLinkedList() {
 
 windowType displayDoublyLinkedList::mainloop(sf::RenderWindow &window) {
     nextWindow = doublyLinkedListWindow;
+    changeWindow->selectItem(1);
     while (window.isOpen() && nextWindow == doublyLinkedListWindow)
     {
         sf::Event event;
@@ -488,6 +489,7 @@ windowType displayDoublyLinkedList::mainloop(sf::RenderWindow &window) {
         mediaBar.m_backwardButton->setPosition(sf::Vector2f {860,1000} - menu.getPosition());
         mediaBar.m_playButton->setPosition(sf::Vector2f {960,1000} - menu.getPosition());
         mediaBar.m_forwardButton->setPosition(sf::Vector2f {1060,1000} - menu.getPosition());
+        mediaBar.m_speedSlider->setPosition(sf::Vector2f {100,1000} - menu.getPosition());
 
         changeWindow->setPosition(sf::Vector2f {10,10} - menu.getPosition());
         backToMenu->setPosition(sf::Vector2f {1750,10} - menu.getPosition());

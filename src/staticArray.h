@@ -13,6 +13,7 @@ public:
     void updateInsert() override;
     void updateInsertImmediately() override;
 
+    void insertToTail(int value) override;
 
 };
 

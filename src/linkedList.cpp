@@ -1595,12 +1595,18 @@ void LinkedList::updateClearImmediately() {
 
 void LinkedList::seek() {
     isPausing = false;
-
     code.setText({
                          "if empty, return NOT_FOUND",
                          "return head.item"
                  });
     phase = 0;
+
+    if(head == nullptr) {
+        code.deHighlightAll();
+        code.setHighlight(0);
+        isSeeking = false;
+        return;
+    }
 
     isSeeking = true;
 }

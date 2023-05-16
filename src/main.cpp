@@ -1,8 +1,10 @@
 #include "mainMenu.h"
+
+#include "displaySelectingMenu.h"
 #include "displayLinkedList.h"
 #include "displayDoublyLinkedList.h"
 #include "displayCircularLinkedList.h"
-
+#include "displayStack.h"
 #include "displayQueue.h"
 #include "displayStaticArray.h"
 #include "displayDynamicArray.h"
@@ -24,10 +26,14 @@ int main(){
     app.setFramerateLimit(60);
 
     mainMenu mainMenu(app);
+
+    displaySelectingMenu displaySelectingMenu(app);
+
     displayLinkedList displayLinkedList(app);
     displayDoublyLinkedList displayDoublyLinkedList(app);
     displayCircularLinkedList displayCircularLinkedList(app);
     displayQueue displayQueue(app);
+    displayStack displayStack(app);
     displayStaticArray displayStaticArray(app);
     displayDynamicArray displayDynamicArray(app);
 
@@ -41,6 +47,7 @@ int main(){
                 nowDisplay = mainMenu.mainloop(app);
                 break;
             case selectingMenuWindow:
+                nowDisplay = displaySelectingMenu.mainloop(app);
                 break;
             case singlyLinkedListWindow:
                 nowDisplay = displayLinkedList.mainloop(app);
@@ -53,6 +60,9 @@ int main(){
                 break;
             case queueWindow:
                 nowDisplay = displayQueue.mainloop(app);
+                break;
+            case stackWindow:
+                nowDisplay = displayStack.mainloop(app);
                 break;
             case staticArrayWindow:
                 nowDisplay = displayStaticArray.mainloop(app);

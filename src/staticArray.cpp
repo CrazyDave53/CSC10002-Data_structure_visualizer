@@ -55,6 +55,11 @@ void StaticArray::updateInsert() {
     }
     switch (array[indexNow].phase){
         case 0:
+            if (indexNow <= targetIndex){
+                step++;
+                array[indexNow].phase = 3;
+                break;
+            }
             if (array[indexNow].isFading) {
                 return;
             }
@@ -89,7 +94,7 @@ void StaticArray::updateInsert() {
                 return;
             }
 
-            if (indexNow == targetIndex) {
+            if (indexNow <= targetIndex) {
                 array[indexNow].setState(greenSquareState, 2000);
                 array[indexNow+1].setState(normalSquareState, 2000);
                 array[indexNow].phase = 3;
@@ -109,10 +114,10 @@ void StaticArray::updateInsert() {
             code.deHighlightAll();
             code.setHighlight(2);
 
-            array[indexNow].setValue(targetValue);
-            array[indexNow].setNull(false);
-            array[indexNow].setState(normalSquareState, 2000);
-            array[indexNow].phase = 0;
+            array[targetIndex].setValue(targetValue);
+            array[targetIndex].setNull(false);
+            array[targetIndex].setState(normalSquareState, 2000);
+            array[targetIndex].phase = 0;
 
             isInserting = false;
             phase = 0;
@@ -177,4 +182,6 @@ void StaticArray::updateInsertImmediately() {
     }
 }
 
-
+void StaticArray::insertToTail(int value) {
+    insert(arraySize - 1, value);
+}

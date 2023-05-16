@@ -82,6 +82,7 @@ private:
     LinkedList linkedList;
     backGround bg;
     mediaBar mediaBar;
+
 };
 
 #endif //CSC10002_DATA_STRUCTURE_VISUALIZER_DISPLAYLINKEDLIST_H

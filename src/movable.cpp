@@ -1,4 +1,5 @@
 #include "movable.h"
+#include "utilities.h"
 
 movable::movable() :
     pos(),
@@ -18,7 +19,7 @@ void movable::setEndingPoint(float x, float y) {
     velocity -= velocity;
     acceleration -= acceleration;
     acceleration = (endingPoint - startingPoint);
-    acceleration = acceleration * (float)(speed);
+    acceleration = acceleration * (float)(speed) * utility::multiplier;
     isMoving = true;
 }
 

@@ -6,6 +6,7 @@
 #include <SFML/Graphics.hpp>
 #include "windowsList.h"
 #include "iostream"
+#include "background.h"
 
 class mainMenu{
 public:
@@ -13,10 +14,16 @@ public:
     windowType mainloop(sf::RenderWindow& window);
 private:
     gui::Menu menu;
-    sf::Texture buttonBG;
+    sf::Texture playBG;
+    sf::Texture exitBG;
     gui::SpriteButton *playButton;
     gui::SpriteButton *exitButton;
     windowType nextWindow;
+
+    sf::Texture TitleTexture;
+    sf::Sprite TitleSprite;
+
+    backGround bg;
 };
 
 #endif //CSC10002_DATA_STRUCTURE_VISUALIZER_DISPLAYWINDOW_H

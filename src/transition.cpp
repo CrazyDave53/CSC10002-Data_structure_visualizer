@@ -1,4 +1,5 @@
 #include "transition.h"
+#include "utilities.h"
 
 transition::transition() :
     isFading(),
@@ -12,7 +13,7 @@ transition::transition() :
 void transition::startFading(float duration) {
     opacity = 255;
     isFading = true;
-    speed = 255.0/duration*1000/60;
+    speed = 255.0/duration*1000/60 * utility::multiplier;
 }
 
 void transition::updateOpacity() {

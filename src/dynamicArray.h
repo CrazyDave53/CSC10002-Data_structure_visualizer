@@ -62,7 +62,8 @@ public:
 
     virtual void updateInsertImmediately();
     void insertToHead(int value);
-    void insertToTail(int value);
+
+    virtual void insertToTail(int value);
 
     void deleteElement(int index);
 
