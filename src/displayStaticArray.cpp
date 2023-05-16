@@ -324,8 +324,7 @@ displayStaticArray::displayStaticArray(sf::RenderWindow &window):
             goInsert = insertFrame->addButton("GO", [this]{
                 if(!inputInsertValue->getText().toAnsiString().empty() && !inputInsertIndex->getText().toAnsiString().empty()) {
                     try {
-                        staticArray.insert(std::stoi(inputInsertValue->getText().toAnsiString()),
-                                            std::stoi(inputInsertIndex->getText().toAnsiString()));
+                        staticArray.insert(std::stoi(inputInsertIndex->getText().toAnsiString()),std::stoi(inputInsertIndex->getText().toAnsiString()));
 //                            staticArray.transferToArray();
                     } catch (std::invalid_argument) {
                         //do nothing

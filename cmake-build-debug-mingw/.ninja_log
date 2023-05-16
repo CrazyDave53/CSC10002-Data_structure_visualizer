@@ -3,11 +3,11 @@
 50	284	7042766939359419	CMakeFiles/CSC10002-Data_structure_visualizer.dir/src/selectingMenu.cpp.obj	e9266e06ab6c354d
 16	337	7057764839635990	CMakeFiles/CSC10002-Data_structure_visualizer.dir/src/transition.cpp.obj	39c368081fddb43e
 43	4403	7042766980338339	CMakeFiles/CSC10002-Data_structure_visualizer.dir/src/menu.cpp.obj	eeacf025a6443cfe
-7	2889	7059219771784331	CMakeFiles/CSC10002-Data_structure_visualizer.dir/src/main.cpp.obj	f6ef5dbcf9ec1e86
 60	8339	7043260288288758	CMakeFiles/CSC10002-Data_structure_visualizer.dir/src/FileSelectionDialog.cpp.obj	494174b153ee50ef
-21	4284	7042766979198369	CMakeFiles/CSC10002-Data_structure_visualizer.dir/src/Button.cpp.obj	449920f5b17f5e33
+7	4838	7059236520230735	CMakeFiles/CSC10002-Data_structure_visualizer.dir/src/main.cpp.obj	f6ef5dbcf9ec1e86
 16	4791	7057776568948329	CMakeFiles/CSC10002-Data_structure_visualizer.dir/src/staticArray.cpp.obj	dd9b297a6d451dbc
 13052	14922	7042767085658261	CMakeFiles/CSC10002-Data_structure_visualizer.dir/src/background.cpp.obj	98a41d859d7cb406
+21	4284	7042766979198369	CMakeFiles/CSC10002-Data_structure_visualizer.dir/src/Button.cpp.obj	449920f5b17f5e33
 31	4271	7042766978648340	CMakeFiles/CSC10002-Data_structure_visualizer.dir/src/render.cpp.obj	50221be8da8da855
 285	4374	7042766980068326	CMakeFiles/CSC10002-Data_structure_visualizer.dir/Gui/SpriteButton.cpp.obj	687e9e7ea3f5744a
 4375	6514	7042767001698313	CMakeFiles/CSC10002-Data_structure_visualizer.dir/Gui/CheckBox.cpp.obj	67b98ffe8e83b775
@@ -23,13 +23,13 @@
 6556	8726	7042767023528302	CMakeFiles/CSC10002-Data_structure_visualizer.dir/Gui/Image.cpp.obj	b2132d8a61ac0447
 6514	8716	7042767023178300	CMakeFiles/CSC10002-Data_structure_visualizer.dir/Gui/Layouts/VBoxLayout.cpp.obj	bcf8872266bc6367
 24	8820	7059201142751551	CMakeFiles/CSC10002-Data_structure_visualizer.dir/src/displayDoublyLinkedList.cpp.obj	aac5bcd36e6efd63
-816	2644	7059220580422742	E:/KHTN/ki thuat lap trinh/CSC10002-Data_structure_visualizer/CSC10002-Data_structure_visualizer.exe	6526e7414f70536d
+4838	6828	7059236539973884	E:/KHTN/ki thuat lap trinh/CSC10002-Data_structure_visualizer/CSC10002-Data_structure_visualizer.exe	6526e7414f70536d
 8	2251	7057764858973005	CMakeFiles/CSC10002-Data_structure_visualizer.dir/src/movable.cpp.obj	dc76927a50bc7baf
 6657	9396	7042767030178299	CMakeFiles/CSC10002-Data_structure_visualizer.dir/Gui/ProgressBar.cpp.obj	653e6f991abf2ad7
 8716	11228	7042767048338324	CMakeFiles/CSC10002-Data_structure_visualizer.dir/Gui/Theme.cpp.obj	733d391fb214d7c6
 67	8183	7059201136182444	CMakeFiles/CSC10002-Data_structure_visualizer.dir/src/displayQueue.cpp.obj	efb16a80bdd1c7eb
 8706	11116	7042767047548289	CMakeFiles/CSC10002-Data_structure_visualizer.dir/Gui/Widget.cpp.obj	d545de328dd3b266
-26	4812	7058795179320091	CMakeFiles/CSC10002-Data_structure_visualizer.dir/src/mainMenu.cpp.obj	ed1399284c7928ae
+13	2026	7059236491880312	CMakeFiles/CSC10002-Data_structure_visualizer.dir/src/mainMenu.cpp.obj	ed1399284c7928ae
 9	8901	7059201143590156	CMakeFiles/CSC10002-Data_structure_visualizer.dir/src/displayLinkedList.cpp.obj	75a42d69c2789386
 8744	10897	7042767045518297	CMakeFiles/CSC10002-Data_structure_visualizer.dir/Gui/Utils/Box.cpp.obj	fe0564259496c2c1
 41	8982	7059201144382874	CMakeFiles/CSC10002-Data_structure_visualizer.dir/src/displayStaticArray.cpp.obj	fa5f0a506b0b093e
@@ -54,11 +54,3 @@
 23	13856	7052696679709170	CMakeFiles/CSC10002-Data_structure_visualizer.dir/src/stack.cpp.obj	350d47f63486f02f
 10	6286	7059201838393916	CMakeFiles/CSC10002-Data_structure_visualizer.dir/src/displayStack.cpp.obj	bc40eb59568351ea
 28	335	7057764839385984	CMakeFiles/CSC10002-Data_structure_visualizer.dir/src/utilities.cpp.obj	fda5120cdf4bddbd
-20	965	7059234110220001	CMakeFiles/CSC10002-Data_structure_visualizer.dir/src/mainMenu.cpp.obj	ed1399284c7928ae
-10	2736	7059234127934083	CMakeFiles/CSC10002-Data_structure_visualizer.dir/src/main.cpp.obj	f6ef5dbcf9ec1e86
-2737	4583	7059234146283468	E:/KHTN/ki thuat lap trinh/CSC10002-Data_structure_visualizer/CSC10002-Data_structure_visualizer.exe	6526e7414f70536d
-6	738	7059234387163792	CMakeFiles/CSC10002-Data_structure_visualizer.dir/src/mainMenu.cpp.obj	ed1399284c7928ae
-739	2871	7059234408377285	E:/KHTN/ki thuat lap trinh/CSC10002-Data_structure_visualizer/CSC10002-Data_structure_visualizer.exe	6526e7414f70536d
-13	2026	7059236491880312	CMakeFiles/CSC10002-Data_structure_visualizer.dir/src/mainMenu.cpp.obj	ed1399284c7928ae
-7	4838	7059236520230735	CMakeFiles/CSC10002-Data_structure_visualizer.dir/src/main.cpp.obj	f6ef5dbcf9ec1e86
-4838	6828	7059236539973884	E:/KHTN/ki thuat lap trinh/CSC10002-Data_structure_visualizer/CSC10002-Data_structure_visualizer.exe	6526e7414f70536d

@@ -1633,11 +1633,13 @@ void LinkedList::updateSeek() {
             code.deHighlightAll();
             code.setHighlight(1);
             head->setState(normal, 10000);
+            phase = 2;
         case 2:
             if(head->isFading){
                 return;
             }
             isSeeking = false;
+            phase = 0;
             break;
     }
 }

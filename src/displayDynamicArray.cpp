@@ -325,8 +325,7 @@ displayDynamicArray::displayDynamicArray(sf::RenderWindow &window):
             goInsert = insertFrame->addButton("GO", [this]{
                 if(!inputInsertValue->getText().toAnsiString().empty() && !inputInsertIndex->getText().toAnsiString().empty()) {
                     try {
-                        dynamicArray.insert(std::stoi(inputInsertValue->getText().toAnsiString()),
-                                                   std::stoi(inputInsertIndex->getText().toAnsiString()));
+                        dynamicArray.insert(std::stoi(inputInsertIndex->getText().toAnsiString()),std::stoi(inputInsertValue->getText().toAnsiString()));
 //                            dynamicArray.transferToArray();
                     } catch (std::invalid_argument) {
                         //do nothing
@@ -514,6 +513,10 @@ windowType displayDynamicArray::mainloop(sf::RenderWindow &window) {
             deleteMenu.deleteFrame();
             deleteMenu.mainframe->recomputeGeometry();
 //            menu.recomputeGeometry();
+        }
+        if(!allocateMenu.mainframe->isFocused()) {
+            allocateMenu.deleteFrame();
+            allocateMenu.mainframe->recomputeGeometry();
         }
 
         mediaBar.setPauseState(dynamicArray.isPausing);

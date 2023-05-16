@@ -24,7 +24,7 @@ mediaBar::mediaBar(gui::Menu &menu) :
     m_speedSlider->setStep(5);
     m_speedSlider->setValue(50);
 
-    m_speedText = new sf::Text("100%", gui::Theme::getFont(), 20);
+    m_speedText = new sf::Text("SPEED: 100%", gui::Theme::getFont(), 20);
 
     menu.add(m_backwardButton);
     menu.add(m_playButton);
@@ -33,7 +33,7 @@ mediaBar::mediaBar(gui::Menu &menu) :
 
     m_speedSlider->setCallback([this](){
         utility::setMultiplier(0.5 + (m_speedSlider->getValue() * 0.01f));
-        m_speedText->setString(std::to_string(m_speedSlider->getValue() + 50) + "%");
+        m_speedText->setString("SPEED: " + std::to_string(m_speedSlider->getValue() + 50) + "%");
     });
 
     m_background.setSize(sf::Vector2f(1920, 100));

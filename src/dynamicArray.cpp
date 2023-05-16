@@ -838,9 +838,9 @@ void DynamicArray::updateInsert() {
                 }
 
                 code.setText({
-                    "for (int i = arraySize; i >= targetIndex; i--)",
-                    "    array[i + 1] = array[i];",
-                    "array[targetIndex] = targetValue;"
+                     "for (int i = arraySize-1; i > targetIndex; i--)",
+                     "    array[i] = array[i - 1];",
+                     "array[targetIndex] = targetValue;"
                 });
 
                 phase = 4;

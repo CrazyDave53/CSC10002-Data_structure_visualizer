@@ -22,7 +22,7 @@ int main(){
     gui::Theme::minWidgetWidth = 43;
     gui::Theme::input.textPlaceholderColor = sf::Color(252, 156, 178);
 
-    sf::RenderWindow app(sf::VideoMode(1920, 1080), "SFML Widgets", sf::Style::Close);
+    sf::RenderWindow app(sf::VideoMode(1920, 1080), "DATA STRUCTURE VISUALIZER", sf::Style::Close);
     app.setFramerateLimit(60);
 
     mainMenu mainMenu(app);

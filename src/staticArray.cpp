@@ -29,8 +29,8 @@ void StaticArray::insert(int index, int value) {
     }
 
     code.setText({
-        "for (int i = arraySize; i >= targetIndex; i--)",
-        "    array[i + 1] = array[i];",
+        "for (int i = arraySize-1; i > targetIndex; i--)",
+        "    array[i] = array[i - 1];",
         "array[targetIndex] = targetValue;"
     });
 
@@ -55,7 +55,7 @@ void StaticArray::updateInsert() {
     }
     switch (array[indexNow].phase){
         case 0:
-            if (indexNow <= targetIndex){
+            if (indexNow < targetIndex){
                 step++;
                 array[indexNow].phase = 3;
                 break;

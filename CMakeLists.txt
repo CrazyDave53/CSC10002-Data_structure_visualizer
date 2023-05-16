@@ -5,6 +5,7 @@ set(CMAKE_CXX_STANDARD 14)
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${PROJECT_SOURCE_DIR})
 
 set(WIN32 True)
+set(CMAKE_EXE_LINKER_FLAGS "-static")
 
 add_executable(CSC10002-Data_structure_visualizer
         WIN32
@@ -17,4 +18,4 @@ set(SFML_DIR C:/SFML/lib/cmake/SFML)
 
 find_package(SFML COMPONENTS window graphics audio REQUIRED)
 
-target_link_libraries(CSC10002-Data_structure_visualizer sfml-graphics sfml-audio sfml-window)
+target_link_libraries(CSC10002-Data_structure_visualizer sfml-graphics sfml-audio sfml-window -static-libgcc -static-libstdc++)
